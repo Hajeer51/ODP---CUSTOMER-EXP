@@ -1,12 +1,12 @@
 import React from 'react';
-import LoginForm from '../components/LoginForm';
+import ForgotPasswordForm from '../components/ForgotPasswordForm';
 import styles from '../styles/LoginPage.module.css';
 
-const LoginPage = ({ onForgotPassword }) => {
+const ForgotPasswordPage = ({ onBack }) => {
   return (
     <div className={styles.loginPage}>
       <div className={styles.leftPanel}>
-        <LoginForm onForgotPassword={onForgotPassword} />
+        <ForgotPasswordForm onBack={onBack} />
       </div>
       <div className={styles.rightPanel}>
         <div className={styles.dashboardInfo}>
@@ -26,4 +26,4 @@ const LoginPage = ({ onForgotPassword }) => {
   );
 };
 
-export default LoginPage; 
+export default ForgotPasswordPage; 

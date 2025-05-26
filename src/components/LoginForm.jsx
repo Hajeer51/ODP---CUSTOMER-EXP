@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/LoginPage.module.css';
 
-const LoginForm = () => {
+const LoginForm = ({ onForgotPassword }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -35,7 +35,7 @@ const LoginForm = () => {
         autoComplete="current-password"
       />
       <div className={styles.forgotPassword}>
-        <a href="#">Forgot Password?</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onForgotPassword(); }}>Forgot Password?</a>
       </div>
       <button type="submit" className={styles.signInBtn}>Sign In</button>
       <div className={styles.signupText}>
