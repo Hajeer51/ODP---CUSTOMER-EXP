@@ -2,11 +2,11 @@ import React from 'react';
 import LoginForm from '../components/LoginForm';
 import styles from '../styles/LoginPage.module.css';
 
-const LoginPage = ({ onForgotPassword }) => {
+const LoginPage = ({ onForgotPassword, onDashboard }) => {
   return (
     <div className={styles.loginPage}>
       <div className={styles.leftPanel}>
-        <LoginForm onForgotPassword={onForgotPassword} />
+        <LoginForm onForgotPassword={onForgotPassword} onDashboard={onDashboard} />
       </div>
       <div className={styles.rightPanel}>
         <div className={styles.dashboardInfo}>

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import styles from '../styles/LoginPage.module.css';
 
-const LoginForm = ({ onForgotPassword }) => {
+const LoginForm = ({ onForgotPassword, onDashboard }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: Add authentication logic
+    // For now, just show dashboard on any login attempt
+    onDashboard();
   };
 
   return (
