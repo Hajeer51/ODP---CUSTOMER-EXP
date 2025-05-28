@@ -32,7 +32,7 @@ const Sidebar = () => {
         </li>
         <li><Link to="#" className="link"><MdDashboard /> Overview</Link></li>
         <li><Link to="#" className="link"><MdAccountCircle /> Account Details</Link></li>
-        <li><Link to="#" className="link"><MdConfirmationNumber /> Tickets</Link></li>
+        <li><Link to="/tickets" className="link"><MdConfirmationNumber /> Tickets</Link></li>
         <li><a href="#" className="link"><MdStorage /> Usage</a></li>
         <li><a href="#" className="link"><MdDashboard /> Servers</a></li>
         <li><a href="#" className="link"><MdMap /> Journey Map</a></li>
