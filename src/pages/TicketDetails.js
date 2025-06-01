@@ -78,7 +78,7 @@ const TicketDetails = () => {
       <Navbar />
       <div style={{ display: 'flex', flex: 1 }}>
         <Sidebar />
-        <div style={{ flex: 1, maxWidth: 1200, margin: '70px auto', padding: '32px 16px' }}>
+        <div style={{ flex: 1, maxWidth: 1200, margin: '40px auto', padding: '24px 16px' }}>
           {/* Breadcrumb */}
           <div style={{ fontSize: '1.05em', marginBottom: 70 }}>
             <Link to="/" style={{ color: '#0052cc', textDecoration: 'none', fontWeight: 500 }}>Help Center</Link>
