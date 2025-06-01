@@ -7,6 +7,8 @@ import Tickets from './pages/Tickets.js';
 import TicketDetails from './pages/TicketDetails.js';
 import InfrastructureDetails from './pages/InfrastructureDetails';
 import DashboardPage from './pages/dashboardpage.tsx';
+import UserManagementPage from './pages/UserManagementPage.tsx';
+import UserDetailsPage from './pages/UserDetailsPage.tsx';
 
 function App() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -24,6 +26,8 @@ function App() {
             <Route path="/tickets/:reference" element={<TicketDetails />} />
             <Route path="/tickets/:reference/edit" element={<TicketDetails />} />
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/user-management" element={<UserManagementPage />} />
+            <Route path="/user-management/:email" element={<UserDetailsPage />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
           </Routes>
         ) : showForgotPassword ? (

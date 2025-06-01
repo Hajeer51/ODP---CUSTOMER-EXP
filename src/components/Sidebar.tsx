@@ -9,7 +9,8 @@ import {
   MdConfirmationNumber, 
   MdMap, 
   MdStorage, 
-  MdSettings 
+  MdSettings, 
+  MdPeople
 } from 'react-icons/md';
 
 const Sidebar = () => {
@@ -39,6 +40,8 @@ const Sidebar = () => {
         <li><a href="#" className="link"><MdAssessment /> Survey</a></li>
         <div className="sidebar-divider"></div>
         <li><a href="#" className="link"><MdSettings /> API Configration</a></li>
+        <li><Link to="/user-management" className="link"><MdPeople /> User Management</Link></li>
+
       </ul>
       </div>
     </div>
