@@ -1,14 +1,14 @@
 import React from 'react';
 import Navbar from './Navbar.tsx';
 import Sidebar from './Sidebar.tsx';
-import {
-  LineChart,
-  Line,
-  ResponsiveContainer,
-} from 'recharts';
+import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { FaCheckCircle } from 'react-icons/fa';
 import '../styles/Dashboard.css';
 import { useNavigate } from 'react-router-dom';
+import Tickets from './Tickets.js';
+
+
+
 
 /* ── mock data ─────────────────────────────────────────── */
 const billingData = {
@@ -198,7 +198,7 @@ const Dashboard: React.FC = () => {
                       <span className="infra-label" style={{ color: '#169ba6', fontWeight: 600 }}>60 %</span>
                       <div className="bar"><div className="bar-fill cyan" style={{ width: '60%' }} /></div>
                     </div>
-                    <div className="infra-label" style={{ color: '#888' }}>650 IT GB</div>
+                    <div className="infra-label" style={{ color: '#888' }}>65 TB GB</div>
                   </div>
                 </div>
               </div>
@@ -239,13 +239,17 @@ const Dashboard: React.FC = () => {
             {/* Support history */}
             <div
               className="support-history card"
-              style={{ gridColumn: '1 / 3', gridRow: '3' }}
+              style={{ gridColumn: '1 / 3', gridRow: '3', cursor: 'pointer' }}
+              onClick={() => navigate('/tickets')}
             >
               <div style={{ display: 'flex', alignItems: 'baseline', width: '100%', marginTop: 0, marginBottom: 8 }}>
                 <h3 className="card-title-accent" style={{ margin: 0 }}>
                   <span role="img" aria-label="support" style={{marginRight: 8}}>🛡️</span>
                   Support Interaction History
                 </h3>
+                <span style={{ marginLeft: 'auto', color: '#169ba6', fontSize: '0.95rem', fontWeight: 600 }}>
+                  View all tickets →
+                </span>
               </div>
               <table className="support-table">
                 <thead>
@@ -259,12 +263,9 @@ const Dashboard: React.FC = () => {
                   {supportDetails.map((t) => (
                     <tr key={t.reference}>
                       <td>
-                        <a
-                          href="#"
-                          style={{ color: '#169ba6', textDecoration: 'underline' }}
-                        >
+                        <span style={{ color: '#169ba6', textDecoration: 'underline' }}>
                           {t.reference}
-                        </a>
+                        </span>
                       </td>
                       <td>{t.summary}</td>
                       <td>
