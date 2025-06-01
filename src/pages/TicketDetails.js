@@ -78,7 +78,7 @@ const TicketDetails = () => {
       <Navbar />
       <div style={{ display: 'flex', flex: 1 }}>
         <Sidebar />
-        <div style={{ flex: 1, maxWidth: 1200, margin: '40px auto', padding: '24px 16px' }}>
+        <div style={{ flex: 1, maxWidth: 1200, margin: '40px auto', padding: '0px' }}>
           {/* Breadcrumb */}
           <div style={{ fontSize: '1.05em', marginBottom: 70 }}>
             <Link to="/" style={{ color: '#0052cc', textDecoration: 'none', fontWeight: 500 }}>Help Center</Link>
@@ -87,36 +87,48 @@ const TicketDetails = () => {
             <span style={{ color: '#6b778c', margin: '0 8px' }}>/</span>
             <span style={{ color: '#0052cc', textDecoration: 'underline', fontWeight: 500 }}>{ticket.reference}</span>
           </div>
-          <div style={{ display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+          <div style={{ display: 'flex', gap: 15, alignItems: 'flex-start' }}>
             {/* Main content */}
             <div style={{ flex: 2, minWidth: 0 }}>
-              <h1 style={{ fontSize: '2.1em', fontWeight: 700, margin: '0 0 24px 0' }}>{ticket.summary}</h1>
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <h1 style={{ fontSize: '2.1em', fontWeight: 700, margin: '0 0 24px 0', maxWidth: 700, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}>{ticket.summary}</h1>
+              </div>
               {/* Card */}
-              <div style={{ background: '#fff', border: '1px solid #e5e8ec', borderRadius: 6, padding: 24, marginBottom: 32 }}>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#253858', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 18, marginRight: 12 }}>
-                    {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <div style={{ background: '#fff', border: '1px solid #e5e8ec', borderRadius: 6, padding: 24, marginBottom: 32, maxWidth: 700, width: '100%', margin: '0 auto' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#253858', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 18, marginRight: 12 }}>
+                      {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
+                    </div>
+                    <span style={{ fontWeight: 600 }}>{ticket.requester}</span>
+                    <span style={{ color: '#6b778c', marginLeft: 8, fontSize: 15 }}>
+                      raised this on {dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' })} {ticket.time} AM
+                    </span>
+                    <span style={{ marginLeft: 'auto', color: '#0052cc', cursor: 'pointer', fontWeight: 500, fontSize: 15 }}>Hide details</span>
                   </div>
-                  <span style={{ fontWeight: 600 }}>{ticket.requester}</span>
-                  <span style={{ color: '#6b778c', marginLeft: 8, fontSize: 15 }}>
-                    raised this on {dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' })} {ticket.time} AM
-                  </span>
-                  <span style={{ marginLeft: 'auto', color: '#0052cc', cursor: 'pointer', fontWeight: 500, fontSize: 15 }}>Hide details</span>
-                </div>
-                <div style={{ marginLeft: 52 }}>
-                  <div style={{ fontWeight: 600, marginBottom: 4 }}>Body</div>
-                  <div style={{ color: '#172b4d', whiteSpace: 'pre-line', fontSize: 16 }}>{ticket.body}</div>
-                  <div style={{ color: '#172b4d', fontSize: 16, marginTop: 8 }}>
-                    {statusMessage}
+                  <div style={{ marginLeft: 52 }}>
+                    <div style={{ fontWeight: 600, marginBottom: 4 }}>Body</div>
+                    <div style={{ color: '#172b4d', whiteSpace: 'pre-line', fontSize: 16 }}>{ticket.body}</div>
+                    <div style={{ color: '#172b4d', fontSize: 16, marginTop: 8 }}>
+                      {statusMessage}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 12 }}>Activity</div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#253858', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 16 }}>
-                  {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <div style={{ maxWidth: 700, width: '100%', margin: '0 auto' }}>
+                  <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 12 }}>Activity</div>
                 </div>
-                <input type="text" placeholder="Add a comment" style={{ flex: 1, border: '1px solid #e5e8ec', borderRadius: 4, padding: '10px 14px', fontSize: 15, outline: 'none' }} />
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <div style={{ maxWidth: 700, width: '100%', margin: '0 auto' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#253858', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 16 }}>
+                      {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
+                    </div>
+                    <input type="text" placeholder="Add a comment" style={{ flex: 1, border: '1px solid #e5e8ec', borderRadius: 4, padding: '10px 14px', fontSize: 15, outline: 'none' }} />
+                  </div>
+                </div>
               </div>
             </div>
             {/* Sidebar */}
