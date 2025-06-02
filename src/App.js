@@ -9,6 +9,7 @@ import InfrastructureDetails from './pages/InfrastructureDetails';
 import DashboardPage from './pages/dashboardpage.tsx';
 import UserManagementPage from './pages/UserManagementPage.tsx';
 import UserDetailsPage from './pages/UserDetailsPage.tsx';
+import JourneyMap from './pages/journeymap.tsx';
 
 function App() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -29,6 +30,7 @@ function App() {
             <Route path="/user-management" element={<UserManagementPage />} />
             <Route path="/user-management/:email" element={<UserDetailsPage />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/journeymap" element={<JourneyMap />} />
           </Routes>
         ) : showForgotPassword ? (
           <ForgotPasswordPage onBack={() => setShowForgotPassword(false)} />

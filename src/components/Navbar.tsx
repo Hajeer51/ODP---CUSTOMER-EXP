@@ -23,6 +23,10 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const handleJourneyMapClick = () => {
+    navigate('/journeymap');
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -40,7 +44,7 @@ const Navbar = () => {
     <nav>
       <ul>
         <li><Link to="/" className="link">Home</Link></li>
-        <li><Link to="/" className="link">Journey Map</Link></li>
+        <li><Link to="/journeymap" className="link" style={{ color: '#222', fontWeight: 500, fontSize: 16, marginRight: 4 }} onClick={handleJourneyMapClick}>Journey Map</Link></li>
         <li className="user-menu" ref={dropdownRef}>
           <button className="user-button" onClick={toggleDropdown} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div style={{
