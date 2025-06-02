@@ -15,6 +15,8 @@ const cpuData = [
   { time: '16:10', 'Total VMs': 67 },
   { time: '18:20', 'Total VMs': 71 },
   { time: '20:30', 'Total VMs': 72 },
+  { time: '22:40', 'Total VMs': 75 },
+  { time: '00:50', 'Total VMs': 78 },
 ];
 
 // Mock data for Memory chart
@@ -29,6 +31,13 @@ const memoryData = [
   { time: '21:10', consumed: 53 },
   { time: '23:20', consumed: 59 },
   { time: '01:30', consumed: 65 },
+  { time: '03:40', consumed: 67 },
+  { time: '05:50', consumed: 71 },
+  { time: '08:00', consumed: 75 },
+  { time: '10:10', consumed: 78 },
+  { time: '12:20', consumed: 80 },
+  { time: '14:30', consumed: 85 },
+  
 ];
 
 // Storage pie chart data
@@ -399,13 +408,22 @@ const InfrastructureDetails = () => (
               margin: '0 0 24px 0',
               width: '100%',
               padding: '32px 24px',
-              overflowX: 'auto',
               boxSizing: 'border-box',
             }}>
               <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#172B4D', marginBottom: '24px' }}>Resource Overview</h3>
-              <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '800px' }}>
-                  <thead>
+              <div style={{ 
+                width: '100%',
+                overflowX: 'scroll',
+                overflowY: 'auto',
+                maxHeight: '300px', // This will show approximately 4 rows
+                WebkitOverflowScrolling: 'touch'
+              }}>
+                <table style={{ 
+                  width: '100%', 
+                  borderCollapse: 'collapse', 
+                  minWidth: '800px'
+                }}>
+                  <thead style={{ position: 'sticky', top: 0, background: '#f4f5f7', zIndex: 1 }}>
                     <tr style={{ background: '#f4f5f7' }}>
                       <th style={{ padding: '12px 16px', textAlign: 'left', color: '#6B778C', fontWeight: 500 }}>Username</th>
                       <th style={{ padding: '12px 16px', textAlign: 'left', color: '#6B778C', fontWeight: 500 }}>Email</th>
@@ -417,11 +435,20 @@ const InfrastructureDetails = () => (
                   </thead>
                   <tbody>
                     {[
-                      { username: 'jdoe', email: 'jdoe@example.com', vpn: 'Enabled', start: '2024-05-01', end: '2025-05-01' },
-                      { username: 'asmith', email: 'asmith@example.com', vpn: 'Disabled', start: '2023-12-15', end: '2024-12-15' },
-                      { username: 'mjane', email: 'mjane@example.com', vpn: 'Enabled', start: '2024-03-10', end: '2025-03-10' },
-                      { username: 'bwilliams', email: 'bwilliams@example.com', vpn: 'Enabled', start: '2024-01-20', end: '2025-01-20' },
-                      { username: 'tjohnson', email: 'tjohnson@example.com', vpn: 'Disabled', start: '2024-02-05', end: '2025-02-05' },
+                    { username: 'jdoe', email: 'jdoe@example.com', vpn: 'Enabled', start: '2024-05-01', end: '2025-05-01' },
+                    { username: 'asmith', email: 'asmith@example.com', vpn: 'Disabled', start: '2023-12-15', end: '2024-12-15' },
+                    { username: 'mjane', email: 'mjane@example.com', vpn: 'Enabled', start: '2024-03-10', end: '2025-03-10' },
+                    { username: 'bwilliams', email: 'bwilliams@example.com', vpn: 'Enabled', start: '2024-01-20', end: '2025-01-20' },
+                    { username: 'tjohnson', email: 'tjohnson@example.com', vpn: 'Disabled', start: '2024-02-05', end: '2025-02-05' },
+                    { username: 'knguyen', email: 'knguyen@example.com', vpn: 'Enabled', start: '2024-06-01', end: '2025-06-01' },
+                    { username: 'lmartin', email: 'lmartin@example.com', vpn: 'Enabled', start: '2023-11-10', end: '2024-11-10' },
+                    { username: 'dlee', email: 'dlee@example.com', vpn: 'Disabled', start: '2024-04-12', end: '2025-04-12' },
+                    { username: 'swhite', email: 'swhite@example.com', vpn: 'Enabled', start: '2024-07-22', end: '2025-07-22' },
+                    { username: 'rpatel', email: 'rpatel@example.com', vpn: 'Disabled', start: '2023-09-01', end: '2024-09-01' },
+                    { username: 'amurphy', email: 'amurphy@example.com', vpn: 'Enabled', start: '2024-08-15', end: '2025-08-15' },
+                    { username: 'cchavez', email: 'cchavez@example.com', vpn: 'Enabled', start: '2024-03-30', end: '2025-03-30' },
+                    { username: 'jwalker', email: 'jwalker@example.com', vpn: 'Disabled', start: '2023-10-05', end: '2024-10-05' }
+                    
                     ].map((row, idx) => (
                       <tr key={idx} style={{ borderBottom: '1px solid #e5e8ec', background: idx % 2 === 0 ? '#fff' : '#f9fafb' }}>
                         <td style={{ padding: '12px 16px', color: '#253858', fontWeight: 500 }}>{row.username}</td>
