@@ -27,9 +27,26 @@ const Navbar = () => {
     <nav>
       <ul>
         <li><Link to="/" className="link">Home</Link></li>
+        <li><Link to="/" className="link">Journey Map</Link></li>
         <li className="user-menu" ref={dropdownRef}>
-          <button className="user-button" onClick={toggleDropdown}>
-            <i className='bx bxs-user-circle'></i>
+          <button className="user-button" onClick={toggleDropdown} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              background: '#e6f4ee',
+              color: '#0c814a',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontWeight: 600,
+              fontSize: 16,
+              marginRight: 8,
+            }}>
+              
+            </div>
+            <span style={{ color: '#222', fontWeight: 500, fontSize: 16, marginRight: 4 }}></span>
+            <i className={`bx ${isDropdownOpen ? 'bxs-chevron-up' : 'bxs-chevron-down'}`} style={{ fontSize: '16px', color: '#222' }}></i>
           </button>
           {isDropdownOpen && (
             <div className="dropdown-menu">

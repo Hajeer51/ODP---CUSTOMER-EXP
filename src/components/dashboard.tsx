@@ -5,7 +5,7 @@ import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { FaCheckCircle } from 'react-icons/fa';
 import '../styles/Dashboard.css';
 import { useNavigate } from 'react-router-dom';
-import Tickets from './Tickets.js';
+
 
 
 
@@ -242,9 +242,6 @@ const Dashboard: React.FC = () => {
                   <span role="img" aria-label="support" style={{marginRight: 8}}>🛡️</span>
                   Support Interaction History
                 </h3>
-                <span style={{ marginLeft: 'auto', color: '#169ba6', fontSize: '0.95rem', fontWeight: 600 }}>
-                  View all tickets →
-                </span>
               </div>
               <table className="support-table">
                 <thead>

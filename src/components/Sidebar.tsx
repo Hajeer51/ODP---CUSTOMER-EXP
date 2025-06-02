@@ -33,11 +33,6 @@ const Sidebar = () => {
         </li>
         <li><Link to="/" className="link"><MdDashboard /> Overview</Link></li>
         <li><Link to="#" className="link"><MdAccountCircle /> Account Details</Link></li>
-        <li><Link to="/tickets" className="link"><MdConfirmationNumber /> Tickets</Link></li>
-        <li><a href="#" className="link"><MdStorage /> Usage</a></li>
-        <li><a href="#" className="link"><MdDashboard /> Servers</a></li>
-        <li><a href="#" className="link"><MdMap /> Journey Map</a></li>
-        <li><a href="#" className="link"><MdAssessment /> Survey</a></li>
         <div className="sidebar-divider"></div>
         <li><a href="#" className="link"><MdSettings /> API Configration</a></li>
         <li><Link to="/user-management" className="link"><MdPeople /> User Management</Link></li>
