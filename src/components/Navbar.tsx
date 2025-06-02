@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
+import {  
+  MdPeople
+} from 'react-icons/md';
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -53,7 +56,7 @@ const Navbar = () => {
               fontSize: 16,
               marginRight: 8,
             }}>
-              
+              <MdPeople size={20} />
             </div>
             <span style={{ color: '#222', fontWeight: 500, fontSize: 16, marginRight: 4 }}></span>
             <i className={`bx ${isDropdownOpen ? 'bxs-chevron-up' : 'bxs-chevron-down'}`} style={{ fontSize: '16px', color: '#222' }}></i>

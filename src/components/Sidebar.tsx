@@ -5,10 +5,6 @@ import logo from '../assets/logo.png';
 import { 
   MdDashboard,
   MdAccountCircle, 
-  MdAssessment, 
-  MdConfirmationNumber, 
-  MdMap, 
-  MdStorage, 
   MdSettings, 
   MdPeople
 } from 'react-icons/md';
