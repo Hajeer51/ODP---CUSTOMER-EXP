@@ -128,8 +128,6 @@ const Dashboard: React.FC = () => {
               style={{ gridColumn: '1 / 3', gridRow: '2', cursor: 'pointer' }}
               onClick={() => navigate('/infrastructure-details')}
             >
-              {/* divider */}
-              <div className="infra-hr" />
               {/* title */}
               <div style={{ display: 'flex', alignItems: 'baseline', width: '100%', marginTop: 0, marginBottom: 8 }}>
                 <h3 className="card-title-accent" style={{ margin: 0 }}>
@@ -202,9 +200,6 @@ const Dashboard: React.FC = () => {
                   </div>
                 </div>
               </div>
-
-              {/* divider */}
-              <div className="infra-hr" />
             </div>
 
             {/* Product & Services */}
