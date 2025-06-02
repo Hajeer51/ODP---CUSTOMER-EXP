@@ -117,7 +117,7 @@ const UserDetailsPage = () => {
       <div className="dashboard-content" style={{ display: 'flex' }}>
         <Sidebar />
         <main style={{ flex: 1, padding: '2px 20px 40px 20px', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ width: '100%', maxWidth: 1100, margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
             {/* Contextual Header with Back Button and User Info */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: 18 }}>
               {/* Back to Users Button - Styled as Gradient Pill */}
