@@ -185,7 +185,6 @@ const InfrastructureDetails = () => {
             boxSizing: 'border-box',
           }}>
             <div className="body-container" style={{
-              maxWidth: '1400px',
               margin: '0 auto',
               padding: '24px',
               boxSizing: 'border-box',

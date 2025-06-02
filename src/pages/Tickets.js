@@ -74,7 +74,6 @@ const Tickets = () => {
             boxShadow: '0 2px 8px rgba(9,30,66,0.06)',
             padding: '24px',
             width: '100%',
-            maxWidth: '1200px',
             margin: '0 auto'
           }}>
             <div style={{ 
