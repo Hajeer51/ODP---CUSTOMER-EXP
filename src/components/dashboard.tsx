@@ -193,12 +193,12 @@ const Dashboard: React.FC = () => {
                   {/* Storage */}
                   <div style={{ flex: 1 }}>
                     <div className="infra-label" style={{ fontWeight: 700 }}>Storage</div>
-                    <div className="infra-big">45 TB</div>
+                    <div className="infra-big">45</div>
                     <div className="infra-mini-row">
                       <span className="infra-label" style={{ color: '#169ba6', fontWeight: 600 }}>60 %</span>
                       <div className="bar"><div className="bar-fill cyan" style={{ width: '60%' }} /></div>
                     </div>
-                    <div className="infra-label" style={{ color: '#888' }}>65 TB GB</div>
+                    <div className="infra-label" style={{ color: '#888' }}></div>
                   </div>
                 </div>
               </div>

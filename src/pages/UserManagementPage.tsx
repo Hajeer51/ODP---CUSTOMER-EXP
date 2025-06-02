@@ -45,8 +45,8 @@ const UserManagementPage = () => {
       <Navbar />
       <div className="dashboard-content">
         <Sidebar />
-        <main className="main-content" style={{ background: '#f4f6fb', minHeight: '100vh', padding: 32, display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-          <div style={{ width: '100%', maxWidth: 1100, background: '#fff', borderRadius: 24, boxShadow: '0 8px 32px #0002', padding: 0, overflow: 'hidden' }}>
+        <main className="main-content" style={{ background: '#f4f6fb', minHeight: '100vh', padding: '32px 20px', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ width: '100%', margin: '0 auto', background: '#fff', borderRadius: 24, boxShadow: '0 8px 32px #0002', padding: 0, overflow: 'hidden' }}>
             {/* Gradient header with icon */}
             <div style={{ background: `linear-gradient(90deg, ${BRAND_GREEN} 0%, ${BRAND_TEAL} 100%)`, padding: '32px 40px 24px 40px', display: 'flex', alignItems: 'center', gap: 18 }}>
               <div>

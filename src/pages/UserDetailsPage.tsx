@@ -117,7 +117,7 @@ const UserDetailsPage = () => {
       <div className="dashboard-content" style={{ display: 'flex' }}>
         <Sidebar />
         <main style={{ flex: 1, padding: '2px 20px 40px 20px', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ width: '100%', maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ width: '100%', maxWidth: 1100, margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
             {/* Contextual Header with Back Button and User Info */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: 18 }}>
               {/* Back to Users Button - Styled as Gradient Pill */}
@@ -221,6 +221,11 @@ const UserDetailsPage = () => {
                         <span style={{ color: '#6b778c', marginRight: 8 }}>📞</span>
                         <span style={{ color: '#444' }}>{user.phone}</span>
                       </span>
+                      {/* Mock Password Field (Hidden) */}
+                      <span style={{ display: 'flex', alignItems: 'center' }}>
+                        <span style={{ color: '#6b778c', marginRight: 8 }}>🔒</span> {/* Lock icon */}
+                        <span style={{ color: '#444' }}>{editMode ? '********' : '********'}</span> {/* Masked password */}
+                      </span>
                     </div>
                   </div>
                   {/* Account Details Block (Right) */}
@@ -283,7 +288,14 @@ const UserDetailsPage = () => {
                     cursor: 'pointer',
                     boxShadow: '0 2px 8px rgba(0, 123, 255, 0.1)',
                     transition: 'transform 0.1s ease-in-out',
-                   }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={e => e.currentTarget.style.transform = 'none'}>
+                   }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={e => e.currentTarget.style.transform = 'none'}
+                   onClick={() => {
+                     if (window.confirm('Are you sure you want to reset the password?')) {
+                       // Placeholder for actual password reset logic
+                       console.log('Password reset initiated (placeholder)');
+                       alert('Password reset functionality needs to be implemented.');
+                     }
+                   }}>
                     Reset Password
                    </button>
                    {/* Deactivate Button */}
