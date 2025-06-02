@@ -15,6 +15,8 @@ const cpuData = [
   { time: '16:10', 'Total VMs': 67 },
   { time: '18:20', 'Total VMs': 71 },
   { time: '20:30', 'Total VMs': 72 },
+  { time: '22:40', 'Total VMs': 75 },
+  { time: '00:50', 'Total VMs': 78 },
 ];
 
 // Mock data for Memory chart
@@ -29,6 +31,13 @@ const memoryData = [
   { time: '21:10', consumed: 53 },
   { time: '23:20', consumed: 59 },
   { time: '01:30', consumed: 65 },
+  { time: '03:40', consumed: 67 },
+  { time: '05:50', consumed: 71 },
+  { time: '08:00', consumed: 75 },
+  { time: '10:10', consumed: 78 },
+  { time: '12:20', consumed: 80 },
+  { time: '14:30', consumed: 85 },
+  
 ];
 
 // Storage pie chart data
