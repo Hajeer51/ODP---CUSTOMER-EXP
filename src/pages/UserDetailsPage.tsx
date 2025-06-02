@@ -117,101 +117,84 @@ const UserDetailsPage = () => {
       <div className="dashboard-content" style={{ display: 'flex' }}>
         <Sidebar />
         <main style={{ flex: 1, padding: '40px 0', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', gap: 32, width: '100%', maxWidth: 1100, alignItems: 'flex-start' }}>
-            {/* Left column: Back button and profile card */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flex: 1, maxWidth: 370 }}>
-              {/* Small Back Button above the card */}
-              <button onClick={() => navigate('/user-management')} style={{ background: '#eee', color: '#555', border: 'none', borderRadius: 8, padding: '6px 18px', fontWeight: 500, fontSize: 14, cursor: 'pointer', marginBottom: 12, boxShadow: '0 1px 4px #0001' }}>← Back</button>
-              {/* User Profile Card - Redesigned */}
+          <div style={{ width: '100%', maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {/* Back Button */}
+            <button onClick={() => navigate('/user-management')} style={{ background: '#eee', color: '#555', border: 'none', borderRadius: 8, padding: '6px 18px', fontWeight: 500, fontSize: 14, cursor: 'pointer', marginBottom: 18, boxShadow: '0 1px 4px #0001', alignSelf: 'flex-start' }}>← Back</button>
+            {/* User Profile Card - Full Width */}
+            <div style={{
+              width: '100%',
+              background: '#fff',
+              borderRadius: 24,
+              boxShadow: '0 4px 24px #0001',
+              overflow: 'hidden',
+              position: 'relative',
+              minHeight: 420,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              padding: 0,
+              marginBottom: 16
+            }}>
+              {/* Banner */}
               <div style={{
                 width: '100%',
-                background: '#fff',
-                borderRadius: 24,
-                boxShadow: '0 4px 24px #0001',
-                overflow: 'hidden',
+                height: 90,
+                background: 'linear-gradient(120deg, #0c8145 0%, #86bc42 100%)',
                 position: 'relative',
-                minHeight: 420,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                padding: 0
-              }}>
-                {/* Banner */}
-                <div style={{
-                  width: '100%',
-                  height: 90,
-                  background: 'linear-gradient(120deg, #0c8145 0%, #86bc42 100%)',
-                  position: 'relative',
-                  borderTopLeftRadius: 24,
-                  borderTopRightRadius: 24
-                }} />
-                {/* Avatar - Overlapping */}
-                <div style={{
-                  position: 'absolute',
-                  top: 45,
-                  left: 32,
-                  width: 80,
-                  height: 80,
-                  borderRadius: '50%',
-                  background: '#e6f4fa',
-                  border: '4px solid #fff',
-                  boxShadow: '0 2px 8px #0001',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  zIndex: 2
-                }}>
-                  <User size={48} color="#169ba6" />
-                </div>
-                {/* Card Content */}
-                <div style={{ padding: '56px 32px 32px 32px', width: '100%' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-                    {editMode ? (
-                      <input value={editName} onChange={e => setEditName(e.target.value)} style={{ fontWeight: 700, fontSize: 28, color: '#222', border: '1px solid #ccc', borderRadius: 8, padding: '4px 10px', width: 140 }} />
-                    ) : (
-                      <span style={{ fontWeight: 700, fontSize: 28, color: '#222' }}>{user.name.split(' ')[0]}</span>
-                    )}
-                    <span style={{ background: '#86bc42', color: '#fff', borderRadius: 12, padding: '4px 16px', fontSize: 17, fontWeight: 600, marginLeft: 4 }}>{user.role}</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', fontSize: 18, marginBottom: 6 }}>
-                    <span style={{ fontWeight: 500, color: '#222', fontSize: 17 }}>Phone</span>
-                    <span style={{ marginLeft: 12, color: '#444', fontSize: 17 }}>{user.phone}</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', fontSize: 18, marginBottom: 6 }}>
-                    <span style={{ fontWeight: 500, color: '#222', fontSize: 17 }}>Email</span>
-                    <span style={{ marginLeft: 12, color: '#444', fontSize: 17 }}>{user.email}</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', fontSize: 18, marginBottom: 6 }}>
-                    <span style={{ fontWeight: 500, color: '#222', fontSize: 17 }}>Account Created:</span>
-                    <span style={{ marginLeft: 12, color: '#444', fontSize: 17 }}>{user.signedUp}</span>
-                  </div>
-                  <div style={{ color: '#6b778c', fontSize: 16, margin: '18px 0 24px 0' }}>Last login: {user.lastLogin}</div>
+                borderTopLeftRadius: 24,
+                borderTopRightRadius: 24
+              }} />
+              {/* Card Content */}
+              <div style={{ padding: '56px 32px 32px 32px', width: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8, width: '100%' }}>
                   {editMode ? (
-                    <div style={{ display: 'flex', gap: 12 }}>
-                      <button onClick={handleSave} style={{ background: '#0c8145', color: '#fff', border: 'none', borderRadius: 14, padding: '14px 32px', fontWeight: 700, fontSize: 20, cursor: 'pointer', boxShadow: '0 2px 8px #0c814522' }}>Save</button>
-                      <button onClick={handleCancel} style={{ background: '#eee', color: '#333', border: 'none', borderRadius: 14, padding: '14px 32px', fontWeight: 700, fontSize: 20, cursor: 'pointer' }}>Cancel</button>
-                    </div>
+                    <input value={editName} onChange={e => setEditName(e.target.value)} style={{ fontWeight: 700, fontSize: 28, color: '#222', border: '1px solid #ccc', borderRadius: 8, padding: '4px 10px', width: 240, marginRight: 12 }} />
                   ) : (
-                    <button onClick={handleEdit} style={{
-                      background: 'linear-gradient(90deg, #0c8145 0%, #86bc42 100%)',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: 14,
-                      padding: '14px 0',
-                      fontWeight: 700,
-                      fontSize: 20,
-                      width: '100%',
-                      cursor: 'pointer',
-                      boxShadow: '0 2px 8px #0c814522',
-                      marginTop: 8
-                    }}>Edit</button>
+                    <span style={{ fontWeight: 700, fontSize: 28, color: '#222' }}>{user.name}</span>
                   )}
+                  <span style={{ background: '#86bc42', color: '#fff', borderRadius: 12, padding: '4px 16px', fontSize: 17, fontWeight: 600, marginLeft: 4 }}>{user.role}</span>
                 </div>
+                <div style={{ display: 'flex', alignItems: 'center', fontSize: 18, marginBottom: 6 }}>
+                  <span style={{ fontWeight: 500, color: '#222', fontSize: 17 }}>Phone</span>
+                  <span style={{ marginLeft: 12, color: '#444', fontSize: 17 }}>{user.phone}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', fontSize: 18, marginBottom: 6 }}>
+                  <span style={{ fontWeight: 500, color: '#222', fontSize: 17 }}>Email</span>
+                  <span style={{ marginLeft: 12, color: '#444', fontSize: 17 }}>{user.email}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', fontSize: 18, marginBottom: 6 }}>
+                  <span style={{ fontWeight: 500, color: '#222', fontSize: 17 }}>Account Created:</span>
+                  <span style={{ marginLeft: 12, color: '#444', fontSize: 17 }}>{user.signedUp}</span>
+                </div>
+                <div style={{ color: '#6b778c', fontSize: 16, margin: '18px 0 24px 0' }}>Last login: {user.lastLogin}</div>
+                {editMode && (
+                  <div style={{ display: 'flex', gap: 12 }}>
+                    <button onClick={handleSave} style={{ background: '#0c8145', color: '#fff', border: 'none', borderRadius: 14, padding: '14px 32px', fontWeight: 700, fontSize: 20, cursor: 'pointer', boxShadow: '0 2px 8px #0c814522' }}>Save</button>
+                    <button onClick={handleCancel} style={{ background: '#eee', color: '#333', border: 'none', borderRadius: 14, padding: '14px 32px', fontWeight: 700, fontSize: 20, cursor: 'pointer' }}>Cancel</button>
+                  </div>
+                )}
               </div>
+              {/* Edit button absolutely positioned in bottom right */}
+              {!editMode && (
+                <button onClick={handleEdit} style={{
+                  position: 'absolute',
+                  right: 32,
+                  bottom: 32,
+                  background: 'linear-gradient(90deg, #0c8145 0%, #86bc42 100%)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: 8,
+                  padding: '10px 28px',
+                  fontWeight: 600,
+                  fontSize: 16,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px #0c814522',
+                  zIndex: 3
+                }}>Edit</button>
+              )}
             </div>
-            {/* Logs Table */}
-            <div style={{ flex: 2, background: '#fff', borderRadius: 18, boxShadow: '0 4px 24px #0001', padding: 32, minWidth: 0 }}>
+            {/* Logs Table - Full Width below card */}
+            <div style={{ width: '100%', background: '#fff', borderRadius: 18, boxShadow: '0 4px 24px #0001', padding: 32, minWidth: 0, marginTop: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 700, fontSize: 22, marginBottom: 24 }}>
                 <span>User Logs</span>
                 <button onClick={exportLogsAsCSV} style={{ background: 'linear-gradient(90deg, #0c8145 0%, #86bc42 100%)', color: '#fff', border: 'none', borderRadius: 8, padding: '10px 28px', fontWeight: 600, fontSize: 16, cursor: 'pointer', boxShadow: '0 2px 8px #0c814522' }}>
