@@ -117,7 +117,7 @@ const TicketDetails = () => {
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                 <div style={{ maxWidth: 700, width: '100%', margin: '0 auto' }}>
-                  <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 12 }}>Activity</div>
+                  <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 12, gap: 10 }}>Activity</div>
                 </div>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
