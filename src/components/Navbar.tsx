@@ -1,13 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    // Clear any authentication state here (e.g., localStorage, cookies, etc.)
+    localStorage.removeItem('user');
+    // Close the dropdown
+    setIsDropdownOpen(false);
+    // Redirect to login page
+    navigate('/login');
   };
 
   useEffect(() => {
@@ -50,19 +60,15 @@ const Navbar = () => {
           </button>
           {isDropdownOpen && (
             <div className="dropdown-menu">
-              <Link to="/profile" className="dropdown-item">
-                <i className='bx bxs-user'></i>
-                Profile
-              </Link>
               <Link to="/settings" className="dropdown-item">
                 <i className='bx bxs-cog'></i>
                 Settings
               </Link>
               <div className="dropdown-divider"></div>
-              <Link to="/login" className="dropdown-item">
+              <button onClick={handleLogout} className="dropdown-item" style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>
                 <i className='bx bxs-log-out'></i>
                 Logout
-              </Link>
+              </button>
             </div>
           )}
         </li>
