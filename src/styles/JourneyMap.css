@@ -201,11 +201,11 @@
   margin: 4px 0;
 }
 
-.awareness .stage-title { color: #BFAE8E; }
+.awareness .stage-title { color: #E5D3B3; }
 .interest .stage-title { color: #86bc42; }
-.purchase .stage-title { color: #F26D5B; }
-.retention .stage-title { color: #F7D774; }
-.advocacy .stage-title { color: #232323; }
+.purchase .stage-title { color: #de350b; }
+.retention .stage-title { color: #ffab00; }
+.advocacy .stage-title { color: #0048ff; }
 
 .stage ul {
   list-style: none;

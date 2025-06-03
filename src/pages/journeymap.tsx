@@ -39,29 +39,29 @@ const JourneyMap: React.FC = () => {
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <svg width="180" height="60" viewBox="0 0 180 60" style={{ marginRight: '-10px', zIndex: 1 }}>
-                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#F26D5B" />
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#de350b" />
                           <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#fff" fontSize="18" fontWeight="bold">Purchase</text>
                         </svg>
                         <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
-                          <polygon points="10,12 0,0 20,0" fill="#F26D5B" />
+                          <polygon points="10,12 0,0 20,0" fill="#de350b" />
                         </svg>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <svg width="180" height="60" viewBox="0 0 180 60" style={{ marginRight: '-10px', zIndex: 1 }}>
-                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#F7D774" />
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#ffab00" />
                           <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#232323" fontSize="18" fontWeight="bold">Retention</text>
                         </svg>
                         <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
-                          <polygon points="10,12 0,0 20,0" fill="#F7D774" />
+                          <polygon points="10,12 0,0 20,0" fill="#ffab00" />
                         </svg>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <svg width="180" height="60" viewBox="0 0 180 60" style={{ zIndex: 1 }}>
-                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#232323" />
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#0048ff" />
                           <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#fff" fontSize="18" fontWeight="bold">Advocacy</text>
                         </svg>
                         <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
-                          <polygon points="10,12 0,0 20,0" fill="#232323" />
+                          <polygon points="10,12 0,0 20,0" fill="#0048ff" />
                         </svg>
                       </div>
                     </div>
