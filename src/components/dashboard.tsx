@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './Navbar.tsx';
 import Sidebar from './Sidebar.tsx';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
-import { FaCheckCircle } from 'react-icons/fa';
 import '../styles/Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,18 +52,102 @@ const Dashboard: React.FC = () => {
                 <main className="main-content">
           <div className="dashboard-grid">
             {/* ─────────── Row 1 ─────────── */}
-            {/* Customer header */}
+            {/* Customer header with right-aligned Health Score */}
             <div
               className="customer-header card"
-              style={{ gridColumn: '1 / 3', gridRow: '1' }}
+              style={{
+                gridColumn: '1 / 3',
+                gridRow: '1',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '24px 32px',
+                borderRadius: '12px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                backgroundColor: '#fff',
+                position: 'relative'
+              }}
             >
-              <div className="header-details">
-                <div className="header-title">Customer 360 View Dashboard</div>
-                <div className="header-company">Oman Broad Band</div>
-                <div className="header-user">Ali Alhabsi</div>
+              {/* Left Side: Header Details */}
+              <div
+                className="header-details"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px',
+                  alignItems: 'flex-start',
+                  flexShrink: 0,
+                  flexGrow: 1,
+                  minWidth: '250px',
+                  marginRight: '280px'
+                }}
+              >
+                <div style={{ fontSize: '20px', fontWeight: '600', color: '#111', whiteSpace: 'nowrap' }}>
+                  Customer 360 View Dashboard
+                </div>
+                <div style={{ fontSize: '16px', color: '#0077b6', fontWeight: '500' }}>
+                  Oman Broad Band
+                </div>
+                <div style={{ fontSize: '14px', color: '#888' }}>
+                  Ali Alhabsi
+                </div>
               </div>
-              <div className="header-check">
-                <FaCheckCircle size={48} color="#fff" />
+
+              {/* Health Score Section (Gauge + Label) - Left Side */}
+              <div
+                className="health-score"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center', // Center children horizontally
+                  position: 'absolute', // Position this container absolutely
+                  top: '24px', // Position from the top edge (adjust as needed)
+                  marginLeft: '350px'
+                }}
+              >
+                {/* Semi-circular Gauge */}
+                <div
+                  className="health-score-gauge"
+                  style={{ width: '80px', height: '50px', position: 'relative' }} // Remove absolute here
+                >
+                  <svg width="80" height="50" viewBox="0 0 100 60">
+                    {/* Background Semi-circle */}
+                    <path
+                      d="M 10 50 A 40 40 0 0 1 90 50"
+                      fill="none"
+                      stroke="#eee"
+                      strokeWidth="10"
+                      strokeLinecap="round"
+                    />
+                    {/* Progress Semi-circle */}
+                    <path
+                      d="M 10 50 A 40 40 0 0 1 90 50"
+                      fill="none"
+                      stroke="#27ae60"
+                      strokeWidth="10"
+                      strokeLinecap="round"
+                      strokeDasharray="125.66"
+                      strokeDashoffset="25.13"
+                    />
+                    {/* Score Value */}
+                    <text
+                      x="50"
+                      y="50"
+                      textAnchor="middle"
+                      fontSize="18"
+                      fontWeight="bold"
+                      fill="#000"
+                      dominantBaseline="middle"
+                    >80</text>
+                  </svg>
+                </div>
+                {/* Health Score Label */}
+                <div
+                  className="health-score-title"
+                  style={{ marginTop: '6px', fontSize: '14px', color: '#333', position: 'static' }} // Remove absolute, add margin-top
+                >
+                  Health Score
+                </div>
               </div>
             </div>
 
