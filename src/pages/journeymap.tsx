@@ -64,16 +64,14 @@ const JourneyMap: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="journey-card-section-container">
-              <div className="expansion-opportunity-panel" style={{ flex: 1 }}>
-                <h2>Expansion Opportunity Identified</h2>
-                <div className="expansion-details">
-                  <div><strong>Date</strong><br />5 May 2025</div>
-                  <div style={{ marginTop: '20px' }}><strong>Owner</strong><br />Ahmed (CSM)</div>
-                  <div style={{ marginTop: '20px' }}><strong>Notes</strong><br />Customer asked about adding 50 new users</div>
-                  <div style={{ marginTop: '20px' }}><strong>Suggested next step</strong><br />Book upsell demo meeting</div>
-                  <div style={{ marginTop: '20px' }}><strong>Related ticket</strong><br />#4567 — Inquiry about additional seats</div>
-                </div>
+            <div className="expansion-opportunity-panel" style={{ flex: 1 }}>
+              <h2>Expansion Opportunity Identified</h2>
+              <div className="expansion-details">
+                <div><strong>Date</strong><br />5 May 2025</div>
+                <div style={{ marginTop: '20px' }}><strong>Owner</strong><br />Ahmed (CSM)</div>
+                <div style={{ marginTop: '20px' }}><strong>Notes</strong><br />Customer asked about adding 50 new users</div>
+                <div style={{ marginTop: '20px' }}><strong>Suggested next step</strong><br />Book upsell demo meeting</div>
+                <div style={{ marginTop: '20px' }}><strong>Related ticket</strong><br />#4567 — Inquiry about additional seats</div>
               </div>
             </div>
           </div>
