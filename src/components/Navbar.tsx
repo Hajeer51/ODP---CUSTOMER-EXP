@@ -19,8 +19,11 @@ const Navbar = () => {
     localStorage.removeItem('user');
     // Close the dropdown
     setIsDropdownOpen(false);
-    // Redirect to login page
-    navigate('/login');
+    // Add a small delay to ensure localStorage is cleared before navigation
+    setTimeout(() => {
+      // Redirect to login page
+      navigate('/login');
+    }, 100);
   };
 
   const handleJourneyMapClick = () => {
@@ -72,10 +75,10 @@ const Navbar = () => {
                 Settings
               </Link>
               <div className="dropdown-divider"></div>
-              <button onClick={handleLogout} className="dropdown-item" style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>
+             <a href="/login" className="dropdown-item" style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>
                 <i className='bx bxs-log-out'></i>
                 Logout
-              </button>
+              </a>
             </div>
           )}
         </li>
