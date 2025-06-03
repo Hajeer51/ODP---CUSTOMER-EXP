@@ -290,7 +290,6 @@ const Dashboard: React.FC = () => {
                 </h3>
               </div>
               {/* First row: Main section title */}
-              <h4 className="fs-h3 fw-bold" style={{ marginBottom: 10, marginLeft: 8, width: '100%' }}>Customer Experience Score</h4>
               {/* Second row: All other content */}
               <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 <div className="satisfaction-title fs-h4 fw-semi" style={{ marginBottom: 8 }}>Average satisfaction</div>
