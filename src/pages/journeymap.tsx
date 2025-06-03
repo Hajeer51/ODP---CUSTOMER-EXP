@@ -15,19 +15,23 @@ const JourneyMap: React.FC = () => {
             <div className="journey-map-section-container">
               <div className="journey-map-container" style={{ flex: 2 }}>
                 <div className="content">
-                  <h1>Journey Map</h1>
+                  <h1>Customer Journey Map</h1>
                   <div className="customer-journey-map">
                     <svg className="journey-wave" viewBox="0 0 1000 200" preserveAspectRatio="none">
-                      {/* 5 colored corners */}
-                      <path d="M0,100 Q100,0 200,100" fill="none" stroke="#E5D3B3" strokeWidth="44" />
-                      <path d="M200,100 Q300,200 400,100" fill="none" stroke="#6EC6A6" strokeWidth="44" />
-                      <path d="M400,100 Q500,0 600,100" fill="none" stroke="#F26D5B" strokeWidth="44" />
-                      <path d="M600,100 Q700,200 800,100" fill="none" stroke="#F7D774" strokeWidth="44" />
-                      <path d="M800,100 Q900,0 1000,100" fill="none" stroke="#232323" strokeWidth="44" />
-                      {/* Dashed center line (overlays all) */}
-                      <path d="M0,100 Q100,0 200,100 Q300,200 400,100 Q500,0 600,100 Q700,200 800,100 Q900,0 1000,100" fill="none" stroke="#fff" strokeWidth="4" strokeDasharray="24,18" />
-                      {/* Stops */}
-                    
+                      {/* 5 colored corners with fill */}
+                      <path d="M0,100 Q100,0 200,100" fill="#E5D3B3" fillOpacity="0.2" stroke="#E5D3B3" strokeWidth="44" />
+                      <path d="M200,100 Q300,200 400,100" fill="#6EC6A6" fillOpacity="0.2" stroke="#6EC6A6" strokeWidth="44" />
+                      <path d="M400,100 Q500,0 600,100" fill="#F26D5B" fillOpacity="0.2" stroke="#F26D5B" strokeWidth="44" />
+                      <path d="M600,100 Q700,200 800,100" fill="#F7D774" fillOpacity="0.2" stroke="#F7D774" strokeWidth="44" />
+                      <path d="M800,100 Q900,0 1000,100" fill="#232323" fillOpacity="0.2" stroke="#232323" strokeWidth="44" />
+                      
+                      {/* Main connecting path */}
+                      <path d="M0,100 Q100,0 200,100 Q300,200 400,100 Q500,0 600,100 Q700,200 800,100 Q900,0 1000,100" 
+                            fill="none" 
+                            stroke="#fff" 
+                            strokeWidth="6" 
+                            strokeDasharray="24,18" 
+                            strokeLinecap="round" />
                     </svg>
                     <div className="journey-stages">
                       <div className="stage awareness">

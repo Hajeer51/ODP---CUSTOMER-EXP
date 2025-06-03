@@ -10,11 +10,14 @@
   padding: 0 32px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .journey-map-wrapper {
     flex-direction: column;
-    gap: 32px;
+    gap: 50px;
     padding: 0 8px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: 100%;
   }
 }
 
@@ -144,9 +147,9 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 64px 16px 0 16px;
+  padding: 92px 19px 20px 20px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -161,13 +164,13 @@
 
 .journey-wave {
   width: 100%;
-  height: 200px;
+  height: 250px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
   pointer-events: none;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
 
 .journey-stages {
@@ -176,12 +179,13 @@
   align-items: flex-start;
   position: relative;
   z-index: 2;
-  margin-top: 120px;
+  margin-top: 180px;
 }
 
 .stage {
   width: 180px;
   text-align: center;
+  padding: 8px;
 }
 
 .stage-title {
@@ -189,6 +193,12 @@
   font-size: 1.1rem;
   margin-bottom: 10px;
   letter-spacing: 1px;
+}
+
+.stage p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 4px 0;
 }
 
 .awareness .stage-title { color: #BFAE8E; }
@@ -282,4 +292,15 @@
     margin-bottom: 24px;
     padding: 16px 4px;
   }
+}
+
+.content {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.content h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 16px;
 } 
