@@ -64,9 +64,9 @@ const JourneyMap: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="expansion-opportunity-panel" style={{ flex: 1 }}>
-              <h2>Expansion Opportunity Identified</h2>
-              <div className="expansion-details">
+            <div className="expansion-opportunity-panel" style={{ flex: 2, padding: '2rem', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+              <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Expansion Opportunity Identified</h2>
+              <div className="expansion-details" style={{ fontSize: '1.1rem' }}>
                 <div><strong>Date</strong><br />5 May 2025</div>
                 <div style={{ marginTop: '20px' }}><strong>Owner</strong><br />Ahmed (CSM)</div>
                 <div style={{ marginTop: '20px' }}><strong>Notes</strong><br />Customer asked about adding 50 new users</div>
