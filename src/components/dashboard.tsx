@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './Navbar.tsx';
 import Sidebar from './Sidebar.tsx';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
-import { FaCheckCircle } from 'react-icons/fa';
 import '../styles/Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,18 +52,90 @@ const Dashboard: React.FC = () => {
                 <main className="main-content">
           <div className="dashboard-grid">
             {/* ─────────── Row 1 ─────────── */}
-            {/* Customer header */}
+            {/* Customer header with responsive flex layout */}
             <div
               className="customer-header card"
-              style={{ gridColumn: '1 / 3', gridRow: '1' }}
+              style={{
+                gridColumn: '1 / 3',
+                gridRow: '1',
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '24px',
+                padding: '24px 32px',
+                borderRadius: '12px',
+                backgroundColor: '#fff',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+              }}
             >
-              <div className="header-details">
-                <div className="header-title">Customer 360 View Dashboard</div>
-                <div className="header-company">Oman Broad Band</div>
-                <div className="header-user">Ali Alhabsi</div>
+              {/* Header Details (Left) */}
+              <div
+                className="header-details"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '6px',
+                  minWidth: '200px',
+                  flex: '1 1 60%'
+                }}
+              >
+                <div style={{ fontSize: '1.3rem', fontWeight: 600, color: '#111' }}>
+                  Customer 360 View Dashboard
+                </div>
+                <div style={{ fontSize: '1rem', color: '#0077b6', fontWeight: 500 }}>
+                  Oman Broad Band
+                </div>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                  Ali Alhabsi
+                </div>
               </div>
-              <div className="header-check">
-                <FaCheckCircle size={48} color="#fff" />
+
+              {/* Health Score (Right) */}
+              <div
+                className="health-score"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flex: '0 0 auto',
+                  minWidth: '100px'
+                }}
+              >
+                <div className="health-score-gauge" style={{ width: '80px', height: '50px' }}>
+                  <svg width="80" height="50" viewBox="0 0 100 60">
+                    <path
+                      d="M 10 50 A 40 40 0 0 1 90 50"
+                      fill="none"
+                      stroke="#eee"
+                      strokeWidth="10"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M 10 50 A 40 40 0 0 1 90 50"
+                      fill="none"
+                      stroke="#27ae60"
+                      strokeWidth="10"
+                      strokeLinecap="round"
+                      strokeDasharray="125.66"
+                      strokeDashoffset="25.13"
+                    />
+                    <text
+                      x="50"
+                      y="50"
+                      textAnchor="middle"
+                      fontSize="18"
+                      fontWeight="bold"
+                      fill="#000"
+                      dominantBaseline="middle"
+                    >80</text>
+                  </svg>
+                </div>
+                <div style={{ marginTop: '6px', fontSize: '0.9rem', color: '#333' }}>
+                  Health Score
+                </div>
               </div>
             </div>
 
