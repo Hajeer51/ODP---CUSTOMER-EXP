@@ -13,7 +13,7 @@
 @media (max-width: 1000px) {
   .journey-map-wrapper {
     flex-direction: column;
-    gap: 50px;
+    gap: 40px;
     padding: 0 8px;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -32,7 +32,7 @@
 .timeline {
   display: flex;
   align-items: flex-start;
-  gap: 56px;
+  gap: 50px;
   position: relative;
   min-height: 120px;
 }
@@ -147,7 +147,7 @@
 }
 
 .container {
-  max-width: 1500px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 64px 16px 0 20px;
   width: 100%;
@@ -202,7 +202,7 @@
 }
 
 .awareness .stage-title { color: #BFAE8E; }
-.interest .stage-title { color: #6EC6A6; }
+.interest .stage-title { color: #86bc42; }
 .purchase .stage-title { color: #F26D5B; }
 .retention .stage-title { color: #F7D774; }
 .advocacy .stage-title { color: #232323; }
@@ -223,7 +223,7 @@
   .journey-stages {
     flex-direction: column;
     align-items: center;
-    margin-top: 180px;
+    margin-top: 100px;
   }
   .stage {
     width: 90vw;
@@ -236,7 +236,7 @@
 
 .journey-map-content-row {
   display: flex;
-  gap: 40px;
+  gap: 30px;
   width: 100%;
   align-items: flex-start;
 }
@@ -289,14 +289,14 @@
   .journey-map-section-container,
   .journey-card-section-container {
     width: 100%;
-    margin-bottom: 24px;
-    padding: 16px 4px;
+    margin-bottom: 20px;
+    padding: 10px;
   }
 }
 
 .content {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .content h1 {

@@ -16,49 +16,80 @@ const JourneyMap: React.FC = () => {
               <div className="journey-map-container" style={{ flex: 2 }}>
                 <div className="content">
                   <h1>Customer Journey Map</h1>
-                  <div className="customer-journey-map">
-                    <svg className="journey-wave" viewBox="0 0 1000 200" preserveAspectRatio="none">
-                      {/* 5 colored corners with fill */}
-                      <path d="M0,100 Q100,0 200,100" fill="#E5D3B3" fillOpacity="0.2" stroke="#E5D3B3" strokeWidth="44" />
-                      <path d="M200,100 Q300,200 400,100" fill="#6EC6A6" fillOpacity="0.2" stroke="#6EC6A6" strokeWidth="44" />
-                      <path d="M400,100 Q500,0 600,100" fill="#F26D5B" fillOpacity="0.2" stroke="#F26D5B" strokeWidth="44" />
-                      <path d="M600,100 Q700,200 800,100" fill="#F7D774" fillOpacity="0.2" stroke="#F7D774" strokeWidth="44" />
-                      <path d="M800,100 Q900,0 1000,100" fill="#232323" fillOpacity="0.2" stroke="#232323" strokeWidth="44" />
+                  <div className="customer-journey-map" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: '0' }}>
+                    {/* Arrow row for journey stages with indicators below */}
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <svg width="180" height="60" viewBox="0 0 180 60" style={{ marginRight: '-10px', zIndex: 1 }}>
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#E5D3B3" />
+                          <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#232323" fontSize="18" fontWeight="bold">Awareness</text>
+                        </svg>
+                        <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
+                          <polygon points="10,12 0,0 20,0" fill="#E5D3B3" />
+                        </svg>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <svg width="180" height="60" viewBox="0 0 180 60" style={{ marginRight: '-10px', zIndex: 1 }}>
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#86bc42" />
+                          <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#232323" fontSize="18" fontWeight="bold">Interest</text>
+                        </svg>
+                        <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
+                          <polygon points="10,12 0,0 20,0" fill="#86bc42" />
+                        </svg>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <svg width="180" height="60" viewBox="0 0 180 60" style={{ marginRight: '-10px', zIndex: 1 }}>
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#F26D5B" />
+                          <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#fff" fontSize="18" fontWeight="bold">Purchase</text>
+                        </svg>
+                        <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
+                          <polygon points="10,12 0,0 20,0" fill="#F26D5B" />
+                        </svg>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <svg width="180" height="60" viewBox="0 0 180 60" style={{ marginRight: '-10px', zIndex: 1 }}>
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#F7D774" />
+                          <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#232323" fontSize="18" fontWeight="bold">Retention</text>
+                        </svg>
+                        <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
+                          <polygon points="10,12 0,0 20,0" fill="#F7D774" />
+                        </svg>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <svg width="180" height="60" viewBox="0 0 180 60" style={{ zIndex: 1 }}>
+                          <polygon points="0,0 150,0 170,30 150,60 0,60 20,30" fill="#232323" />
+                          <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#fff" fontSize="18" fontWeight="bold">Advocacy</text>
+                        </svg>
+                        <svg width="20" height="12" viewBox="0 0 20 12" style={{ marginTop: '-4px' }}>
+                          <polygon points="10,12 0,0 20,0" fill="#232323" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="journey-stages" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', width: '100%', margin: 0, gap: 0, padding: 0 }}>
+                    <div className="stage awareness" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
+                      <div className="stage-title">ONBOARDING COMPLETE</div>
                       
-                      {/* Main connecting path */}
-                      <path d="M0,100 Q100,0 200,100 Q300,200 400,100 Q500,0 600,100 Q700,200 800,100 Q900,0 1000,100" 
-                            fill="none" 
-                            stroke="#fff" 
-                            strokeWidth="6" 
-                            strokeDasharray="24,18" 
-                            strokeLinecap="round" />
-                    </svg>
-                    <div className="journey-stages">
-                      <div className="stage awareness">
-                        <div className="stage-title">ONBOARDING COMPLETE</div>
-                        <p>15 June 2024</p>
-                        
-                      </div>
-                      <div className="stage interest">
-                        <div className="stage-title">First Support Ticket</div>
-                        <p>2 August 2024</p>
-                        
-                      </div>
-                      <div className="stage purchase">
-                        <div className="stage-title">Send CES Servay</div>
-                        <p>3 August 2024</p>
-                       
-                      </div>
-                      <div className="stage retention">
-                        <div className="stage-title">Renewal Contract Signed</div>
-                        <p>15 September 2024</p>
-                       
-                      </div>
-                      <div className="stage advocacy">
-                        <div className="stage-title">Meeting Held</div>
-                        <p>16 September 2024</p>
-                       
-                      </div>
+                      <p>15 June 2024</p>
+                    </div>
+                    <div className="stage interest" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
+                      <div className="stage-title">First Support Ticket</div>
+                     
+                      <p>2 August 2024</p>
+                    </div>
+                    <div className="stage purchase" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
+                      <div className="stage-title">Sent CES Survey</div>
+                      
+                      <p>3 August 2024</p>
+                    </div>
+                    <div className="stage retention" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
+                      <div className="stage-title">Renewal Contract Signed</div>
+                     
+                      <p>15 September 2024</p>
+                    </div>
+                    <div className="stage advocacy" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
+                      <div className="stage-title">Meeting Held</div>
+                      <p>16 September 2024</p>
                     </div>
                   </div>
                 </div>
