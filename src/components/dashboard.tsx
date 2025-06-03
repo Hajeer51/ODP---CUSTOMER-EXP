@@ -52,66 +52,60 @@ const Dashboard: React.FC = () => {
                 <main className="main-content">
           <div className="dashboard-grid">
             {/* ─────────── Row 1 ─────────── */}
-            {/* Customer header with right-aligned Health Score */}
+            {/* Customer header with responsive flex layout */}
             <div
               className="customer-header card"
               style={{
                 gridColumn: '1 / 3',
                 gridRow: '1',
                 display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                gap: '24px',
                 padding: '24px 32px',
                 borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                 backgroundColor: '#fff',
-                position: 'relative'
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
               }}
             >
-              {/* Left Side: Header Details */}
+              {/* Header Details (Left) */}
               <div
                 className="header-details"
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '4px',
-                  alignItems: 'flex-start',
-                  flexShrink: 0,
-                  flexGrow: 1,
-                  minWidth: '250px',
-                  marginRight: '280px'
+                  gap: '6px',
+                  minWidth: '200px',
+                  flex: '1 1 60%'
                 }}
               >
-                <div style={{ fontSize: '20px', fontWeight: '600', color: '#111', whiteSpace: 'nowrap' }}>
+                <div style={{ fontSize: '1.3rem', fontWeight: 600, color: '#111' }}>
                   Customer 360 View Dashboard
                 </div>
-                <div style={{ fontSize: '16px', color: '#0077b6', fontWeight: '500' }}>
+                <div style={{ fontSize: '1rem', color: '#0077b6', fontWeight: 500 }}>
                   Oman Broad Band
                 </div>
-                <div style={{ fontSize: '14px', color: '#888' }}>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>
                   Ali Alhabsi
                 </div>
               </div>
 
-              {/* Health Score Section (Gauge + Label) - Left Side */}
+              {/* Health Score (Right) */}
               <div
                 className="health-score"
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: 'center', // Center children horizontally
-                  position: 'absolute', // Position this container absolutely
-                  top: '24px', // Position from the top edge (adjust as needed)
-                  marginLeft: '350px'
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flex: '0 0 auto',
+                  minWidth: '100px'
                 }}
               >
-                {/* Semi-circular Gauge */}
-                <div
-                  className="health-score-gauge"
-                  style={{ width: '80px', height: '50px', position: 'relative' }} // Remove absolute here
-                >
+                <div className="health-score-gauge" style={{ width: '80px', height: '50px' }}>
                   <svg width="80" height="50" viewBox="0 0 100 60">
-                    {/* Background Semi-circle */}
                     <path
                       d="M 10 50 A 40 40 0 0 1 90 50"
                       fill="none"
@@ -119,7 +113,6 @@ const Dashboard: React.FC = () => {
                       strokeWidth="10"
                       strokeLinecap="round"
                     />
-                    {/* Progress Semi-circle */}
                     <path
                       d="M 10 50 A 40 40 0 0 1 90 50"
                       fill="none"
@@ -129,7 +122,6 @@ const Dashboard: React.FC = () => {
                       strokeDasharray="125.66"
                       strokeDashoffset="25.13"
                     />
-                    {/* Score Value */}
                     <text
                       x="50"
                       y="50"
@@ -141,11 +133,7 @@ const Dashboard: React.FC = () => {
                     >80</text>
                   </svg>
                 </div>
-                {/* Health Score Label */}
-                <div
-                  className="health-score-title"
-                  style={{ marginTop: '6px', fontSize: '14px', color: '#333', position: 'static' }} // Remove absolute, add margin-top
-                >
+                <div style={{ marginTop: '6px', fontSize: '0.9rem', color: '#333' }}>
                   Health Score
                 </div>
               </div>
