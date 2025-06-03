@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/LoginPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = ({ onForgotPassword, onDashboard }) => {
   const [email, setEmail] = useState('');

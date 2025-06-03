@@ -63,7 +63,7 @@ const Navbar = () => {
               fontSize: 16,
               marginRight: 8,
             }}>
-              <MdPerson size={20} />
+                <MdPerson size={20} />
             </div>
             <span style={{ color: '#222', fontWeight: 500, fontSize: 16, marginRight: 4 }}></span>
             <i className={`bx ${isDropdownOpen ? 'bxs-chevron-up' : 'bxs-chevron-down'}`} style={{ fontSize: '16px', color: '#222' }}></i>

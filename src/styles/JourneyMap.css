@@ -146,7 +146,140 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 64px 16px 0 16px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.customer-journey-map {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 60px;
+}
+
+.journey-wave {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+}
+
+.journey-stages {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  margin-top: 120px;
+}
+
+.stage {
+  width: 180px;
+  text-align: center;
+}
+
+.stage-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.awareness .stage-title { color: #BFAE8E; }
+.interest .stage-title { color: #6EC6A6; }
+.purchase .stage-title { color: #F26D5B; }
+.retention .stage-title { color: #F7D774; }
+.advocacy .stage-title { color: #232323; }
+
+.stage ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.stage ul li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .journey-stages {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 180px;
+  }
+  .stage {
+    width: 90vw;
+    margin-bottom: 32px;
+  }
+  .customer-journey-map {
+    padding-top: 120px;
+  }
+}
+
+.journey-map-content-row {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.journey-map-container {
+  flex: 2;
+}
+
+.expansion-opportunity-panel {
+  flex: 1;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 1100px) {
+  .journey-map-content-row {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .expansion-opportunity-panel {
+    width: 100%;
+    margin-top: 32px !important;
+  }
+}
+
+.journey-map-section-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  padding: 24px 16px;
+  margin-bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.journey-card-section-container {
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
+  padding: 24px 16px;
+  margin-bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .journey-map-section-container,
+  .journey-card-section-container {
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 16px 4px;
+  }
 } 
