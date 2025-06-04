@@ -4,7 +4,7 @@ import LoginPage from './pages/LoginPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import Dashboard from './components/dashboard.tsx';
 import Tickets from './pages/Tickets.js';
-import TicketDetails from './pages/TicketDetails.js';
+import TicketDetailsContainer from './containers/TicketDetailsContainer';
 import InfrastructureDetails from './pages/InfrastructureDetails';
 import DashboardPage from './pages/dashboardpage.tsx';
 import UserManagementPage from './pages/UserManagementPage.tsx';
@@ -24,8 +24,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/infrastructure-details" element={<InfrastructureDetails />} />
             <Route path="/tickets" element={<Tickets />} />
-            <Route path="/tickets/:reference" element={<TicketDetails />} />
-            <Route path="/tickets/:reference/edit" element={<TicketDetails />} />
+            <Route path="/tickets/:reference" element={<TicketDetailsContainer />} />
+            <Route path="/tickets/:reference/edit" element={<TicketDetailsContainer />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/user-management" element={<UserManagementPage />} />
             <Route path="/user-management/:email" element={<UserDetailsPage />} />

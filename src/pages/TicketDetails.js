@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar.tsx';
 import Sidebar from '../components/Sidebar.tsx';
 
@@ -42,35 +42,20 @@ const getStatusStyle = (status) => {
   }
 };
 
-const TicketDetails = () => {
-  const { reference } = useParams();
-  const ticket = mockData.find(t => t.reference === reference);
+// This is now a presentation component that receives data via props
+const TicketDetails = ({
+  ticket,
+  dateObj,
+  formattedDate,
+  formattedTime,
+  statusMessage,
+  getStatusStyle,
+}) => {
+  // No local state or data fetching here
+  // Render UI based on props
 
   if (!ticket) {
     return <div>Ticket not found</div>;
-  }
-
-  // Format date
-  const dateObj = new Date(ticket.date + 'T' + ticket.time);
-  const formattedDate = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' });
-  const formattedTime = dateObj.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
-
-  let statusMessage;
-  switch ((ticket.status || '').toLowerCase()) {
-    case 'waiting for support':
-      statusMessage = 'This ticket is waiting.';
-      break;
-    case 'pending':
-      statusMessage = 'This ticket is pending.';
-      break;
-    case 'error':
-      statusMessage = 'This ticket has an error.';
-      break;
-    case 'success':
-      statusMessage = 'This ticket was created successfully.';
-      break;
-    default:
-      statusMessage = `This ticket was automatically created via the form submission by ${ticket.username || 'developer'}.`;
   }
 
   return (
@@ -80,93 +65,225 @@ const TicketDetails = () => {
         <Sidebar />
         <div style={{ 
           flex: 1, 
-          maxWidth: 1200, 
-          margin: '40px auto', 
-          padding: '0px 20px',
-          position: 'fixed',
+          maxWidth: '100%', 
+          margin: '20px auto', 
+          padding: '0px 270px',
+          position: 'relative',
           top: '80px',
-          left: '50%',
-          transform: 'translateX(-50%)',
           width: '100%',
-          zIndex: 1
+          zIndex: 1,
+          gap: 20,
+          boxSizing: 'border-box'
         }}>
-          {/* Breadcrumb */}
-          <div style={{ fontSize: '1.05em', marginBottom: 70 }}>
-            <Link to="/" style={{ color: '#0052cc', textDecoration: 'none', fontWeight: 500 }}>Help Center</Link>
-            <span style={{ color: '#6b778c', margin: '0 8px' }}>/</span>
-            <span style={{ color: '#0052cc', textDecoration: 'none', fontWeight: 500 }}>{ticket.project}</span>
-            <span style={{ color: '#6b778c', margin: '0 8px' }}>/</span>
-            <span style={{ color: '#0052cc', textDecoration: 'underline', fontWeight: 500 }}>{ticket.reference}</span>
+          {/* Breadcrumb Card */}
+          <div style={{ 
+            background: '#f5f5f5', 
+            borderRadius: 8, 
+            padding: '16px',
+            marginBottom: 20,
+            width: '100%'
+          }}>
+            <div style={{ fontSize: '1.05em', wordBreak: 'break-word' }}>
+              <Link to="/" style={{ color: '#0052cc', textDecoration: 'none', fontWeight: 500 }}>Help Center</Link>
+              <span style={{ color: '#6b778c', margin: '0 8px' }}>/</span>
+              <span style={{ color: '#0052cc', textDecoration: 'none', fontWeight: 500 }}>{ticket.project}</span>
+              <span style={{ color: '#6b778c', margin: '0 8px' }}>/</span>
+              <span style={{ color: '#0052cc', textDecoration: 'underline', fontWeight: 500 }}>{ticket.reference}</span>
+            </div>
           </div>
-          <div style={{ display: 'flex', gap: 15, alignItems: 'flex-start' }}>
+
+          <div style={{ 
+            display: 'flex', 
+            gap: 20,
+            flexDirection: window.innerWidth < 900 ? 'column' : 'row',
+            alignItems: 'flex-start',
+            flexWrap: 'nowrap',
+            width: '100%',
+            boxSizing: 'border-box',
+          }}>
             {/* Main content */}
-            <div style={{ flex: 2, minWidth: 0 }}>
-              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                <h1 style={{ fontSize: '2.1em', fontWeight: 700, margin: '0 0 24px 0', maxWidth: 700, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}>{ticket.summary}</h1>
+            <div
+              style={{
+                flex: '1 1 0',
+                minWidth: window.innerWidth < 900 ? '0' : 0,
+                maxWidth: window.innerWidth < 900 ? '100%' : 'calc(100% - 340px - 20px)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 20,
+                overflowX: 'auto',
+              }}
+            >
+              {/* Title Card */}
+              <div style={{ 
+                background: '#f5f5f5', 
+                borderRadius: 8, 
+                padding: '20px',
+                width: '100%'
+              }}>
+                <h1 style={{ 
+                  fontSize: window.innerWidth < 768 ? '1.5em' : '2.1em', 
+                  fontWeight: 700, 
+                  margin: 0,
+                  wordBreak: 'break-word'
+                }}>{ticket.summary}</h1>
               </div>
-              {/* Card */}
-              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                <div style={{ background: '#fff', border: '1px solid #e5e8ec', borderRadius: 6, padding: 24, marginBottom: 32, maxWidth: 700, width: '100%', margin: '0 auto' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#253858', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 18, marginRight: 12 }}>
-                      {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
-                    </div>
+
+              {/* Details Card */}
+              <div style={{ 
+                background: '#f5f5f5', 
+                borderRadius: 8, 
+                padding: '20px',
+                width: '100%'
+              }}>
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  marginBottom: 16,
+                  flexWrap: 'wrap',
+                  gap: 12
+                }}>
+                  <div style={{ 
+                    width: 40, 
+                    height: 40, 
+                    borderRadius: '50%', 
+                    background: '#253858', 
+                    color: '#fff', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    fontWeight: 700, 
+                    fontSize: 18, 
+                    marginRight: 12,
+                    flexShrink: 0
+                  }}>
+                    {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, flex: 1 }}>
                     <span style={{ fontWeight: 600 }}>{ticket.requester}</span>
-                    <span style={{ color: '#6b778c', marginLeft: 8, fontSize: 15 }}>
-                      raised this on {dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' })} {ticket.time} AM
+                    <span style={{ color: '#6b778c', fontSize: 15 }}>
+                      raised this on {formattedDate} {formattedTime}
                     </span>
-                    <span style={{ marginLeft: 'auto', color: '#0052cc', cursor: 'pointer', fontWeight: 500, fontSize: 15 }}>Hide details</span>
                   </div>
-                  <div style={{ marginLeft: 52 }}>
-                    <div style={{ fontWeight: 600, marginBottom: 4 }}>Body</div>
-                    <div style={{ color: '#172b4d', whiteSpace: 'pre-line', fontSize: 16 }}>{ticket.body}</div>
-                    <div style={{ color: '#172b4d', fontSize: 16, marginTop: 8 }}>
-                      {statusMessage}
-                    </div>
+                  <span style={{ 
+                    color: '#0052cc', 
+                    cursor: 'pointer', 
+                    fontWeight: 500, 
+                    fontSize: 15,
+                    marginLeft: 'auto'
+                  }}>Hide details</span>
+                </div>
+                <div style={{ marginLeft: window.innerWidth < 768 ? 0 : 52 }}>
+                  <div style={{ fontWeight: 600, marginBottom: 4 }}>Body</div>
+                  <div style={{ color: '#172b4d', whiteSpace: 'pre-line', fontSize: 16 }}>{ticket.body}</div>
+                  <div style={{ color: '#172b4d', fontSize: 16, marginTop: 8 }}>
+                    {statusMessage}
                   </div>
                 </div>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                <div style={{ maxWidth: 700, width: '100%', margin: '0 auto' }}>
-                  <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 12, gap: 10 }}>Activity</div>
-                </div>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                <div style={{ maxWidth: 700, width: '100%', margin: '0 auto' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#253858', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 16 }}>
-                      {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
-                    </div>
-                    <input type="text" placeholder="Add a comment" style={{ flex: 1, border: '1px solid #e5e8ec', borderRadius: 4, padding: '10px 14px', fontSize: 15, outline: 'none' }} />
+
+              {/* Activity Card */}
+              <div style={{ 
+                background: '#f5f5f5', 
+                borderRadius: 8, 
+                padding: '20px',
+                width: '100%'
+              }}>
+                <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 16 }}>Activity</div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <div style={{ 
+                    width: 36, 
+                    height: 36, 
+                    borderRadius: '50%', 
+                    background: '#253858', 
+                    color: '#fff', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    fontWeight: 700, 
+                    fontSize: 16,
+                    flexShrink: 0
+                  }}>
+                    {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
                   </div>
+                  <input 
+                    type="text" 
+                    placeholder="Add a comment" 
+                    style={{ 
+                      flex: 1, 
+                      border: '1px solid #e5e8ec', 
+                      borderRadius: 4, 
+                      padding: '10px 14px', 
+                      fontSize: 15, 
+                      outline: 'none',
+                      minWidth: 0
+                    }} 
+                  />
                 </div>
               </div>
             </div>
-            {/* Sidebar */}
-            <div style={{ flex: 0.5, minWidth: 100}}>
-              <div style={{ marginBottom: 18 }}>
-                <div style={{ fontWeight: 600, marginBottom: 4 }}>Status</div>
+
+            {/* Sidebar Card */}
+            <div
+              style={{
+                flex: window.innerWidth < 900 ? '1 1 100%' : '0 0 340px',
+                minWidth: window.innerWidth < 900 ? '100%' : 280,
+                maxWidth: window.innerWidth < 900 ? '100%' : 340,
+                background: '#f5f5f5',
+                borderRadius: 8,
+                padding: '20px',
+                height: 'fit-content',
+                marginLeft: window.innerWidth < 900 ? 0 : 40,
+                boxSizing: 'border-box',
+                flexShrink: 0,
+                alignSelf: 'flex-start',
+              }}
+            >
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontWeight: 600, marginBottom: 8 }}>Status</div>
                 <span style={getStatusStyle(ticket.status)}>{ticket.status}</span>
               </div>
-              <div style={{ fontWeight: 600, marginBottom: 4 }}>Notifications on</div>
-              <div style={{ color: '#42526e', marginBottom: 18 }}>
-                <span style={{ fontSize: 18, marginRight: 6 }}>🔔</span>Notifications on
-              </div>
-              <div style={{ fontWeight: 600, marginBottom: 4 }}>Request type</div>
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: 18 }}>
-                <span style={{ background: '#fffbe6', border: '1.5px solid #ffab00', borderRadius: 4, padding: '2px 6px', marginRight: 8, fontSize: 18 }}>✉️</span>
-                <span style={{ color: '#42526e' }}>Email request</span>
-              </div>
-              <div style={{ fontWeight: 600, marginBottom: 4 }}>Shared with</div>
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: 18 }}>
-                <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#253858', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 15, marginRight: 8 }}>
-                  {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
-                </div>
-                <div>
-                  <div style={{ fontWeight: 500 }}>{ticket.requester}</div>
-                  <div style={{ color: '#6b778c', fontSize: 13 }}>Creator</div>
+
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontWeight: 600, marginBottom: 8 }}>Notifications</div>
+                <div style={{ color: '#42526e' }}>
+                  <span style={{ fontSize: 18, marginRight: 6 }}>🔔</span>Notifications on
                 </div>
               </div>
+
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontWeight: 600, marginBottom: 8 }}>Request type</div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <span style={{ background: '#fffbe6', border: '1.5px solid #ffab00', borderRadius: 4, padding: '2px 6px', marginRight: 8, fontSize: 18 }}>✉️</span>
+                  <span style={{ color: '#42526e' }}>Email request</span>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontWeight: 600, marginBottom: 8 }}>Shared with</div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ 
+                    width: 32, 
+                    height: 32, 
+                    borderRadius: '50%', 
+                    background: '#253858', 
+                    color: '#fff', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    fontWeight: 700, 
+                    fontSize: 15, 
+                    marginRight: 8,
+                    flexShrink: 0
+                  }}>
+                    {ticket.requester.split(' ').map(n => n[0]).join('').toUpperCase()}
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 500 }}>{ticket.requester}</div>
+                    <div style={{ color: '#6b778c', fontSize: 13 }}>Creator</div>
+                  </div>
+                </div>
+              </div>
+
               <div style={{ display: 'flex', alignItems: 'center', color: '#0052cc', fontWeight: 500, cursor: 'pointer', fontSize: 16 }}>
                 <span style={{ fontSize: 22, marginRight: 6 }}>+</span>Share
               </div>

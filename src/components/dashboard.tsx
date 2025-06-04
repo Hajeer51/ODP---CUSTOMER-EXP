@@ -41,6 +41,18 @@ export const supportDetails = [
   { reference: 'ED-136', summary: 'Service Request', status: 'ERROR' },
 ];
 
+const ReferenceCell: React.FC<{ reference: string }> = ({ reference }) => {
+  const navigate = useNavigate();
+  return (
+    <span 
+      style={{ color: '#169ba6', textDecoration: 'underline', cursor: 'pointer' }}
+      onClick={() => navigate(`/ticket-detail/${reference}`)}
+    >
+      {reference}
+    </span>
+  );
+};
+
 /* ── component ─────────────────────────────────────────── */
 const Dashboard: React.FC = () => {
     const navigate = useNavigate();
@@ -326,9 +338,7 @@ const Dashboard: React.FC = () => {
                   {supportDetails.map((t) => (
                     <tr key={t.reference}>
                       <td>
-                        <span style={{ color: '#169ba6', textDecoration: 'underline' }}>
-                          {t.reference}
-                        </span>
+                        <ReferenceCell reference={t.reference} />
                       </td>
                       <td>{t.summary}</td>
                       <td>

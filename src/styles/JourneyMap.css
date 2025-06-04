@@ -7,7 +7,7 @@
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 32px;
+  padding: 0 160px;
 }
 
 @media (max-width: 1000px) {
@@ -22,8 +22,8 @@
 }
 
 .journey-map-timeline {
-  margin-top: 32px;
-  padding: 32px 24px 32px 0;
+  margin: 0;
+  padding: 0;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
@@ -236,9 +236,10 @@
 
 .journey-map-content-row {
   display: flex;
-  gap: 30px;
+  gap: 15px;
   width: 100%;
   align-items: flex-start;
+ 
 }
 
 .journey-map-container {
@@ -303,4 +304,96 @@
   font-size: 2rem;
   color: #333;
   margin-bottom: 16px;
-} 
+}
+
+/* --- Enhanced Journey Map Styles --- */
+
+/* Add drop shadow to SVG arrows */
+.customer-journey-map svg polygon {
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.10));
+  transition: filter 0.2s;
+}
+.customer-journey-map svg polygon:hover {
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.18));
+}
+
+/* Increase spacing between arrows and stage labels */
+.customer-journey-map > div {
+  gap: 32px !important;
+}
+
+/* Make stage titles and dates more distinct */
+.stage-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 1.2px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.stage p {
+  color: #444;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 2px 0 0 0;
+}
+
+/* Add a connecting line under the arrows */
+.customer-journey-map .arrow-connector {
+  width: 90%;
+  height: 4px;
+  background: linear-gradient(90deg, #e0e0e0 60%, #b7e4c7 100%);
+  margin: 0 auto 18px auto;
+  border-radius: 2px;
+}
+
+/* Expansion Opportunity Panel: left accent border and more padding */
+.expansion-opportunity-panel {
+  border-left: 6px solid #1976d2;
+  background: #f8fbff;
+  box-shadow: 0 6px 24px rgba(25, 118, 210, 0.10);
+  padding-left: 32px;
+}
+.expansion-opportunity-panel h2 {
+  font-size: 1.7rem;
+  color: #0048ff;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+.expansion-details {
+  font-size: 1.15rem;
+}
+.expansion-details .detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.expansion-details .detail-icon {
+  font-size: 1.3em;
+  color: #1976d2;
+  margin-top: 2px;
+}
+.expansion-details strong {
+  color: #1976d2;
+  font-weight: 700;
+}
+
+/* Responsive improvements */
+@media (max-width: 900px) {
+  .expansion-opportunity-panel {
+    border-left: 0;
+    border-top: 6px solid #1976d2;
+    padding-left: 18px;
+    padding-top: 24px;
+  }
+  .customer-journey-map .arrow-connector {
+    width: 98%;
+  }
+}
+
+/* Utility classes for icons */
+.icon-calendar:before { content: '\1F4C5'; } /* 📅 */
+.icon-user:before { content: '\1F464'; } /* 👤 */
+.icon-note:before { content: '\1F4DD'; } /* 📝 */
+.icon-next:before { content: '\27A1'; } /* ➡️ */
+.icon-ticket:before { content: '\1F39F'; } /* 🎟️ */ 
