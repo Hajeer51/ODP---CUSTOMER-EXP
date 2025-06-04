@@ -420,6 +420,7 @@
 /* Header Styles */
 .journey-map-header {
   margin-bottom: 40px;
+  position: fixed;
 }
 
 .journey-map-header h1 {
@@ -428,6 +429,7 @@
   color: #1a1a1a;
   margin: 0 0 8px 0;
   padding: 0px;
+  position: relative;
 }
 
 .journey-map-subtitle {
@@ -628,36 +630,100 @@
 @media (max-width: 1200px) {
   .journey-map-content {
     grid-template-columns: 1fr;
+    width: calc(100% - 240px);
   }
   
   .journey-map-sidebar {
     position: static;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
   }
 }
 
-@media (max-width: 900px) {
-  .journey-map-main {
-    padding: 24px 16px;
+@media (max-width: 992px) {
+  .journey-map-content {
+    left: 200px;
+    width: calc(100% - 200px);
   }
   
-  .timeline-arrows {
-    flex-direction: column;
-    align-items: center;
+  .timeline {
+    gap: 30px;
+  }
+  
+  .timeline-event {
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .journey-map-content {
+    left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .journey-map-header {
+    padding: 15px;
+  }
+  
+  .timeline {
     gap: 20px;
   }
   
-  .timeline-stages {
-    flex-direction: column;
-    gap: 20px;
+  .timeline-event {
+    min-width: 100px;
+    padding: 12px 6px;
+  }
+  
+  .timeline-event .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .journey-map-content {
+    top: 140px;
+    height: calc(100vh - 140px);
+  }
+  
+  .timeline {
+    gap: 15px;
+  }
+  
+  .timeline-event {
+    min-width: 80px;
+    padding: 8px 4px;
+  }
+  
+  .timeline-event .icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  
+  .timeline-event .event-label {
+    font-size: 0.9rem;
+  }
+  
+  .timeline-event .event-date {
+    font-size: 0.8rem;
   }
   
   .timeline-connector {
-    display: none;
+    top: 60px;
   }
-  
-  .timeline-arrow {
-    margin-right: 0;
-  }
+}
+
+/* Ensure smooth transitions */
+.journey-map-content,
+.journey-map-sidebar,
+.timeline-event,
+.timeline-connector {
+  transition: all 0.3s ease;
 }
 
 /* Animations */
