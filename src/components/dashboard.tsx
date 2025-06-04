@@ -41,6 +41,18 @@ export const supportDetails = [
   { reference: 'ED-136', summary: 'Service Request', status: 'ERROR' },
 ];
 
+const ReferenceCell: React.FC<{ reference: string }> = ({ reference }) => {
+  const navigate = useNavigate();
+  return (
+    <span 
+      style={{ color: '#169ba6', textDecoration: 'underline', cursor: 'pointer' }}
+      onClick={() => navigate(`/tickets/${reference}`)}
+    >
+      {reference}
+    </span>
+  );
+};
+
 /* ── component ─────────────────────────────────────────── */
 const Dashboard: React.FC = () => {
     const navigate = useNavigate();
@@ -306,7 +318,12 @@ const Dashboard: React.FC = () => {
             <div
               className="support-history card"
               style={{ gridColumn: '1 / 3', gridRow: '3', cursor: 'pointer' }}
-              onClick={() => navigate('/tickets')}
+              onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                // Only navigate if the click is not on the table or its children
+                if (!(e.target as HTMLElement).closest('table')) {
+                  navigate('/tickets');
+                }
+              }}
             >
               <div style={{ display: 'flex', alignItems: 'baseline', width: '100%', marginTop: 0, marginBottom: 8 }}>
                 <h3 className="card-title-accent" style={{ margin: 0 }}>
@@ -314,7 +331,7 @@ const Dashboard: React.FC = () => {
                   Support Interaction History
                 </h3>
               </div>
-              <table className="support-table">
+              <table className="support-table" onClick={(e) => e.stopPropagation()}>
                 <thead>
                   <tr>
                     <th>Reference</th>
@@ -326,9 +343,7 @@ const Dashboard: React.FC = () => {
                   {supportDetails.map((t) => (
                     <tr key={t.reference}>
                       <td>
-                        <span style={{ color: '#169ba6', textDecoration: 'underline' }}>
-                          {t.reference}
-                        </span>
+                        <ReferenceCell reference={t.reference} />
                       </td>
                       <td>{t.summary}</td>
                       <td>

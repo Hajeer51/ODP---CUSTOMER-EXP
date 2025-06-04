@@ -65,6 +65,8 @@ const JourneyMap: React.FC = () => {
                         </svg>
                       </div>
                     </div>
+                    {/* Connector line under arrows */}
+                    <div className="arrow-connector"></div>
                   </div>
                   <div className="journey-stages" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', width: '100%', margin: 0, gap: 0, padding: 0 }}>
                     <div className="stage awareness" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
@@ -95,14 +97,14 @@ const JourneyMap: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="expansion-opportunity-panel" style={{ flex: 2, padding: '2rem', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Expansion Opportunity Identified</h2>
-              <div className="expansion-details" style={{ fontSize: '1.1rem' }}>
-                <div><strong>Date</strong><br />5 May 2025</div>
-                <div style={{ marginTop: '20px' }}><strong>Owner</strong><br />Ahmed (CSM)</div>
-                <div style={{ marginTop: '20px' }}><strong>Notes</strong><br />Customer asked about adding 50 new users</div>
-                <div style={{ marginTop: '20px' }}><strong>Suggested next step</strong><br />Book upsell demo meeting</div>
-                <div style={{ marginTop: '20px' }}><strong>Related ticket</strong><br />#4567 — Inquiry about additional seats</div>
+            <div className="expansion-opportunity-panel" style={{ flex: 2 }}>
+              <h2>Expansion Opportunity Identified</h2>
+              <div className="expansion-details">
+                <div className="detail-row"><span className="detail-icon icon-calendar"></span><div><strong>Date</strong><br />5 May 2025</div></div>
+                <div className="detail-row"><span className="detail-icon icon-user"></span><div><strong>Owner</strong><br />Ahmed (CSM)</div></div>
+                <div className="detail-row"><span className="detail-icon icon-note"></span><div><strong>Notes</strong><br />Customer asked about adding 50 new users</div></div>
+                <div className="detail-row"><span className="detail-icon icon-next"></span><div><strong>Suggested next step</strong><br />Book upsell demo meeting</div></div>
+                <div className="detail-row"><span className="detail-icon icon-ticket"></span><div><strong>Related ticket</strong><br />#4567 — Inquiry about additional seats</div></div>
               </div>
             </div>
           </div>
