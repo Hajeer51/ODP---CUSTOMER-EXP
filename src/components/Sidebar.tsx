@@ -28,7 +28,7 @@ const Sidebar = () => {
           </div>
         </li>
         <li><Link to="/" className="link"><MdDashboard /> Overview</Link></li>
-        <li><Link to="#" className="link"><MdAccountCircle /> Account Details</Link></li>
+        <li><Link to="/account-details" className="link"><MdAccountCircle /> Account Details</Link></li>
         <div className="sidebar-divider"></div>
         <li><a href="#" className="link"><MdSettings /> API Configration</a></li>
         <li><Link to="/user-management" className="link"><MdPeople /> User Management</Link></li>
