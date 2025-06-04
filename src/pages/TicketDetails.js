@@ -66,7 +66,7 @@ const TicketDetails = ({
         <div style={{ 
           flex: 1, 
           maxWidth: '100%', 
-          margin: '20px auto', 
+          margin: '20px', 
           padding: '0px 270px',
           position: 'relative',
           top: '80px',
