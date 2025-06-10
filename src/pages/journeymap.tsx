@@ -22,8 +22,8 @@ const JourneyMap: React.FC = () => {
                   {[
                     { stage: 'Awareness', color: '#E5D3B3', textColor: '#232323' },
                     { stage: 'Interest', color: '#169ba6', textColor: '#232323' },
-                    { stage: 'Purchase', color: '#de350b', textColor: '#fff' },
-                    { stage: 'Retention', color: '#f1c40f', textColor: '#232323' },
+                    { stage: 'Retention', color: '#de350b', textColor: '#fff' },
+                    { stage: 'Purchase', color: '#f1c40f', textColor: '#232323' },
                     { stage: 'Advocacy', color: '#0095ff', textColor: '#fff' }
                   ].map((stage, index) => (
                     <div key={stage.stage} className="timeline-arrow-group">

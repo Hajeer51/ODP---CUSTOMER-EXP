@@ -130,7 +130,7 @@ const TicketDetails = ({
 
               {/* Details Card */}
               <div style={{ 
-                background: '#f5f5f5', 
+                background: '#ffffff', 
                 borderRadius: 8, 
                 padding: '20px',
                 width: '100%'
