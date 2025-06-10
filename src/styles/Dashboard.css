@@ -758,3 +758,52 @@
   background: linear-gradient(90deg, #169ba6 0%, #27ae60 100%);
   margin-top: 4px;
 }
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.contact-card:hover {
+  background-color: rgba(12, 129, 74, 0.1);
+  border-color: #0c814a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.contact-card-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #169ba615;
+  color: #169ba6;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-card:hover .contact-info-item .icon {
+    color: #0c814a; /* Green color on hover */
+}
+
+.contact-card:hover .contact-card-name {
+    color: #0c814a; /* Green color for name on hover */
+}
+
+/* Titles */
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+h3 {
+    color: #333;
+}
+
+/* Recharts overrides for consistent styling */

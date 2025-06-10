@@ -27,28 +27,29 @@ const AccountDetailsPage = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '25px', marginBottom: '40px' }}> {/* Increased gap and bottom margin */}
 
             {/* Access Source Chart */}
-            <div className="account-details-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 15px 50px rgba(0, 0, 0, 0.08)', backgroundColor: '#e8f5e9' }}> {/* Light green background */}
+            <div className="account-details-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff' }}> {/* White background and subtle shadow */}
                <AccessSourceChart /> {/* Replaced Health Score chart with ECharts component */}
+               <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#333', marginTop: '10px' }}>Health Score</div>
             </div>
 
             {/* Customer Growth Chart */}
-            <div className="account-details-card" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 15px 50px rgba(0, 0, 0, 0.08)', backgroundColor: '#e8f5e9', display: 'flex', flexDirection: 'column' }}> {/* Light green background */}
+            <div className="account-details-card" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column' }}> {/* White background and subtle shadow */}
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={customerGrowthData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                  <XAxis dataKey="name" stroke="#388e3c" /> {/* Styled XAxis with medium green */}
-                  <YAxis stroke="#388e3c" domain={[800, 'auto']} /> {/* Styled YAxis with medium green, starting from 800 */}
+                  <XAxis dataKey="name" stroke="#00a09d" /> {/* Styled XAxis with teal */}
+                  <YAxis stroke="#00a09d" domain={[800, 'auto']} /> {/* Styled YAxis with teal, starting from 800 */}
                   <Tooltip />
-                  <Line type="monotone" dataKey="customers" stroke="#1B5E20" strokeWidth={3} dot={{ stroke: '#1B5E20', strokeWidth: 2, r: 5 }} activeDot={{ r: 7, stroke: '#1B5E20', strokeWidth: 2 }} /> {/* Styled Line and dots with dark green color */}
+                  <Line type="monotone" dataKey="customers" stroke="#00796b" strokeWidth={3} dot={{ stroke: '#00796b', strokeWidth: 2, r: 5 }} activeDot={{ r: 7, stroke: '#00796b', strokeWidth: 2 }} /> {/* Styled Line and dots with darker teal/green color */}
                 </LineChart>
               </ResponsiveContainer>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#1b5e20' , marginTop: '20px', textAlign: 'center' }}>Customer Growth</h3> {/* Moved title below chart, adjusted margin and centered */}
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#333' , marginTop: '20px', textAlign: 'center' }}>Customer Growth</h3> {/* Dark grey text for title */}
             </div>
 
             {/* Total Customers Stat */}
-            <div className="account-details-card" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 15px 50px rgba(0, 0, 0, 0.08)', backgroundColor: '#e8f5e9', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}> {/* Light green background */}
-               <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#1b5e20' }}>1,508</div> {/* Larger font with dark green color */}
-               <div style={{ fontSize: '1.2rem', color: '#388e3c', marginBottom: '10px' }}>Total Customers</div> {/* Adjusted color and margin to a medium green */}
-               <div style={{ fontSize: '1.1rem', color: '#1b5e20', fontWeight: '700' }}>+3.2% vs last month</div> {/* Dark green color and bolder font for percentage */}
+            <div className="account-details-card" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}> {/* White background and subtle shadow */}
+               <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#00a09d' }}>1,508</div> {/* Teal color for number */}
+               <div style={{ fontSize: '1.2rem', color: '#666', marginBottom: '10px' }}>Total Customers</div> {/* Light grey text */}
+               <div style={{ fontSize: '1.1rem', color: '#00a09d', fontWeight: '700' }}>+3.2% vs last month</div> {/* Teal color and bolder font for percentage */}
             </div>
 
           </div>
@@ -67,11 +68,19 @@ const AccountDetailsPage = () => {
                { name: 'Beth Evans', title: 'United States', email: 'bothovarie@example.com', phone: '123-123-1234', avatar: null },
                { name: 'Your logo', title: 'Vendor / Office Supplies', email: 'yourname@yourcompany.com', phone: '234-234-2345', avatar: null },
                { name: 'My Company', title: 'Sair Francsso, Unities', email: 'yourname@yourcompany.com', phone: '345-345-3456', avatar: null },
-
-
+               { name: 'Global Tech Solutions', title: 'New York, USA', email: 'info@globaltech.com', phone: '100-200-3000', avatar: null },
+               { name: 'Innovate Systems', title: 'London, UK', email: 'contact@innovate.co.uk', phone: '101-202-3030', avatar: null },
+               { name: 'Future Forward Inc.', title: 'Tokyo, Japan', email: 'sales@futurefwd.jp', phone: '102-203-3040', avatar: null },
+               { name: 'Apex Ventures', title: 'Sydney, Australia', email: 'support@apex.au', phone: '103-204-3050', avatar: null },
+               { name: 'Quantum Innovations', title: 'Berlin, Germany', email: 'hello@quantum.de', phone: '104-205-3060', avatar: null },
+               { name: 'Digital Dynamics', title: 'Paris, France', email: 'contact@digitaldyn.fr', phone: '105-206-3070', avatar: null },
+               { name: 'Bright Spark Solutions', title: 'Toronto, Canada', email: 'info@brightspark.ca', phone: '106-207-3080', avatar: null },
+               { name: 'Pinnacle Corp', title: 'Dubai, UAE', email: 'office@pinnacle.ae', phone: '107-208-3090', avatar: null },
+               { name: 'Horizon Enterprises', title: 'Singapore', email: 'reachus@horizon.sg', phone: '108-209-3100', avatar: null },
+               { name: 'Elite Strategies', title: 'Rio de Janeiro, Brazil', email: 'client@elite.br', phone: '109-210-3110', avatar: null },
             ].map((contact, index) => (
               <Link to="/crm" key={index} style={{ textDecoration: 'none', color: 'inherit' }}> {/* Wrap card with Link and remove underline */}
-                <div style={{ background: '#ffffff', borderRadius: '10px', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', padding: '20px', display: 'flex', alignItems: 'center', gap: '15px', border: '1px solid #0c8145' }}> {/* White background and green border */}
+                <div style={{ background: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', padding: '24px', display: 'flex', alignItems: 'center', gap: '15px' }}> {/* White background, updated border radius, softer shadow, and increased padding, removed border */}
                    {/* Avatar */}
                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#eeeeee', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                       <span style={{ fontSize: '1.6rem', fontWeight: '500', color: '#616161' }}>{contact.name.charAt(0)}</span> {/* Adjusted font weight and color for initial text */}
