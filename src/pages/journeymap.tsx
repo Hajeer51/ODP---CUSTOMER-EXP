@@ -27,7 +27,7 @@ const JourneyMap: React.FC = () => {
                     { stage: 'Advocacy', color: '#0095ff', textColor: '#fff' }
                   ].map((stage, index) => (
                     <div key={stage.stage} className="timeline-arrow-group">
-                      <svg width="180" height="60" viewBox="0 0 180 60" className="timeline-arrow">
+                      <svg width="130" height="60" viewBox="0 0 180 60" className="timeline-arrow">
                         <polygon 
                           points="0,0 150,0 170,30 150,60 0,60 20,30" 
                           fill={stage.color}
