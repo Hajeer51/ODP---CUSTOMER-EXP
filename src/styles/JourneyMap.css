@@ -414,17 +414,12 @@
   flex: 1;
   padding: 32px;
   max-width: 1600px;
-  margin: 0 auto;
+  margin-left: 240px; /* Offset for the left sidebar */
 }
 
 /* Header Styles */
 .journey-map-header {
   margin-bottom: 40px;
-  position: fixed;
-  width: calc(100% - 240px);
-  left: 240px;
-  padding: 0 20px;
-  z-index: 20;
 }
 
 .journey-map-header h1 {
@@ -434,6 +429,7 @@
   margin: 0 0 8px 0;
   padding: 0;
   position: relative;
+  align-items: start;
 }
 
 .journey-map-subtitle {
@@ -448,16 +444,8 @@
   grid-template-columns: 2fr 1fr;
   gap: 32px;
   align-items: start;
-  position: fixed;
-  top: 160px;
-  left: 240px;
-  right: 0;
   padding: 20px;
-  z-index: 10;
-  background: #f8fafc;
-  height: calc(100vh - 160px);
-  overflow-y: auto;
-  width: calc(100% - 240px);
+  width: 100%;
 }
 
 /* Timeline Container */
@@ -466,6 +454,7 @@
   border-radius: 16px;
   padding: 32px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 2;
 }
 
 .timeline-container {
@@ -568,10 +557,7 @@
 
 /* Expansion Panel */
 .journey-map-sidebar {
-  position: fixed;
-  top: 180px;
-  left: calc(66.67% + 100px);
-  width: calc(25% - 80px);
+  width: 100%;
   z-index: 10;
 }
 
@@ -634,7 +620,6 @@
 @media (max-width: 1200px) {
   .journey-map-content {
     grid-template-columns: 1fr;
-    width: calc(100% - 240px);
   }
   
   .journey-map-sidebar {
@@ -644,19 +629,14 @@
     width: 100%;
     margin-top: 20px;
   }
+  
+  .journey-map-main {
+    margin-left: 0;
+    padding-left: 32px;
+  }
 }
 
 @media (max-width: 992px) {
-  .journey-map-header {
-    width: calc(100% - 200px);
-    left: 200px;
-  }
-  
-  .journey-map-content {
-    left: 200px;
-    width: calc(100% - 200px);
-  }
-  
   .timeline {
     gap: 30px;
   }
@@ -667,18 +647,6 @@
 }
 
 @media (max-width: 768px) {
-  .journey-map-header {
-    width: 100%;
-    left: 0;
-    padding: 15px;
-  }
-  
-  .journey-map-content {
-    left: 0;
-    width: 100%;
-    padding: 15px;
-  }
-  
   .timeline {
     gap: 20px;
   }
@@ -758,34 +726,4 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
-  .journey-map-header {
-    width: calc(100% - 240px);
-  }
-}
-
-@media (max-width: 992px) {
-  .journey-map-header {
-    width: calc(100% - 200px);
-    left: 200px;
-  }
-  
-  .journey-map-content {
-    left: 200px;
-    width: calc(100% - 200px);
-  }
-}
-
-@media (max-width: 768px) {
-  .journey-map-header {
-    width: 100%;
-    left: 0;
-    padding: 15px;
-  }
-  
-  .journey-map-content {
-    left: 0;
-    width: 100%;
-    padding: 15px;
-  }
-} 
+/* Removed conflicting responsive adjustments for .journey-map-header and .journey-map-content */ 
