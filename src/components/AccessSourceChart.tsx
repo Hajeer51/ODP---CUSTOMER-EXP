@@ -18,12 +18,13 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
           formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
-          orient: 'vertical',
-          top: 'center',
-          right: 'right',
+          orient: 'horizontal',
+          bottom: '0',
+          left: 'center',
           data: ['Health', 'Other'],
           textStyle: {
-            color: '#333'
+            color: '#333',
+            fontSize: 14
           }
         },
         series: [

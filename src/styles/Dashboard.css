@@ -768,6 +768,25 @@
   overflow: hidden;
 }
 
+.contact-card .contact-card-details-hover {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #00a09d;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.contact-card:hover .contact-card-details-hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
 .contact-card::before {
   content: "";
   position: absolute;
@@ -794,6 +813,14 @@
   transform: translateY(-2px);
 }
 
+.contact-card:hover .contact-info-item .icon {
+    color: #0c814a;
+}
+
+.contact-card:hover .contact-card-name {
+    color: #0c814a;
+}
+
 .contact-card-avatar {
   width: 36px;
   height: 36px;
@@ -805,14 +832,6 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-
-.contact-card:hover .contact-info-item .icon {
-    color: #0c814a; /* Green color on hover */
-}
-
-.contact-card:hover .contact-card-name {
-    color: #0c814a; /* Green color for name on hover */
 }
 
 /* Titles */
