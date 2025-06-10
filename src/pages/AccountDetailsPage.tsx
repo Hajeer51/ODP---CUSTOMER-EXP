@@ -27,13 +27,13 @@ const AccountDetailsPage = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '25px', marginBottom: '40px' }}> {/* Increased gap and bottom margin */}
 
             {/* Access Source Chart */}
-            <div className="account-details-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff' }}> {/* White background and subtle shadow */}
+            <div className="account-details-card hover-effect" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff' }}> {/* White background and subtle shadow */}
                <AccessSourceChart /> {/* Replaced Health Score chart with ECharts component */}
                <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#333', marginTop: '10px' }}>Health Score</div>
             </div>
 
             {/* Customer Growth Chart */}
-            <div className="account-details-card" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column' }}> {/* White background and subtle shadow */}
+            <div className="account-details-card hover-effect" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column' }}> {/* White background and subtle shadow */}
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={customerGrowthData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <XAxis dataKey="name" stroke="#00a09d" /> {/* Styled XAxis with teal */}
@@ -46,7 +46,7 @@ const AccountDetailsPage = () => {
             </div>
 
             {/* Total Customers Stat */}
-            <div className="account-details-card" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}> {/* White background and subtle shadow */}
+            <div className="account-details-card hover-effect" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}> {/* White background and subtle shadow */}
                <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#00a09d' }}>1,508</div> {/* Teal color for number */}
                <div style={{ fontSize: '1.2rem', color: '#666', marginBottom: '10px' }}>Total Customers</div> {/* Light grey text */}
                <div style={{ fontSize: '1.1rem', color: '#00a09d', fontWeight: '700' }}>+3.2% vs last month</div> {/* Teal color and bolder font for percentage */}
@@ -80,14 +80,14 @@ const AccountDetailsPage = () => {
                { name: 'Elite Strategies', title: 'Rio de Janeiro, Brazil', email: 'client@elite.br', phone: '109-210-3110', avatar: null },
             ].map((contact, index) => (
               <Link to="/crm" key={index} style={{ textDecoration: 'none', color: 'inherit' }}> {/* Wrap card with Link and remove underline */}
-                <div style={{ background: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', padding: '24px', display: 'flex', alignItems: 'center', gap: '15px' }}> {/* White background, updated border radius, softer shadow, and increased padding, removed border */}
+                <div className="contact-card hover-effect" style={{ background: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', padding: '24px', display: 'flex', alignItems: 'center', gap: '15px' }}> {/* White background, updated border radius, softer shadow, and increased padding, removed border */}
                    {/* Avatar */}
                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#eeeeee', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                       <span style={{ fontSize: '1.6rem', fontWeight: '500', color: '#616161' }}>{contact.name.charAt(0)}</span> {/* Adjusted font weight and color for initial text */}
                    </div>
                    {/* Details */}
                    <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: '600', color: '#000000' }}>{contact.name}</div> {/* Black text for name */}
+                      <div style={{ fontWeight: '600', color: '#00a09d' }}>{contact.name}</div> {/* Green text for name */}
                       <div style={{ fontSize: '0.95rem', color: '#000000', display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ fontSize: '1.1rem', color: '#000000' }}>📍</span>{contact.title}</div> {/* Black text for title, added location icon */}
                       {contact.email && <div style={{ fontSize: '0.95rem', color: '#000000', display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ fontSize: '1.1rem', color: '#000000' }}>📧</span>{contact.email}</div>} {/* Black text for email, added email icon */}
                       {contact.phone && <div style={{ fontSize: '0.95rem', color: '#000000', display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ fontSize: '1.1rem', color: '#000000' }}>📞</span>{contact.phone}</div>} {/* Black text for phone, added phone icon and number */}

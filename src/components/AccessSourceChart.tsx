@@ -43,7 +43,7 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
             },
             emphasis: {
               label: {
-                show: true,
+                show: false,
                 fontSize: 40,
                 fontWeight: 'bold'
               }

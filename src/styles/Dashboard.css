@@ -758,13 +758,33 @@
   background: linear-gradient(90deg, #169ba6 0%, #27ae60 100%);
   margin-top: 4px;
 }
-
 .contact-card {
   display: flex;
   align-items: center;
   gap: 15px;
   border: 1px solid transparent;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: linear-gradient(180deg, #169ba6 0%, #27ae60 100%);
+  transition: width 0.3s;
+  z-index: 1;
+}
+
+.contact-card:hover::before {
+  width: 6px;
+}
+
+.contact-card > * {
+  position: relative;
+  z-index: 2;
 }
 
 .contact-card:hover {
@@ -807,3 +827,13 @@ h3 {
 }
 
 /* Recharts overrides for consistent styling */
+
+.account-details-card.hover-effect {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.account-details-card.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
