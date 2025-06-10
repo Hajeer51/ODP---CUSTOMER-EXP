@@ -40,7 +40,7 @@ const AccountDetailsPage = () => {
                   <XAxis dataKey="name" stroke="#00a09d" /> {/* Styled XAxis with teal */}
                   <YAxis stroke="#00a09d" domain={[800, 'auto']} /> {/* Styled YAxis with teal, starting from 800 */}
                   <Tooltip />
-                  <Line type="monotone" dataKey="customers" stroke="#00796b" strokeWidth={3} dot={{ stroke: '#00796b', strokeWidth: 2, r: 5 }} activeDot={{ r: 7, stroke: '#00796b', strokeWidth: 2 }} /> {/* Styled Line and dots with darker teal/green color */}
+                  <Line type="monotone" dataKey="customers" stroke="#4CAF50" strokeWidth={3} dot={{ stroke: '#4CAF50', strokeWidth: 2, r: 5 }} activeDot={{ r: 7, stroke: '#4CAF50', strokeWidth: 2 }} /> {/* Styled Line and dots with darker teal/green color */}
                 </LineChart>
               </ResponsiveContainer>
               <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#333' , marginTop: '20px', textAlign: 'center' }}>Customer Growth</h3> {/* Dark grey text for title */}
@@ -48,7 +48,7 @@ const AccountDetailsPage = () => {
 
             {/* Total Customers Stat */}
             <div className="account-details-card hover-effect" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}> {/* White background and subtle shadow */}
-               <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#00a09d' }}>1,508</div> {/* Teal color for number */}
+               <div className="total-customers-number">1,508</div> {/* Teal color for number */}
                <div style={{ fontSize: '1.2rem', color: '#666', marginBottom: '10px' }}>Total Customers</div> {/* Light grey text */}
                <div style={{ fontSize: '1.1rem', color: '#00a09d', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '5px' }}>
                  <span style={{ fontSize: '1.2rem' }}>▲</span>+3.2% vs last month

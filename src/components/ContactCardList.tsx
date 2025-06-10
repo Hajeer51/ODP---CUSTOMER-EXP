@@ -45,10 +45,10 @@ const ContactCardList: React.FC<ContactCardListProps> = () => {
 
   return (
     <div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', justifyContent: 'center' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
         {currentCards.map((contact, index) => (
           <Link to="/crm" key={index} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div className="contact-card hover-effect" style={{ background: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', padding: '24px', display: 'flex', alignItems: 'center', gap: '15px', height: '180px', flexShrink: 0 }}>
+            <div className="contact-card hover-effect" style={{ background: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', padding: '24px', display: 'flex', alignItems: 'center', gap: '15px', width: '100%', height: '180px' }}>
               <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#eeeeee', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                 {contact.avatar ? (
                   <img src={contact.avatar} alt="Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

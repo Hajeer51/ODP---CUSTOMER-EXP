@@ -14,8 +14,7 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
       chartInstance = echarts.init(chartRef.current);
       const option = {
         tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b}: {c} ({d}%)'
+          trigger: 'item'
         },
         legend: {
           orient: 'horizontal',
@@ -29,18 +28,20 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
         },
         series: [
           {
-            name: 'Health Score',
+            name: 'Access From',
             type: 'pie',
-            radius: ['45%', '75%'],
+            radius: ['40%', '70%'],
+            center: ['50%', '70%'],
+            startAngle: 180,
+            endAngle: 0,
             avoidLabelOverlap: false,
             itemStyle: {
-              borderRadius: 10,
-              borderColor: '#fff',
-              borderWidth: 2
+              borderWidth: 0
             },
             label: {
-              show: false,
-              position: 'center'
+              show: true,
+              position: 'outside',
+              formatter: '{d}%'
             },
             emphasis: {
               label: {
@@ -50,11 +51,11 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
               }
             },
             labelLine: {
-              show: false
+              show: true
             },
             data: [
-              { value: healthScore, name: 'Health', itemStyle: { color: '#00796b' } },
-              { value: 100 - healthScore, name: 'Other', itemStyle: { color: '#cccccc' } }
+              { value: healthScore, name: 'Health', itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#4CAF50' }, { offset: 1, color: '#00796b' }]) } },
+              { value: 100 - healthScore, name: 'Other', itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#bdbdbd' }, { offset: 1, color: '#8d8d8d' }]) } }
             ]
           }
         ]
