@@ -94,10 +94,16 @@ const Dashboard: React.FC = () => {
                 }}
               >
                 <div style={{ fontSize: '1.3rem', fontWeight: 600, color: '#111' }}>
-                  Customer 360 View Dashboard
+                  360 View Dashboard
                 </div>
                 <div style={{ fontSize: '1rem', color: '#0077b6', fontWeight: 500 }}>
                   Oman Broad Band
+                </div>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                  Account is : 12345678
+                </div>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                  Last Billing Date: 2023-11-20
                 </div>
                 <div style={{ fontSize: '0.9rem', color: '#666' }}>
                   Ali Alhabsi
@@ -292,7 +298,9 @@ const Dashboard: React.FC = () => {
                 gridColumn: '3 / 5',
                 gridRow: '2',
                 alignItems: 'flex-start',
+                cursor: 'pointer',
               }}
+              onClick={() => navigate('/product-services')}
             >
               <div className="product-title-row" style={{ display: 'flex', alignItems: 'baseline', width: '100%', marginTop: 0, marginBottom: 8 }}>
                 <h3 className="card-title-accent" style={{ margin: 0 }}>
@@ -303,9 +311,9 @@ const Dashboard: React.FC = () => {
                   {productServices.length} items
                 </span>
               </div>
-              <ul className="product-list-grid">
+              <ul className="product-list-grid" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {productServices.map((item, idx) => (
-                  <li className="product-item" key={idx}>
+                  <li className="product-item" key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%' }}>
                     <span className="product-badge">P{idx + 1}</span>
                     <span className="product-name">{item}</span>
                   </li>
