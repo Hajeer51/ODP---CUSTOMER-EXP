@@ -5,32 +5,32 @@ interface ContactCardListProps {
   // No props needed currently, as data is internal
 }
 
+// Mock Data for Contacts (moved from AccountDetailsPage.tsx)
+export const contacts = [
+  { name: 'YourCompany, Joel Willis', title: 'Bayomer, United States', email: 'jest-willo@example.com', phone: '123-456-7890', avatar: 'https://picsum.photos/seed/yourcompany/50/50' },
+  { name: 'Azure Interior, Coliten Diaz', title: 'Business Execu Ties Allura', email: 'colleen.als@example.com', phone: '987-654-3210', avatar: null },
+  { name: 'Ready Mat, Billy Fox', title: 'Redrctor TSupervisor at Ready Mat', email: 'ryourname@example.com', phone: '555-123-4567', avatar: 'https://picsum.photos/seed/readymat/50/50' },
+  { name: 'Oman Oil Company', title: 'Muscat, Oman', email: 'info@oman-oil.com', phone: '111-222-3333', avatar: null },
+  { name: 'Omantel', title: 'Muscat, Oman', email: 'contact@omantel.om', phone: '444-555-6666', avatar: 'https://picsum.photos/seed/omantel/50/50' },
+  { name: 'National Bank of Oman', title: 'Muscat, Oman', email: 'contact@nbo.om', phone: '777-888-9999', avatar: null },
+  { name: 'Beth Evans', title: 'United States', email: 'bothovarie@example.com', phone: '123-123-1234', avatar: 'https://picsum.photos/seed/bethevans/50/50' },
+  { name: 'Your logo', title: 'Vendor / Office Supplies', email: 'yourname@yourcompany.com', phone: '234-234-2345', avatar: null },
+  { name: 'My Company', title: 'Sair Francsso, Unities', email: 'yourname@yourcompany.com', phone: '345-345-3456', avatar: 'https://picsum.photos/seed/mycompany/50/50' },
+  { name: 'Global Tech Solutions', title: 'New York, USA', email: 'info@globaltech.com', phone: '100-200-3000', avatar: null },
+  { name: 'Innovate Systems', title: 'London, UK', email: 'contact@innovate.co.uk', phone: '101-202-3030', avatar: 'https://picsum.photos/seed/innovatesystems/50/50' },
+  { name: 'Future Forward Inc.', title: 'Tokyo, Japan', email: 'sales@futurefwd.jp', phone: '102-203-3040', avatar: null },
+  { name: 'Apex Ventures', title: 'Sydney, Australia', email: 'support@apex.au', phone: '103-204-3050', avatar: 'https://picsum.photos/seed/apexventures/50/50' },
+  { name: 'Quantum Innovations', title: 'Berlin, Germany', email: 'hello@quantum.de', phone: '104-205-3060', avatar: null },
+  { name: 'Digital Dynamics', title: 'Paris, France', email: 'contact@digitaldyn.fr', phone: '105-206-3070', avatar: 'https://picsum.photos/seed/digitaldynamics/50/50' },
+  { name: 'Bright Spark Solutions', title: 'Toronto, Canada', email: 'info@brightspark.ca', phone: '106-207-3080', avatar: null },
+  { name: 'Pinnacle Corp', title: 'Dubai, UAE', email: 'office@pinnacle.ae', phone: '107-208-3090', avatar: 'https://picsum.photos/seed/pinnaclecorp/50/50' },
+  { name: 'Horizon Enterprises', title: 'Singapore', email: 'reachus@horizon.sg', phone: '108-209-3100', avatar: null },
+  { name: 'Elite Strategies', title: 'Rio de Janeiro, Brazil', email: 'client@elite.br', phone: '109-210-3110', avatar: 'https://picsum.photos/seed/elitestrategies/50/50' },
+];
+
 const ContactCardList: React.FC<ContactCardListProps> = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 12; // Display 12 cards per page
-
-  // Mock Data for Contacts (moved from AccountDetailsPage.tsx)
-  const contacts = [
-    { name: 'YourCompany, Joel Willis', title: 'Bayomer, United States', email: 'jest-willo@example.com', phone: '123-456-7890', avatar: 'https://picsum.photos/seed/yourcompany/50/50' },
-    { name: 'Azure Interior, Coliten Diaz', title: 'Business Execu Ties Allura', email: 'colleen.als@example.com', phone: '987-654-3210', avatar: null },
-    { name: 'Ready Mat, Billy Fox', title: 'Redrctor TSupervisor at Ready Mat', email: 'ryourname@example.com', phone: '555-123-4567', avatar: 'https://picsum.photos/seed/readymat/50/50' },
-    { name: 'Oman Oil Company', title: 'Muscat, Oman', email: 'info@oman-oil.com', phone: '111-222-3333', avatar: null },
-    { name: 'Omantel', title: 'Muscat, Oman', email: 'contact@omantel.om', phone: '444-555-6666', avatar: 'https://picsum.photos/seed/omantel/50/50' },
-    { name: 'National Bank of Oman', title: 'Muscat, Oman', email: 'contact@nbo.om', phone: '777-888-9999', avatar: null },
-    { name: 'Beth Evans', title: 'United States', email: 'bothovarie@example.com', phone: '123-123-1234', avatar: 'https://picsum.photos/seed/bethevans/50/50' },
-    { name: 'Your logo', title: 'Vendor / Office Supplies', email: 'yourname@yourcompany.com', phone: '234-234-2345', avatar: null },
-    { name: 'My Company', title: 'Sair Francsso, Unities', email: 'yourname@yourcompany.com', phone: '345-345-3456', avatar: 'https://picsum.photos/seed/mycompany/50/50' },
-    { name: 'Global Tech Solutions', title: 'New York, USA', email: 'info@globaltech.com', phone: '100-200-3000', avatar: null },
-    { name: 'Innovate Systems', title: 'London, UK', email: 'contact@innovate.co.uk', phone: '101-202-3030', avatar: 'https://picsum.photos/seed/innovatesystems/50/50' },
-    { name: 'Future Forward Inc.', title: 'Tokyo, Japan', email: 'sales@futurefwd.jp', phone: '102-203-3040', avatar: null },
-    { name: 'Apex Ventures', title: 'Sydney, Australia', email: 'support@apex.au', phone: '103-204-3050', avatar: 'https://picsum.photos/seed/apexventures/50/50' },
-    { name: 'Quantum Innovations', title: 'Berlin, Germany', email: 'hello@quantum.de', phone: '104-205-3060', avatar: null },
-    { name: 'Digital Dynamics', title: 'Paris, France', email: 'contact@digitaldyn.fr', phone: '105-206-3070', avatar: 'https://picsum.photos/seed/digitaldynamics/50/50' },
-    { name: 'Bright Spark Solutions', title: 'Toronto, Canada', email: 'info@brightspark.ca', phone: '106-207-3080', avatar: null },
-    { name: 'Pinnacle Corp', title: 'Dubai, UAE', email: 'office@pinnacle.ae', phone: '107-208-3090', avatar: 'https://picsum.photos/seed/pinnaclecorp/50/50' },
-    { name: 'Horizon Enterprises', title: 'Singapore', email: 'reachus@horizon.sg', phone: '108-209-3100', avatar: null },
-    { name: 'Elite Strategies', title: 'Rio de Janeiro, Brazil', email: 'client@elite.br', phone: '109-210-3110', avatar: 'https://picsum.photos/seed/elitestrategies/50/50' },
-  ];
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(contacts.length / cardsPerPage);
