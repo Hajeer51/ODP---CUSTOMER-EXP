@@ -45,7 +45,7 @@ const ContactCardList: React.FC<ContactCardListProps> = () => {
 
   return (
     <div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
         {currentCards.map((contact, index) => (
           <Link to="/crm" key={index} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="contact-card hover-effect" style={{ background: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', padding: '24px', display: 'flex', alignItems: 'center', gap: '15px', width: '100%', height: '180px' }}>

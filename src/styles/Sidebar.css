@@ -74,12 +74,6 @@ main {
     margin-left: 250px;
 }
 
-@media (max-width: 900px) {
-    main {
-        margin-left: 0;
-    }
-}
-
 .sidebar-content ul li a img {
     width: 100px;
     height: 100px;
