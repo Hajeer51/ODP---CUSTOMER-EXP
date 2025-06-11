@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Sidebar.css';
 import logo from '../assets/logo.png';
 import { 
@@ -10,6 +10,8 @@ import {
 } from 'react-icons/md';
 
 const Sidebar = () => {
+  const location = useLocation();
+
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -27,11 +29,11 @@ const Sidebar = () => {
             />
           </div>
         </li>
-        <li><Link to="/" className="link"><MdDashboard /> Overview</Link></li>
-        <li><Link to="/account-details" className="link"><MdAccountCircle /> Account Details</Link></li>
+        <li><Link to="/" className={`link ${location.pathname === '/' ? 'active-link' : ''}`}><MdDashboard /> Overview</Link></li>
+        <li><Link to="/account-details" className={`link ${location.pathname === '/account-details' ? 'active-link' : ''}`}><MdAccountCircle /> Account Details</Link></li>
         <div className="sidebar-divider"></div>
         <li><a href="#" className="link"><MdSettings /> API Configration</a></li>
-        <li><Link to="/user-management" className="link"><MdPeople /> User Management</Link></li>
+        <li><Link to="/user-management" className={`link ${location.pathname === '/user-management' ? 'active-link' : ''}`}><MdPeople /> User Management</Link></li>
 
       </ul>
       </div>

@@ -32,6 +32,16 @@ const usageOverviewData = [
   { name: 'Service D', value: 30 },
 ];
 
+const productsData = [
+  { productName: 'Cloud Hosting - Standard', status: 'Active', activationDate: '2020-03-10', monthlyFee: 150, renewalDate: '2025-03-10' },
+  { productName: 'Managed Security - Advanced', status: 'Active', activationDate: '2021-07-01', monthlyFee: 250, renewalDate: '2025-07-01' },
+  { productName: 'Colocation Services - Rack 1', status: 'Active', activationDate: '2019-01-15', monthlyFee: 500, renewalDate: '2025-01-15' },
+  { productName: 'Data Backup & Recovery - 1TB', status: 'Active', activationDate: '2022-05-20', monthlyFee: 100, renewalDate: '2025-05-20' },
+  { productName: 'Network Connectivity - 1Gbps', status: 'Active', activationDate: '2020-11-11', monthlyFee: 300, renewalDate: '2025-11-11' },
+  { productName: 'Disaster Recovery as a Service', status: 'Inactive', activationDate: '2023-01-01', monthlyFee: 0, renewalDate: 'N/A' },
+  { productName: 'Hybrid Cloud Solution', status: 'Active', activationDate: '2022-09-10', monthlyFee: 400, renewalDate: '2025-09-10' },
+];
+
 const progressColors = ['#00a09d', '#5cb85c', '#f0ad4e', '#d9534f'];
 
 const billingData = [
@@ -52,6 +62,7 @@ const billingData = [
 const CustomerAccountPage = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [itemsPerPage] = React.useState(5); // 5 items per page
+  const [selectedTab, setSelectedTab] = React.useState('Billing');
 
   // Logic for displaying current items
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -185,44 +196,79 @@ const CustomerAccountPage = () => {
           {/* Tabs Section and Extract to CSV Button */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #eee', marginBottom: '20px', marginTop: '20px' }}>
             <div style={{ display: 'flex' }}>
-              <button style={{ padding: '10px 20px', border: 'none', borderBottom: '2px solid #00a09d', backgroundColor: 'transparent', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 'bold', color: '#00a09d' }}>Billing</button>
-              <button style={{ padding: '10px 20px', border: 'none', backgroundColor: 'transparent', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 'bold', color: '#666' }}>Products</button>
-              <button style={{ padding: '10px 20px', border: 'none', backgroundColor: 'transparent', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 'bold', color: '#666' }}>Activity</button>
+              <button onClick={() => setSelectedTab('Billing')} style={{ padding: '10px 20px', border: 'none', borderBottom: selectedTab === 'Billing' ? '2px solid #00a09d' : 'none', backgroundColor: 'transparent', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 'bold', color: selectedTab === 'Billing' ? '#00a09d' : '#666' }}>Billing</button>
+              <button onClick={() => setSelectedTab('Products')} style={{ padding: '10px 20px', border: 'none', borderBottom: selectedTab === 'Products' ? '2px solid #00a09d' : 'none', backgroundColor: 'transparent', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 'bold', color: selectedTab === 'Products' ? '#00a09d' : '#666' }}>Products</button>
             </div>
             <button onClick={handleExportCsv} style={{ backgroundColor: 'transparent', color: '#00a09d', border: '1px solid #00a09d', borderRadius: '8px', padding: '10px 20px', cursor: 'pointer', fontSize: '1rem', fontWeight: 'bold', boxShadow: 'none', transition: 'background-color 0.2s ease-in-out, transform 0.2s ease-in-out' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#e6f4ea'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 160, 157, 0.1)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}>Extract to CSV</button>
           </div>
 
           {/* Table Section */}
-          <div style={{ border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead>
-                <tr style={{ backgroundColor: '#f8f8f8' }}>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Date</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Invoice #</th>
-                  <th style={{ padding: '15px', textAlign: 'right', borderBottom: '1px solid #eee' }}>Amount</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* Example Table Row (can be dynamically populated later) */}
-                {currentItems.map((item, index) => (
-                  <tr key={index} style={{ transition: 'background-color 0.2s ease-in-out', backgroundColor: index % 2 === 0 ? '#fff' : '#f9f9f9' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e6f4ea'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#fff' : '#f9f9f9'}>
-                    <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}>{item.date}</td>
-                    <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}>{item.invoice}</td>
-                    <td style={{ padding: '15px', textAlign: 'right', borderBottom: '1px solid #eee' }}>OMR {item.amount.toLocaleString()}</td>
-                    <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}><span style={{ backgroundColor: item.status === 'Paid' ? '#d4edda' : item.status === 'Pending' ? '#ffeeba' : '#f8d7da', color: item.status === 'Paid' ? '#155724' : item.status === 'Pending' ? '#856404' : '#721c24', padding: '5px 10px', borderRadius: '15px', fontSize: '0.8rem', fontWeight: 'bold' }}>{item.status}</span></td>
+          {selectedTab === 'Billing' && (
+            <div style={{ border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ backgroundColor: '#f8f8f8' }}>
+                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Date</th>
+                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Invoice #</th>
+                    <th style={{ padding: '15px', textAlign: 'right', borderBottom: '1px solid #eee' }}>Amount</th>
+                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {/* Example Table Row (can be dynamically populated later) */}
+                  {currentItems.map((item, index) => (
+                    <tr key={index} style={{ transition: 'background-color 0.2s ease-in-out', backgroundColor: index % 2 === 0 ? '#fff' : '#f9f9f9' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e6f4ea'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#fff' : '#f9f9f9'}>
+                      <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}>{item.date}</td>
+                      <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}>{item.invoice}</td>
+                      <td style={{ padding: '15px', textAlign: 'right', borderBottom: '1px solid #eee' }}>OMR {item.amount.toLocaleString()}</td>
+                      <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}><span style={{ backgroundColor: item.status === 'Paid' ? '#d4edda' : item.status === 'Pending' ? '#ffeeba' : '#f8d7da', color: item.status === 'Paid' ? '#155724' : item.status === 'Pending' ? '#856404' : '#721c24', padding: '5px 10px', borderRadius: '15px', fontSize: '0.8rem', fontWeight: 'bold' }}>{item.status}</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {selectedTab === 'Products' && (
+            <div style={{ border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ backgroundColor: '#f8f8f8' }}>
+                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Product Name</th>
+                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Status</th>
+                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Activation Date</th>
+                    <th style={{ padding: '15px', textAlign: 'right', borderBottom: '1px solid #eee' }}>Monthly Fee</th>
+                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '1px solid #eee' }}>Renewal Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {productsData.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
+                    <tr key={index} style={{ transition: 'background-color 0.2s ease-in-out', backgroundColor: index % 2 === 0 ? '#fff' : '#f9f9f9' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e6f4ea'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#fff' : '#f9f9f9'}>
+                      <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}>{item.productName}</td>
+                      <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}><span style={{ backgroundColor: item.status === 'Active' ? '#d4edda' : '#f8d7da', color: item.status === 'Active' ? '#155724' : '#721c24', padding: '5px 10px', borderRadius: '15px', fontSize: '0.8rem', fontWeight: 'bold' }}>{item.status}</span></td>
+                      <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}>{item.activationDate}</td>
+                      <td style={{ padding: '15px', textAlign: 'right', borderBottom: '1px solid #eee' }}>OMR {item.monthlyFee.toLocaleString()}</td>
+                      <td style={{ padding: '15px', borderBottom: '1px solid #eee' }}>{item.renewalDate}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
           <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '20px' }}>
             <div style={{ display: 'flex', gap: '10px' }}>
-              {pageNumbers.map(number => (
+              {selectedTab === 'Billing' && pageNumbers.map(number => (
                 <button key={number} onClick={() => paginate(number)} style={{ padding: '8px 15px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: currentPage === number ? '#00a09d' : '#fff', color: currentPage === number ? '#fff' : '#333', cursor: 'pointer' }}>
                   {number}
                 </button>
               ))}
+              {selectedTab === 'Products' &&
+                Array.from({ length: Math.ceil(productsData.length / itemsPerPage) }, (_, i) => i + 1).map(number => (
+                  <button key={number} onClick={() => paginate(number)} style={{ padding: '8px 15px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: currentPage === number ? '#00a09d' : '#fff', color: currentPage === number ? '#fff' : '#333', cursor: 'pointer' }}>
+                    {number}
+                  </button>
+                ))
+              }
             </div>
           </div>
         </main>
