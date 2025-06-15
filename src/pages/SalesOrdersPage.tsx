@@ -143,6 +143,27 @@ const SalesOrdersPage = () => {
       <div className="dashboard-content">
         <Sidebar />
         <main className="main-content">
+          {/* New Header Style */}
+          <div style={{
+            width: '100%',
+            background: 'linear-gradient(90deg, rgb(12, 129, 69) 0%, rgb(22, 155, 166) 100%)',
+            borderRadius: '12px',
+            padding: '24px 32px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+            color: '#fff',
+            marginBottom: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: '10px'
+          }}>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff' }}>Sales Orders</h1>
+            <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Oman Broad Band</p>
+            <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Account is: 12345678</p>
+          </div>
+
+          {/* Original Content after header */}
           <div style={{ padding: '20px', borderBottom: '1px solid #e0e0e0' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
               <h1 style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#333' }}>Sales Orders</h1>

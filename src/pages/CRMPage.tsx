@@ -12,8 +12,36 @@ const CRMPage = () => {
       <div className="dashboard-content">
         <Sidebar />
         <main className="main-content">
-          <div style={{ padding: '20px', backgroundColor: '#f8f8f8', borderBottom: '1px solid #e0e0e0' }}>
-            <h1 style={{ fontSize: '1.8rem', fontWeight: 'bold', marginBottom: '15px', color: '#333' }}>CRM</h1>
+          {/* New Header Style */}
+          <div style={{
+            width: '100%',
+            background: 'linear-gradient(90deg, rgb(12, 129, 69) 0%, rgb(22, 155, 166) 100%)',
+            borderRadius: '12px',
+            padding: '24px 32px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+            color: '#fff',
+            marginBottom: '24px',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: '10px'
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff' }}>CRM</h1>
+              <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Oman Broad Band</p>
+              <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Account is: 12345678</p>
+            </div>
+
+            {/* Right aligned header content */}
+            {/* <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '5px' }}>
+              <p style={{ fontSize: '0.9rem', margin: '5px 0 0', color: '#fff', opacity: 0.8 }}>Total Leads: {totalLeads}</p>
+              <p style={{ fontSize: '0.9rem', margin: 0, color: '#fff', opacity: 0.8 }}>Conversion Rate: {conversionRate}</p>
+            </div> */}
+          </div>
+
+          {/* CRM Action Buttons and Search Bar */}
+          <div style={{ padding: '20px', borderBottom: '1px solid #e0e0e0' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
               <button style={{ backgroundColor: '#00a09d', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>CREATE</button>
               <button style={{ backgroundColor: '#e0e0e0', color: '#333', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>GENERATE LEADS</button>
@@ -30,7 +58,7 @@ const CRMPage = () => {
               </div>
             </div>
           </div>
-          <div style={{ display: 'flex', overflowX: 'auto', gap: '20px', padding: '20px', backgroundColor: '#f0f2f5' }}>
+          <div style={{ display: 'flex', overflowX: 'auto', gap: '20px', padding: '20px' }}>
             {/* Lead Captured Column */}
             <div style={{ flex: '0 0 300px', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', padding: '15px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
@@ -56,10 +84,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[0 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -76,10 +101,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[19 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -110,10 +132,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[2 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -130,10 +149,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[3 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -150,10 +166,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[4 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -170,10 +183,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[20 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -204,10 +214,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[5 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -224,10 +231,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[6 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -244,10 +248,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[7 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -264,10 +265,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[8 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -284,10 +282,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ffc107' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[21 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -318,10 +313,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[9 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -338,10 +330,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[14 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -371,10 +360,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[10 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -391,10 +377,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[15 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -424,10 +407,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ffc107' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[11 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -444,10 +424,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[16 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -477,10 +454,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ffc107' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[12 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -497,10 +471,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ffc107' }}>★</span>
                     <span style={{ color: '#ffc107' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[17 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -530,10 +501,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[13 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>
@@ -550,10 +518,7 @@ const CRMPage = () => {
                     <span style={{ color: '#ccc' }}>★</span>
                     <span style={{ color: '#ccc' }}>★</span>
                   </div>
-                  {(() => {
-                    const currentContact = contacts[18 % contactsLength];
-                    return currentContact?.avatar && <img src={currentContact.avatar as string} alt="User" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />;
-                  })()}
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.H08n6RGZ02ggmgN3_U_UzAHaEL?r=0&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3" alt="Customer Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                 </div>
               </div>
               </Link>

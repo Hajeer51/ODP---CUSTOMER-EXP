@@ -48,13 +48,30 @@ const UserManagementPage = () => {
         <main className="main-content" style={{ background: '#f4f6fb', minHeight: '100vh', padding: '32px 20px', display: 'flex', justifyContent: 'center' }}>
           <div style={{ width: '100%', margin: '0 auto', background: '#fff', borderRadius: 24, boxShadow: '0 8px 32px #0002', padding: 0, overflow: 'hidden' }}>
             {/* Gradient header with icon */}
-            <div style={{ background: `linear-gradient(90deg, ${BRAND_GREEN} 0%, ${BRAND_TEAL} 100%)`, padding: '32px 40px 24px 40px', display: 'flex', alignItems: 'center', gap: 18 }}>
+            <div style={{
+              background: 'linear-gradient(90deg, rgb(12, 129, 69) 0%, rgb(22, 155, 166) 100%)',
+              borderRadius: '12px',
+              padding: '32px 40px 24px 40px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 18
+            }}>
               <div>
                 <h1 style={{ fontSize: 34, fontWeight: 800, color: '#fff', margin: 0, letterSpacing: 1 }}>User Management</h1>
                 <div style={{ color: '#e0e0e0', fontSize: 17, fontWeight: 400, marginTop: 4 }}>Manage your organization users and their access</div>
               </div>
               <div style={{ flex: 1 }} />
-              <button style={{ background: `linear-gradient(90deg, ${BRAND_TEAL} 0%, ${BRAND_GREEN} 100%)`, color: '#fff', border: 'none', borderRadius: 16, padding: '12px 32px', fontSize: 18, fontWeight: 700, cursor: 'pointer', boxShadow: `0 2px 8px ${BRAND_TEAL}33` }}>+ Add User</button>
+              <button style={{
+                background: '#fff',
+                color: '#0a7e44',
+                border: 'none',
+                borderRadius: 16,
+                padding: '12px 32px',
+                fontSize: 18,
+                fontWeight: 700,
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+              }}>+ Add User</button>
             </div>
             {/* Action bar */}
             <div style={{ display: 'flex', gap: 16, alignItems: 'center', padding: '24px 40px 0 40px' }}>
