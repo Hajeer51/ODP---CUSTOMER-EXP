@@ -14,6 +14,7 @@ import AccountDetailsPage from './pages/AccountDetailsPage.tsx';
 import CRMPage from './pages/CRMPage.tsx';
 import CustomerAccountPage from './pages/CustomerAccountPage.tsx';
 import BillingPayment from './pages/BillingPayment.tsx';
+import SalesOrdersPage from './pages/SalesOrdersPage.tsx';
 
 function App() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -36,6 +37,7 @@ function App() {
             <Route path="/account-details" element={<AccountDetailsPage />} />
             <Route path="/crm" element={<CRMPage />} />
             <Route path="/product-services" element={<CustomerAccountPage />} />
+            <Route path="/sales-orders" element={<SalesOrdersPage />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
             <Route path="/journeymap" element={<JourneyMap />} />
             <Route path="/billing" element={<BillingPayment />} />

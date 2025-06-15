@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar.tsx';
 import Sidebar from '../components/Sidebar.tsx';
 import { contacts } from '../components/ContactCardList.tsx';
+import { Link } from 'react-router-dom';
 
 const CRMPage = () => {
   const contactsLength = contacts.length; // Get the length of the contacts array
@@ -42,6 +43,7 @@ const CRMPage = () => {
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 80,000</span>
               </div>
               {/* Example Cards */}
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Quote for 150 carpets</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Product</div>
@@ -60,6 +62,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>New Lead from Website</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Marketing Campaign</div>
@@ -78,6 +82,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Initial Contact Made Column */}
@@ -92,6 +97,7 @@ const CRMPage = () => {
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 51,300</span>
               </div>
               {/* Initial Contact Made Cards */}
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Global Solutions: Furnitures</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Product • Design</div>
@@ -110,6 +116,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Quote for 600 Chairs</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Product</div>
@@ -128,6 +136,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Info about services</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Product</div>
@@ -146,6 +156,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Follow-up Call with Potential Client</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Communication</div>
@@ -164,6 +176,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Needs Analysis Column */}
@@ -178,6 +191,7 @@ const CRMPage = () => {
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 79,100</span>
               </div>
               {/* Needs Analysis Cards */}
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Modern Open Space</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Information</div>
@@ -196,6 +210,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Office Design and Architecture</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Consulting</div>
@@ -214,6 +230,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>5 VP Chairs</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Services</div>
@@ -232,6 +250,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Need 20 Desks</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Consulting</div>
@@ -250,6 +270,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Requirement Gathering for New System</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• IT Solution</div>
@@ -268,6 +290,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Proposal Sent Column */}
@@ -282,6 +305,7 @@ const CRMPage = () => {
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 19,800</span>
               </div>
               {/* Proposal Sent Cards */}
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Distributor Contract</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Information • Other</div>
@@ -300,6 +324,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Service Agreement Draft</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Documentation</div>
@@ -318,6 +344,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Negotiation & Review Column */}
@@ -331,6 +358,7 @@ const CRMPage = () => {
                 </div>
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 50,000</span>
               </div>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Contract Discussion</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Legal • Finance</div>
@@ -349,6 +377,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Pricing Adjustment Talk</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Finance</div>
@@ -367,6 +397,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Management Approval Column */}
@@ -380,6 +411,7 @@ const CRMPage = () => {
                 </div>
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 75,000</span>
               </div>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Final Review by CEO</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Internal • Executive</div>
@@ -398,6 +430,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Legal Team Sign-off</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Legal • Internal</div>
@@ -416,6 +450,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Won / Contract Signed Column */}
@@ -429,6 +464,7 @@ const CRMPage = () => {
                 </div>
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 90,000</span>
               </div>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>New Cloud Service Deal</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Cloud • Service</div>
@@ -447,6 +483,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Infrastructure Upgrade Project</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• IT • Project</div>
@@ -465,6 +503,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Lost / On Hold Column */}
@@ -478,6 +517,7 @@ const CRMPage = () => {
                 </div>
                 <span style={{ marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold' }}>OMR 0</span>
               </div>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Client Declined Offer</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Reason: Budget</div>
@@ -496,6 +536,8 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
+              <Link to="/sales-orders" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div style={{ backgroundColor: '#f9f9f9', border: '1px solid #eee', borderRadius: '5px', padding: '15px', marginBottom: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>Project On Hold - No Response</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px' }}>• Reason: Internal Delay</div>
@@ -514,6 +556,7 @@ const CRMPage = () => {
                   })()}
                 </div>
               </div>
+              </Link>
             </div>
           </div>
         </main>
