@@ -160,7 +160,8 @@ const Dashboard: React.FC = () => {
             {/* Billing */}
             <div
               className="billing-card card"
-              style={{ gridColumn: '3', gridRow: '1' }}
+              style={{ gridColumn: '3 / 5', gridRow: '1' }}
+              onClick={() => navigate('/billing')}
             >
               <div className="billing-title">Billing & Payments</div>
               <div className="billing-row">
@@ -190,25 +191,7 @@ const Dashboard: React.FC = () => {
               </ResponsiveContainer>
             </div>
 
-            {/* Usage */}
-            <div
-              className="usage-card card"
-              style={{ gridColumn: '4', gridRow: '1' }}
-            >
-              <div className="usage-title">Usage Insights</div>
-              <ResponsiveContainer width="100%" height={36}>
-                <LineChart data={usageData}>
-                  <Line
-                    type="monotone"
-                    dataKey="usage"
-                    stroke="#169ba6"
-                    strokeWidth={2}
-                    dot={false}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-              <div className="usage-label">Compute Usage</div>
-            </div>
+            
 
             {/* ─────────── Row 2 ─────────── */}
             {/* Infrastructure overview */}

@@ -13,6 +13,7 @@ import JourneyMap from './pages/journeymap.tsx';
 import AccountDetailsPage from './pages/AccountDetailsPage.tsx';
 import CRMPage from './pages/CRMPage.tsx';
 import CustomerAccountPage from './pages/CustomerAccountPage.tsx';
+import BillingPayment from './pages/BillingPayment.tsx';
 
 function App() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -37,6 +38,7 @@ function App() {
             <Route path="/product-services" element={<CustomerAccountPage />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
             <Route path="/journeymap" element={<JourneyMap />} />
+            <Route path="/billing" element={<BillingPayment />} />
           </Routes>
         ) : showForgotPassword ? (
           <ForgotPasswordPage onBack={() => setShowForgotPassword(false)} />
