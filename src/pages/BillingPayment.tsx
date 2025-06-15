@@ -37,14 +37,20 @@ const BillingPayment = () => {
         </div>
         <div className="content-container">
           <div className="billing-payment-content">
+            <div className="overview-card">
+              <div className="overview-title">Customer overview</div>
+              <div className="overview-value"><span style={{ color: "green" }}>Active</span> • Customer since 2022</div>
+            </div>
             <div className="billing-cards-row">
               <div className="billing-summary-card">
                 <div className="card-title">Current Balance</div>
                 <div className="card-value">OMR 1,200.00</div>
+                <div className="card-desc">As of today</div>
               </div>
               <div className="billing-summary-card">
                 <div className="card-title">Last Payment</div>
                 <div className="card-value">OMR 500.00</div>
+                <div className="card-desc">Paid on 2024-06-01</div>
               </div>
             </div>
 
@@ -56,7 +62,7 @@ const BillingPayment = () => {
                   <YAxis />
                   <CartesianGrid stroke="#eee" />
                   <Tooltip />
-                  <Line type="monotone" dataKey="amount" stroke="#169ba6" strokeWidth={2} />
+                  <Line type="monotone" dataKey="amount" stroke="#169ba6" strokeWidth={3} dot={{ r: 4 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -77,19 +83,19 @@ const BillingPayment = () => {
                     <td>2024-06-01</td>
                     <td>Invoice #1234</td>
                     <td>OMR 500.00</td>
-                    <td>Paid</td>
+                    <td><span className="status paid">Paid</span></td>
                   </tr>
                   <tr>
                     <td>2024-05-01</td>
                     <td>Invoice #1229</td>
                     <td>OMR 700.00</td>
-                    <td>Paid</td>
+                    <td><span className="status paid">Paid</span></td>
                   </tr>
                   <tr>
                     <td>2024-04-01</td>
                     <td>Invoice #1220</td>
                     <td>OMR 600.00</td>
-                    <td>Overdue</td>
+                    <td><span className="status overdue">Overdue</span></td>
                   </tr>
                 </tbody>
               </table>
