@@ -84,7 +84,7 @@ const BillingPayment = () => {
               <div className="billing-summary-card">
                 <div className="card-title">Last Payment</div>
                 <div className="card-value">OMR 500.00</div>
-                <div className="card-desc">Paid on 2024-06-01</div>
+                <div className="card-desc">Paid on 2025-06-01</div>
               </div>
             </div>
 
