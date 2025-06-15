@@ -25,7 +25,13 @@ const paymentData = [
   { month: "May", amount: 220 },
   { month: "Jun", amount: 170 },
   { month: "Jul", amount: 210 },
+  { month: "Aug", amount: 240 },
+  { month: "Sep", amount: 190 },
+  { month: "Oct", amount: 230 },
+  { month: "Nov", amount: 260 },
+  { month: "Dec", amount: 250 }
 ];
+
 
 const BillingPayment = () => {
   return (
@@ -37,13 +43,41 @@ const BillingPayment = () => {
         </div>
         <div className="content-container">
           <div className="billing-payment-content">
+            <div className="billing-header">
+              Billing & Payment 
+            </div>
             <div className="overview-card">
-              <div className="overview-title">Customer overview</div>
-              <div className="overview-value"><span style={{ color: "green" }}>Active</span> • Customer since 2022</div>
+              <div className="overview-title">Customer Overview</div>
+              <div className="overview-value">
+                <span
+                  style={{
+                    color: "#0c814a",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    marginBottom: "10px",
+                    display: "block",
+                    textAlign: "left"
+                  }}
+                >
+                  $1,200.00
+                </span>
+                <span
+                  style={{
+                    color: "#000000",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    marginBottom: "10px",
+                    display: "block",
+                    textAlign: "left"
+                  }}
+                >
+                  Active • Customer since 2022
+                </span>
+              </div>
             </div>
             <div className="billing-cards-row">
               <div className="billing-summary-card">
-                <div className="card-title">Current Balance</div>
+                <div className="card-title">Payment has been made</div>
                 <div className="card-value">OMR 1,200.00</div>
                 <div className="card-desc">As of today</div>
               </div>
@@ -80,19 +114,19 @@ const BillingPayment = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>2024-06-01</td>
+                    <td>2025-06-01</td>
                     <td>Invoice #1234</td>
                     <td>OMR 500.00</td>
                     <td><span className="status paid">Paid</span></td>
                   </tr>
                   <tr>
-                    <td>2024-05-01</td>
+                    <td>2025-05-01</td>
                     <td>Invoice #1229</td>
                     <td>OMR 700.00</td>
                     <td><span className="status paid">Paid</span></td>
                   </tr>
                   <tr>
-                    <td>2024-04-01</td>
+                    <td>2025-04-01</td>
                     <td>Invoice #1220</td>
                     <td>OMR 600.00</td>
                     <td><span className="status overdue">Overdue</span></td>
