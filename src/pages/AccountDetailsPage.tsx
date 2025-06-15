@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar.tsx'; // Explicitly use .tsx extension
 import Sidebar from '../components/Sidebar.tsx'; // Explicitly use .tsx extension
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'; // Import Recharts components and XAxis, YAxis, Tooltip
 import AccessSourceChart from '../components/AccessSourceChart.tsx'; // Import the new ECharts component
-import { Link } from 'react-router-dom'; // Import Link
 import ContactCardList from '../components/ContactCardList.tsx'; // Import the new ContactCardList component
 
 // Mock data for customer growth chart
@@ -22,7 +21,26 @@ const AccountDetailsPage = () => {
       <div className="dashboard-content"> {/* Use dashboard content class */}
         <Sidebar />
         <main className="main-content">
-          <h1>Account Details</h1> {/* Main Page Title */}
+          {/* New Header Style - just background and original text */}
+          <div style={{
+            width: '100%',
+            background: 'linear-gradient(90deg, rgb(12, 129, 69) 0%, rgb(22, 155, 166) 100%)',
+            borderRadius: '12px',
+            padding: '24px 32px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+            color: '#fff',
+            marginBottom: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: '10px'
+            
+          }}>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff' }}>Account Details</h1>
+            <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Oman Broad Band</p>
+            <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Account is: 12345678</p>
+          </div>
 
           {/* Top Section: Stats and Charts */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '25px', marginBottom: '40px' }}> {/* Increased gap and bottom margin */}
