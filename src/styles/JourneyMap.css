@@ -393,7 +393,9 @@
   font-size: 1.5rem;
   color: #1976d2;
   font-weight: 800;
+  margin-top: 0;
   margin-bottom: 1.2rem;
+  line-height: 1;
 }
 
 .expansion-content {
@@ -411,7 +413,13 @@
   border-radius: 8px;
   border: 1px solid #eee;
   box-shadow: 0 1px 4px rgba(0,0,0,0.02);
-  min-width: 220px;
+  /* min-width: 220px; */
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.expansion-item:hover {
+  box-shadow: 0 4px 12px rgba(58, 141, 92, 0.15);
+  transform: translateY(-2px);
 }
 
 .expansion-item .icon {
@@ -492,6 +500,34 @@
 .action-buttons button:hover {
   background-color: #008b85;
   transform: translateY(-1px);
+}
+
+.action-button.primary {
+  background-color: #00a09d;
+  color: #fff;
+}
+
+.action-button.primary:hover {
+  background-color: #008b85;
+}
+
+.action-button.secondary {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.action-button.secondary:hover {
+  background-color: #e0e0e0;
+}
+
+.action-button.tertiary {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.action-button.tertiary:hover {
+  background-color: #c82333;
 }
 
 @keyframes fadeIn {
@@ -666,8 +702,6 @@
   border: 1px solid #eee;
   box-shadow: 0 1px 4px rgba(0,0,0,0.02);
   transition: transform 0.2s ease;
-  max-width: 300px; /* Make sidebar cards narrower */
-  min-width: 300px;
   width: 100%;
 }
 
@@ -726,13 +760,23 @@
   width: 100%;
 }
 
-.stage-details-card {
+.stage-details-card, .expansion-section {
+  flex: 1 1 0;
+  /* min-width: 320px; */
+  max-width: 100%;
+  min-height: 340px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
   padding: 32px 24px;
-  min-width: 220px;
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.stage-details-card:hover, .expansion-section:hover {
+  box-shadow: 0 4px 20px rgba(58, 141, 92, 0.2);
 }
 
 .stage-details-card h2 {
@@ -758,7 +802,7 @@
     gap: 20px;
   }
   .timeline-card, .stage-details-card, .expansion-card {
-    padding: 18px 8px;
+    padding: 24px 8px;
   }
 }
 
@@ -879,59 +923,6 @@
   align-items: stretch;
 }
 
-.stage-details-card, .expansion-section {
-  flex: 1 1 0;
-  min-width: 320px;
-  max-width: 100%;
-  min-height: 340px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
-  padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.stage-details-card h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.stage-details-card .stage-date {
-  font-size: 1.1rem;
-  color: #3a8d5c;
-  margin-bottom: 10px;
-}
-
-.stage-details-card .stage-description {
-  font-size: 1.05rem;
-  color: #444;
-  margin-bottom: 18px;
-}
-
-.stage-meta {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 1rem;
-  color: #333;
-}
-
-@media (max-width: 900px) {
-  .details-row.same-size-cards {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .stage-details-card, .expansion-section {
-    min-width: 0;
-    min-height: 220px;
-    padding: 18px 8px;
-  }
-}
-
 .stage-details-card.creative {
   position: relative;
   background: #fff;
@@ -1043,96 +1034,116 @@
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(58, 141, 92, 0.10);
-  padding: 32px 28px 28px 28px;
+  padding: 24px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 340px;
+  min-height: 280px; /* Adjusted min-height */
   overflow: hidden;
-  justify-content: center; /* Vertically center content */
+  justify-content: flex-start;
 }
 
-.stage-details-watermark {
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 0;
-  width: 90px;
-  height: 40px;
-}
-
-.stage-details-header-formal {
+.stage-details-header-compact {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 10px;
+  flex-direction: column; /* Stacks title group and meta grid */
+  gap: 15px; /* Space between title group and meta grid */
+  margin-bottom: 15px; /* Space below the header compact */
+  padding-top: 0; /* Reverting padding-top to allow adjustment on parent */
   width: 100%;
 }
 
+.stage-details-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+
+.stage-title-and-badges {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .stage-details-icon-formal {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background: #f3f8f5;
-  margin-right: 2px;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .stage-details-badge-formal {
-  font-size: 1.01rem;
+  font-size: 0.95rem; /* Adjusted font size */
   font-weight: 600;
   background: #fff;
   border-radius: 14px;
-  padding: 4px 14px;
+  padding: 4px 10px; /* Adjusted padding */
   border: 1.5px solid #3aa6a6;
   color: #3aa6a6;
   letter-spacing: 0.3px;
-  margin-right: 8px;
 }
 
 .stage-details-status-badge-formal {
   display: inline-block;
-  font-size: 0.95rem;
+  font-size: 0.9rem; /* Adjusted font size */
   font-weight: 600;
   color: #fff;
   border-radius: 12px;
-  padding: 4px 14px;
-  margin-left: auto;
+  padding: 4px 10px; /* Adjusted padding */
   background: #3a8d5c;
   letter-spacing: 0.2px;
 }
 
 .stage-details-title-formal {
-  font-size: 1.18rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 2px;
-  color: #1a2e22;
-  text-align: left;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 8px;
+  line-height: 1;
 }
 
-.stage-details-date-formal {
-  font-size: 1.01rem;
-  color: #3aa6a6;
-  margin-bottom: 10px;
-  font-weight: 500;
-  text-align: left;
+.stage-details-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Changed to single column */
+  gap: 10px; /* Only row gap */
+  width: 100%;
+}
+
+.stage-details-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.98rem;
+  color: #333;
+}
+
+.stage-details-meta-item .icon {
+  font-size: 1.1em;
+  color: #3a8d5c;
+}
+
+.stage-details-meta-item .label {
+  font-weight: 600;
+  color: #3a8d5c;
 }
 
 .stage-details-divider {
   width: 100%;
   height: 1px;
   background: #e6ece9;
-  margin: 10px 0 14px 0;
+  margin: 15px 0; /* Adjusted margins */
 }
 
 .stage-details-description-formal {
   font-size: 1.01rem;
   color: #444;
-  margin-bottom: 14px;
+  margin-bottom: 15px; /* Adjusted margin-bottom */
   text-align: left;
 }
 
@@ -1141,33 +1152,74 @@
   gap: 8px;
   font-size: 0.98rem;
   color: #333;
-  margin-bottom: 6px;
+  margin-bottom: 8px; /* Adjusted margin-bottom */
   text-align: left;
 }
 
-.stage-details-info-label {
+.stage-details-info-label.with-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   font-weight: 600;
+  color: #3a8d5c;
+}
+
+.stage-details-info-label.with-icon .icon {
+  font-size: 1.1em;
   color: #3a8d5c;
 }
 
 @media (max-width: 900px) {
   .stage-details-card.formal {
-    padding: 18px 8px 18px 8px;
-    min-height: 220px;
+    padding: 0;
+    min-height: 200px;
   }
-  .stage-details-header-formal {
-    gap: 8px;
+  .stage-details-header-compact {
+    gap: 10px;
+  }
+  .stage-details-title-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .stage-title-and-badges {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
   .stage-details-icon-formal {
     width: 28px;
     height: 28px;
   }
   .stage-details-badge-formal {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     padding: 3px 8px;
   }
   .stage-details-status-badge-formal {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     padding: 3px 8px;
+  }
+  .stage-details-title-formal {
+    font-size: 1.5rem;
+    margin-top: 0;
+    line-height: 1;
+  }
+  .stage-details-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .stage-details-meta-item {
+    font-size: 0.9rem;
+  }
+  .stage-details-divider {
+    margin: 10px 0;
+  }
+  .stage-details-description-formal {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+  .stage-details-info-row {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
   }
 }

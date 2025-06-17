@@ -28,54 +28,61 @@ const stages = [
   {
     stage: 'Awareness',
     title: 'ONBOARDING COMPLETE',
-    date: '15 June 2024',
+    date: '10 January 2023',
     description: 'Customer onboarding process completed successfully.',
     responsible: 'Sarah (Onboarding Specialist)',
     status: 'Completed',
-    notes: 'All initial setup tasks finished. Customer received welcome email.'
+    notes: 'All initial setup tasks, including system configuration and user onboarding, were completed successfully. The customer received a comprehensive welcome email that included key resources and contact information for ongoing support. A follow-up call is scheduled for next week to ensure smooth integration.',
+    customerTier: 'Premium',
   },
   {
     stage: 'Interest',
     title: 'First Support Ticket',
     date: '2 August 2024',
-    description: 'Customer submitted their first support ticket.',
+    description: 'Customer submitted their first support ticket, indicating an initial query about the platform. The ticket is currently being reviewed and assigned to the most relevant support agent.',
     responsible: 'Ahmed (Support Agent)',
     status: 'In Progress',
-    notes: 'Ticket #1234 opened regarding login issues.'
+    notes: 'Ticket #1234 was opened regarding login issues. The customer reported difficulty accessing their account after a password reset. Investigation is underway to identify the root cause and provide a resolution. Escalation to technical team may be required if basic troubleshooting fails.',
+    customerTier: 'Standard',
   },
   {
     stage: 'Retention',
     title: 'Renewal Contract Signed',
     date: '15 September 2024',
-    description: 'Customer renewed their contract.',
+    description: 'Customer successfully renewed their contract for an additional period, demonstrating continued satisfaction and commitment to our services. This renewal secures their partnership for the upcoming year.',
     responsible: 'Fatma (Account Manager)',
     status: 'Completed',
-    notes: 'Renewal signed for 1 year. No discounts applied.'
+    notes: 'Renewal signed for 1 year, ensuring continued service. No discounts or special terms were applied in this renewal. Customer feedback was positive, and they expressed satisfaction with the current service level. Discussions around potential upsell opportunities for next quarter have begun.',
+    customerTier: 'Premium',
   },
   {
     stage: 'Purchase',
     title: 'Sent CES Survey',
     date: '3 August 2024',
-    description: 'Customer received CES survey.',
+    description: 'Customer received the Customer Effort Score (CES) survey, designed to gather feedback on the ease of their recent interaction with our support team. Their input is valuable for improving our service delivery.',
     responsible: 'Omar (CSM)',
     status: 'Pending',
-    notes: 'Awaiting customer response to survey.'
+    notes: 'Awaiting customer response to the CES survey. The survey was sent via email immediately after their support interaction. We anticipate receiving feedback within 48 hours, which will be analyzed to identify areas for improvement in our customer support processes.',
+    customerTier: 'Standard',
   },
   {
     stage: 'Advocacy',
     title: 'Meeting Held',
     date: '16 September 2024',
-    description: 'Customer attended advocacy meeting.',
+    description: 'Customer actively participated in an advocacy meeting, sharing their positive experiences with prospective clients. Their willingness to advocate highlights their high level of satisfaction and serves as a valuable testimonial.',
     responsible: 'Layla (Customer Success)',
     status: 'Completed',
-    notes: 'Discussed expansion opportunities and feedback.'
+    notes: 'Discussed expansion opportunities and gathered comprehensive feedback on product performance and areas for future development. The customer provided valuable insights into market trends and expressed interest in collaborating on a case study. They are highly engaged and willing to serve as a reference.',
+    customerTier: 'Enterprise',
   }
 ];
 
 const expansionDetails = {
   date: '5 May 2025',
-  owner: 'Ahmed (CSM)',
-  notes: 'Customer asked about adding 50 new users',
+  dateScheduledTime: '10:00 AM',
+  owner: 'Ahmed Abdullah (CSM)',
+  ownerEmailAddress: 'ahmed.csm@omandatapark.com',
+  notes: 'Customer inquired about adding 50 new users and bulk license pricing, showing interest in advanced analytics features.',
   nextStep: 'Book upsell demo meeting',
   ticket: '#4567 — Inquiry about additional seats',
   opportunityType: 'Upsell',
@@ -141,39 +148,47 @@ const JourneyMap: React.FC = () => {
           <div className="details-row same-size-cards">
             {/* Card 2: Stage Details */}
             <div className="stage-details-card formal">
-              <div className="stage-details-header-formal">
-                <span className="stage-details-icon-formal" style={{ background: visuals.color, border: `1.5px solid ${visuals.border}` }}>{visuals.icon}</span>
-                <span className="stage-details-badge-formal" style={{ border: `1.5px solid ${visuals.border}`, color: visuals.border }}>{selectedStage.stage}</span>
-                <span className="stage-details-status-badge-formal" style={{ background: statusColor }}>{selectedStage.status}</span>
+              <div className="stage-details-header-compact">
+                <div className="stage-details-title-group" style={{ display: 'flex', alignItems: 'baseline', width: '100%', gap: '12px' }}>
+                  <span className="stage-details-icon-formal" style={{ background: visuals.color, border: `1.5px solid ${visuals.border}` }}>{visuals.icon}</span>
+                  <h2 className="stage-details-title-formal">{selectedStage.title}</h2>
+                  <div style={{ marginLeft: 'auto', display: 'flex', gap: '8px' }}>
+                    <span className="stage-details-badge-formal" style={{ border: `1.5px solid ${visuals.border}`, color: visuals.border }}>{selectedStage.stage}</span>
+                    <span className="stage-details-status-badge-formal" style={{ background: statusColor }}>{selectedStage.status}</span>
+                  </div>
+                </div>
+                <div className="stage-details-meta-grid">
+                  <div className="stage-details-meta-item">
+                    <span className="icon">📅</span>
+                    <span className="label">Date:</span> <span>{selectedStage.date}</span>
+                  </div>
+                  <div className="stage-details-meta-item">
+                    <span className="icon">💼</span>
+                    <span className="label">Customer Tier:</span> <span>{selectedStage.customerTier}</span>
+                  </div>
+                  <div className="stage-details-meta-item">
+                    <span className="icon">👤</span>
+                    <span className="label">Responsible:</span> <span>{selectedStage.responsible}</span>
+                  </div>
+                </div>
               </div>
-              <div className="stage-details-title-formal">{selectedStage.title}</div>
-              <div className="stage-details-date-formal">{selectedStage.date}</div>
               <div className="stage-details-divider"></div>
               <div className="stage-details-description-formal">{selectedStage.description}</div>
-              <div className="stage-details-info-row">
-                <span className="stage-details-info-label">Responsible:</span> <span>{selectedStage.responsible}</span>
-              </div>
-              <div className="stage-details-info-row">
-                <span className="stage-details-info-label">Notes:</span> <span>{selectedStage.notes}</span>
-              </div>
-              <div className="stage-details-watermark">
-                <svg viewBox="0 0 90 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="90" height="40">
-                  <ellipse cx="20" cy="20" rx="20" ry="20" fill="#3a8d5c" />
-                  <ellipse cx="50" cy="20" rx="20" ry="20" fill="#3aa6a6" />
-                  <ellipse cx="70" cy="20" rx="10" ry="10" fill="#1976d2" />
-                </svg>
+              <div className="stage-details-info-row" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+                <span className="stage-details-info-label with-icon"><span className="icon">📝</span> Notes:</span>
+                <p style={{ marginLeft: '28px', marginTop: '4px' }}>{selectedStage.notes}</p>
               </div>
             </div>
             {/* Card 3: Expansion Opportunity */}
             <div className="expansion-section">
               <div className="expansion-card">
-                <h2>Expansion Opportunity</h2>
+                <h2 style={{ color: '#3aa6a6' }}>Expansion Opportunity</h2>
                 <div className="expansion-content">
                   <div className="expansion-item">
                     <span className="icon">📅</span>
                     <div className="item-content">
                       <strong>Date</strong>
-                      <p>{expansionDetails.date}</p>
+                      <p>{expansionDetails.date} <span style={{ color: '#888', fontSize: '0.9em' }}>{expansionDetails.dateScheduledTime}</span></p>
                     </div>
                   </div>
                   <div className="expansion-item">
@@ -181,6 +196,7 @@ const JourneyMap: React.FC = () => {
                     <div className="item-content">
                       <strong>Owner</strong>
                       <p>{expansionDetails.owner}</p>
+                      <p style={{ fontSize: '0.9em', color: '#666' }}>{expansionDetails.ownerEmailAddress}</p>
                     </div>
                   </div>
                   <div className="expansion-item">
@@ -205,31 +221,10 @@ const JourneyMap: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                {showDetails && (
-                  <div className="expansion-details-card">
-                    <h3>🔍 Expansion Opportunity Details</h3>
-                    <ul>
-                      <li><strong>Date:</strong> {expansionDetails.date}</li>
-                      <li><strong>Owner:</strong> {expansionDetails.owner}</li>
-                      <li><strong>Notes:</strong> {expansionDetails.notes}</li>
-                      <li><strong>Next Step:</strong> {expansionDetails.nextStep}</li>
-                      <li><strong>Related Ticket:</strong> {expansionDetails.ticket}</li>
-                      <li><strong>Opportunity Type:</strong> {expansionDetails.opportunityType}</li>
-                      <li><strong>Customer Industry:</strong> {expansionDetails.industry}</li>
-                      <li><strong>Current Users:</strong> {expansionDetails.currentUsers}</li>
-                      <li><strong>Requested Expansion:</strong> {expansionDetails.requestedExpansion}</li>
-                      <li><strong>Estimated Value:</strong> {expansionDetails.estimatedValue}</li>
-                      <li><strong>CES Score:</strong> {expansionDetails.cesScore}</li>
-                      <li><strong>Last Contact:</strong> {expansionDetails.lastContact}</li>
-                      <li><strong>Tags:</strong> {expansionDetails.tags}</li>
-                    </ul>
-                    <div className="action-buttons">
-                      <button>Book Demo</button>
-                      <button>Send Proposal</button>
-                      <button>Mark as Closed</button>
-                    </div>
-                  </div>
-                )}
+                <div className="action-buttons" style={{ marginTop: '24px' }}>
+                  <button className="action-button secondary">Send Proposal</button>
+                  <button className="action-button tertiary">Mark as Closed</button>
+                </div>
               </div>
             </div>
           </div>
@@ -238,5 +233,15 @@ const JourneyMap: React.FC = () => {
     </div>
   );
 };
+
+// Add rotation animation for the icon
+const style = document.createElement('style');
+style.innerHTML = `
+  .rotate-icon {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in-out;
+  }
+`;
+document.head.appendChild(style);
 
 export default JourneyMap;

@@ -43,37 +43,11 @@ const BillingPayment = () => {
         </div>
         <div className="content-container">
           <div className="billing-payment-content">
-            <div className="billing-header">
-              Billing & Payment 
-            </div>
-            <div className="overview-card">
-              <div className="overview-title">Customer Overview</div>
-              <div className="overview-value">
-                <span
-                  style={{
-                    color: "#0c814a",
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    marginBottom: "10px",
-                    display: "block",
-                    textAlign: "left"
-                  }}
-                >
-                  $1,200.00
-                </span>
-                <span
-                  style={{
-                    color: "#000000",
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    marginBottom: "10px",
-                    display: "block",
-                    textAlign: "left"
-                  }}
-                >
-                  Active • Customer since 2022
-                </span>
-              </div>
+            <div className="billing-header-gradient">
+              <div className="billing-header-title">Billing & Payment</div>
+              <div className="billing-header-subtitle">Customer Overview</div>
+              <div className="billing-header-value">$1,200.00</div>
+              <div className="billing-header-status">Active • Customer since 2022</div>
             </div>
             <div className="billing-cards-row">
               <div className="billing-summary-card">
