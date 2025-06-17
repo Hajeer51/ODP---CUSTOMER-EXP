@@ -274,15 +274,18 @@
 
 .journey-map-layout {
   display: flex;
-  min-height: calc(100vh - 64px);
-  margin-top: 64px;
+  min-height: calc(100vh - 80px); /* Adjusted to 80px for consistency with Navbar offset */
+  margin-top: 80px; /* Adjusted to 80px for consistency with Navbar offset */
 }
 
 .journey-map-main {
   flex: 1;
-  padding: 32px;
-  max-width: 1600px;
-  margin-left: 240px; /* Offset for the left sidebar */
+  padding: 20px;
+  background: linear-gradient(135deg, #f7f9fa 60%, #e6f4ea 100%);
+  min-width: 0;
+  box-sizing: border-box;
+  /* Removed max-width */
+  margin-left: 250px; /* Adjusted to 250px to match sidebar width */
 }
 
 /* Header Styles */
@@ -377,10 +380,10 @@
 }
 
 .expansion-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: none;
+  background: #ffffff;
+  border-radius: 12px;
   padding: 24px;
+  padding-top: 0;
   cursor: pointer;
   transition: box-shadow 0.2s;
 }
@@ -737,11 +740,12 @@
 }
 
 .timeline-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
-  padding: 32px 24px 24px 24px;
-  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.05);
+  padding: 24px 30px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .timeline-arrows.clickable .timeline-arrow-group {
@@ -1031,24 +1035,24 @@
 
 .stage-details-card.formal {
   position: relative;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(58, 141, 92, 0.10);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.05);
   padding: 24px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 280px; /* Adjusted min-height */
+  min-height: 280px;
   overflow: hidden;
   justify-content: flex-start;
 }
 
 .stage-details-header-compact {
   display: flex;
-  flex-direction: column; /* Stacks title group and meta grid */
-  gap: 15px; /* Space between title group and meta grid */
-  margin-bottom: 15px; /* Space below the header compact */
-  padding-top: 0; /* Reverting padding-top to allow adjustment on parent */
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-top: 0;
   width: 100%;
 }
 
@@ -1074,15 +1078,15 @@
   justify-content: center;
   border-radius: 50%;
   background: #f3f8f5;
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  flex-shrink: 0;
 }
 
 .stage-details-badge-formal {
-  font-size: 0.95rem; /* Adjusted font size */
+  font-size: 0.95rem;
   font-weight: 600;
   background: #fff;
   border-radius: 14px;
-  padding: 4px 10px; /* Adjusted padding */
+  padding: 4px 10px;
   border: 1.5px solid #3aa6a6;
   color: #3aa6a6;
   letter-spacing: 0.3px;
@@ -1090,11 +1094,11 @@
 
 .stage-details-status-badge-formal {
   display: inline-block;
-  font-size: 0.9rem; /* Adjusted font size */
+  font-size: 0.9rem;
   font-weight: 600;
   color: #fff;
   border-radius: 12px;
-  padding: 4px 10px; /* Adjusted padding */
+  padding: 4px 10px;
   background: #3a8d5c;
   letter-spacing: 0.2px;
 }
@@ -1110,8 +1114,8 @@
 
 .stage-details-meta-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Changed to single column */
-  gap: 10px; /* Only row gap */
+  grid-template-columns: 1fr;
+  gap: 10px;
   width: 100%;
 }
 
@@ -1137,13 +1141,13 @@
   width: 100%;
   height: 1px;
   background: #e6ece9;
-  margin: 15px 0; /* Adjusted margins */
+  margin: 15px 0;
 }
 
 .stage-details-description-formal {
   font-size: 1.01rem;
   color: #444;
-  margin-bottom: 15px; /* Adjusted margin-bottom */
+  margin-bottom: 15px;
   text-align: left;
 }
 
@@ -1152,8 +1156,25 @@
   gap: 8px;
   font-size: 0.98rem;
   color: #333;
-  margin-bottom: 8px; /* Adjusted margin-bottom */
+  margin-bottom: 8px;
   text-align: left;
+}
+
+.note-box {
+  background: #f0f3f6;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 12px auto; /* Center horizontally */
+  max-width: calc(100% - 40px); /* Adjust based on parent padding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.note-box p {
+  margin: 0; /* Remove default paragraph margin */
+  font-size: 1.01rem;
+  color: #444;
+  line-height: 1.6;
 }
 
 .stage-details-info-label.with-icon {

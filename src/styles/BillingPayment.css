@@ -22,9 +22,11 @@ html, body {
 
 .main-layout {
   display: flex;
-  width: 100%;
+  width: calc(100% - 250px);
   flex-grow: 1;
   overflow: hidden;
+  margin-top: 70px;
+  margin-left: 250px;
 }
 
 .sidebar-container {
@@ -43,8 +45,8 @@ html, body {
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  background: #ffffff;
+  gap: 0px;
+  background: linear-gradient(135deg, #f7f9fa 60%, #e6f4ea 100%);
   border-radius: 20px;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
@@ -73,20 +75,27 @@ html, body {
 }
 
 .billing-header-gradient {
-  background: linear-gradient(90deg, #17996b 0%, #1ba7a7 100%);
-  border-radius: 18px;
-  padding: 20px 16px 12px 16px;
-  margin-bottom: 18px;
+  background: linear-gradient(90deg, rgb(12, 129, 69) 0%, rgb(22, 155, 166) 100%);
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255);
+  margin-bottom: 0px;
   width: 100%;
-  margin-top: 48px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .billing-header-title {
-  color: #fff;
+  color: rgb(255, 255, 255);
   font-size: 2.2rem;
   font-weight: 700;
-  margin: 0;
-  letter-spacing: 0.5px;
+  margin: 0px;
+  letter-spacing: normal;
 }
 
 .billing-header-subtitle {
@@ -95,19 +104,12 @@ html, body {
   margin-top: 6px;
 }
 
-.billing-header-value {
-  color: #eafaf1;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 8px;
-  margin-bottom: 2px;
-}
-
+.billing-header-value,
 .billing-header-status {
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 8px;
+  font-size: 1rem;
+  margin: 0px;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
 }
 
 /* === Chart Section === */
@@ -124,15 +126,17 @@ html, body {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
+  margin-top: 0px;
 }
 
 /* === Card === */
 .billing-summary-card {
   flex: 1;
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+  background: transparent;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
   display: flex;
   flex-direction: column;
   min-width: 220px;
@@ -141,27 +145,39 @@ html, body {
 }
 
 .billing-summary-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  color: #1a1a1a;
 }
 
 .card-title {
-  font-size: 1rem;
-  color: #0c814a;
-  font-weight: 600;
-  margin-bottom: 6px;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 0;
 }
 
 .card-value {
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: #1f1f1f;
-  margin: 6px 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0c814a;
+  margin: 8px 0;
 }
 
 .card-desc {
-  font-size: 0.95rem;
-  color: #666;
+  font-size: 0.9rem;
+  color: #777;
 }
 
 /* === Table Section === */
@@ -177,42 +193,105 @@ html, body {
   margin-bottom: 16px;
 }
 
+.table-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.export-button {
+  background-color: transparent;
+  color: #3aa6a6;
+  border: 1.5px solid #3aa6a6;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.export-button:hover {
+  background-color: #3aa6a6;
+  color: #fff;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.page-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+.page-number:hover:not(.selected) {
+  background-color: #eee;
+}
+
+.page-number.selected {
+  background-color: #3aa6a6;
+  color: #fff;
+  border: 1px solid #3aa6a6;
+}
+
 .billing-table {
   width: 100%;
   border-collapse: collapse;
   background: #ffffff;
   border-radius: 12px;
-  overflow: auto;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
-  min-width: 700px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .billing-table th,
 .billing-table td {
-  padding: 18px 20px;
+  padding: 16px 20px;
   text-align: left;
   font-size: 0.95rem;
-  border-bottom: 1px solid #e9f3f5;
+  border-bottom: 1px solid #e0e0e0;
   white-space: nowrap;
 }
 
 .billing-table th {
-  background: #e0f7fa;
-  color: #0c814a;
-  font-weight: 700;
+  background: #f8f8f8;
+  color: #555;
+  font-weight: 600;
 }
 
 .billing-table tr:nth-child(even) {
-  background: #f9fcfd;
+  background: #fdfdfd;
+}
+
+.billing-table tbody tr:hover {
+  background-color: #f3f8f5;
+  cursor: pointer;
 }
 
 /* === Status Badges === */
 .status {
-  padding: 6px 14px;
-  border-radius: 999px;
+  padding: 6px 12px;
+  border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
   display: inline-block;
+  text-transform: capitalize;
 }
 
 .status.paid {
@@ -221,14 +300,19 @@ html, body {
 }
 
 .status.overdue {
-  background: #fff0f0;
+  background: #ffebeb;
   color: #e74c3c;
+}
+
+.status.pending {
+  background: #fff8e1;
+  color: #f39c12;
 }
 
 /* === Billing Payment Content === */
 .billing-payment-content {
-  padding: 32px;
-  background: #fff;
+  padding: 16px;
+  background: transparent;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -316,4 +400,50 @@ html, body {
     padding: 8px;
     border-radius: 8px;
   }
+}
+
+.payment-chart-section {
+  margin-top: 48px;
+}
+
+.payment-chart-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0c814a;
+  margin-bottom: 16px;
+}
+
+/* Add styles for the billing tabs and export section */
+.billing-tabs-and-export {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  margin-top: 0;
+}
+
+.billing-tabs {
+  display: flex;
+  gap: 16px;
+}
+
+.tab-button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-button.selected {
+  color: #3aa6a6;
+  border-bottom: 2px solid #3aa6a6;
+}
+
+.tab-button:hover:not(.selected) {
+  color: #3aa6a6;
 }

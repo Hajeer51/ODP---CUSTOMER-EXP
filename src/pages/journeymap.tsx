@@ -176,7 +176,9 @@ const JourneyMap: React.FC = () => {
               <div className="stage-details-description-formal">{selectedStage.description}</div>
               <div className="stage-details-info-row" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                 <span className="stage-details-info-label with-icon"><span className="icon">📝</span> Notes:</span>
-                <p style={{ marginLeft: '28px', marginTop: '4px' }}>{selectedStage.notes}</p>
+                <div className="note-box">
+                  <p>{selectedStage.notes}</p>
+                </div>
               </div>
             </div>
             {/* Card 3: Expansion Opportunity */}
