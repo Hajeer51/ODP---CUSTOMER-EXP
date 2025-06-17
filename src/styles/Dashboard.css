@@ -173,10 +173,23 @@
   overflow: hidden;
   padding: 16px 18px;
 }
-.billing-title {
-  font-weight: 600;
-  margin-bottom: 4px;
-  font-size: 1rem;
+.billing-title-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding-bottom: 4px;
+}
+.billing-title-accent::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 36px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #169ba6 0%, #27ae60 100%);
+  margin-top: 4px;
 }
 .billing-row {
   display: flex;

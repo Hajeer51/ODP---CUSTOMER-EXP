@@ -1153,6 +1153,8 @@
 
 .stage-details-info-row {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
   font-size: 0.98rem;
   color: #333;
@@ -1165,13 +1167,14 @@
   border: none;
   border-radius: 10px;
   padding: 15px 20px;
-  margin: 12px auto; /* Center horizontally */
-  max-width: calc(100% - 40px); /* Adjust based on parent padding */
+  margin: 12px auto;
+  max-width: calc(100% - 40px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  align-self: center;
 }
 
 .note-box p {
-  margin: 0; /* Remove default paragraph margin */
+  margin: 0;
   font-size: 1.01rem;
   color: #444;
   line-height: 1.6;

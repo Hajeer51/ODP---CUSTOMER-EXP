@@ -6,9 +6,6 @@ import '../styles/Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 
 
-
-
-
 /* ── mock data ─────────────────────────────────────────── */
 const billingData = {
   balance: 230,
@@ -163,7 +160,14 @@ const Dashboard: React.FC = () => {
               style={{ gridColumn: '3 / 5', gridRow: '1' }}
               onClick={() => navigate('/billing')}
             >
-              <div className="billing-title">Billing & Payments</div>
+              <div style={{ display: 'flex', alignItems: 'baseline', width: '100%', marginTop: 0, marginBottom: 8 }}>
+                <h3 className="billing-title-accent" style={{ margin: 0 }}>
+                  <span>
+                    <span role="img" aria-label="billing" style={{marginRight: 8}}>💳</span>
+                    Billing & Payments
+                  </span>
+                </h3>
+              </div>
               <div className="billing-row">
                 Current Balance{' '}
                 <span className="billing-amount">OMR {billingData.balance}</span>
