@@ -374,9 +374,9 @@ const Dashboard: React.FC = () => {
               {/* Second row: All other content */}
               <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 <div className="satisfaction-title fs-h4 fw-semi" style={{ marginBottom: 8 }}>Average satisfaction</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '40px' }}>
                   {/* Gauge */}
-                  <div className="satisfaction-circle-visual">
+                  <div className="satisfaction-circle-visual" style={{ transform: 'scale(1)' }}>
                     <svg width="70" height="70" viewBox="0 0 70 70">
                       <circle
                         cx="35"
@@ -422,13 +422,13 @@ const Dashboard: React.FC = () => {
                   </div>
 
                   {/* center */}
-                  <div className="satisfaction-center">
+                  <div className="satisfaction-center" style={{ fontSize: '1em' }}>
                     <div className="satisfaction-score-main">4.2</div>
                     <div className="satisfaction-stars">★ ★ ★ ★ ☆</div>
                   </div>
 
                   {/* breakdown */}
-                  <div className="satisfaction-breakdown-col">
+                  <div className="satisfaction-breakdown-col" style={{ fontSize: '1em' }}>
                     <div>
                       <span style={{ fontWeight: 600 }}>60%</span> Promoters
                     </div>

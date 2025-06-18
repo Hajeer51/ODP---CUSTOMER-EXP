@@ -118,32 +118,6 @@ const UserDetailsPage = () => {
         <Sidebar />
         <main style={{ flex: 1, padding: '2px 20px 40px 20px', display: 'flex', justifyContent: 'center' }}>
           <div style={{ width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ 
-              background: 'linear-gradient(to right, #00a09d, #006b69)', 
-              padding: '25px 30px', 
-              borderRadius: '15px', 
-              color: 'white', 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              alignItems: 'center',
-              marginBottom: '30px'
-            }}> {/* Styled Header to match the image */}
-              <div>
-                <h1 style={{ fontSize: '2.2rem', fontWeight: 'bold', marginBottom: '5px' }}>OBC - Services and Products</h1>
-                <p style={{ fontSize: '1rem', opacity: '0.9' }}>Account is: 12345678 | Last Billing Date: 2023-03-01</p>
-              </div>
-              <button style={{ 
-                backgroundColor: 'rgba(255, 255, 255, 0.2)', 
-                border: '1px solid rgba(255, 255, 255, 0.5)', 
-                padding: '8px 20px', 
-                borderRadius: '20px', 
-                color: 'white', 
-                fontWeight: 'bold', 
-                cursor: 'pointer',
-                fontSize: '0.9rem'
-              }}>ACTIVE</button>
-            </div>
-
             {/* User Profile Card - Full Width */}
             <div style={{
               width: '100%',

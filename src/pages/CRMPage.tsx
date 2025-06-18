@@ -27,17 +27,68 @@ const CRMPage = () => {
             alignItems: 'center',
             gap: '10px'
           }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-              <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff' }}>CRM</h1>
-              <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Oman Broad Band</p>
-              <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Account is: 12345678</p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
+                <Link
+                  to="/account-details"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '50%',
+                    background: 'rgba(255,255,255,0.13)',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.10)',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    fontSize: '1.2rem',
+                    border: '1.5px solid rgba(255,255,255,0.25)',
+                    transition: 'background 0.2s, box-shadow 0.2s, transform 0.15s',
+                    cursor: 'pointer',
+                    position: 'relative',
+                  }}
+                  title="Back to Account Details"
+                  onMouseOver={e => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.22)';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
+                    e.currentTarget.style.transform = 'translateY(-1px) scale(1.08)';
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.13)';
+                    e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.10)';
+                    e.currentTarget.style.transform = 'none';
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="12" fill="none" />
+                    <path d="M15.5 5L9 12L15.5 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span style={{
+                    position: 'absolute',
+                    left: '110%',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'rgba(0,0,0,0.7)',
+                    color: '#fff',
+                    padding: '5px 10px',
+                    borderRadius: '5px',
+                    fontSize: '0.85rem',
+                    whiteSpace: 'nowrap',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    transition: 'opacity 0.2s',
+                    zIndex: 10,
+                  }} className="back-tooltip">Back to Account Details</span>
+                </Link>
+                <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff', letterSpacing: '0.5px' }}>CRM</h1>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'row', gap: '18px', alignItems: 'center', marginTop: '4px' }}>
+                <p style={{ fontSize: '1rem', margin: 0, color: '#fff', opacity: 0.95 }}>Oman Broad Band</p>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff', opacity: 0.5, display: 'inline-block' }}></span>
+                <p style={{ fontSize: '1rem', margin: 0, color: '#fff', opacity: 0.95 }}>Account is: 12345678</p>
+              </div>
             </div>
-
-            {/* Right aligned header content */}
-            {/* <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '5px' }}>
-              <p style={{ fontSize: '0.9rem', margin: '5px 0 0', color: '#fff', opacity: 0.8 }}>Total Leads: {totalLeads}</p>
-              <p style={{ fontSize: '0.9rem', margin: 0, color: '#fff', opacity: 0.8 }}>Conversion Rate: {conversionRate}</p>
-            </div> */}
           </div>
 
           {/* CRM Action Buttons and Search Bar */}

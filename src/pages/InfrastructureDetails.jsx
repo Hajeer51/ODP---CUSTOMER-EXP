@@ -189,7 +189,23 @@ const InfrastructureDetails = () => {
               padding: '24px',
               boxSizing: 'border-box',
             }}>
-              <h2 style={styles.sectionTitleStyle}>Infrastructure Details</h2>
+              <div style={{
+                width: '100%',
+                background: 'linear-gradient(90deg, rgb(12, 129, 69) 0%, rgb(22, 155, 166) 100%)',
+                borderRadius: '12px',
+                padding: '24px 32px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                color: '#fff',
+                marginBottom: '24px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                gap: '8px'
+              }}>
+                <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff' }}>Infrastructure Details</h1>
+                <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Oman Broad Band</p>
+                <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Account is: 12345678</p>
+              </div>
               
               {/* Top 3 Pie Charts Row */}
               <div style={{
