@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styles from '../styles/ForgotPasswordForm.module.css';
+import { useNavigate } from 'react-router-dom';
 
-const ForgotPasswordForm = ({ onBack }) => {
+const ForgotPasswordForm = () => {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ const ForgotPasswordForm = ({ onBack }) => {
         autoComplete="username"
       />
       <button type="submit" className={styles.signInBtn}>Send</button>
-      <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }} className={styles.backToLogin}>
+      <a href="#" onClick={(e) => { e.preventDefault(); navigate('/'); }} className={styles.backToLogin}>
         Back to Login
       </a>
     </form>

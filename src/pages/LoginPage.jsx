@@ -39,7 +39,7 @@ const LoginPage = ({ onForgotPassword, onDashboard }) => {
           transition: 'opacity 0.7s ease-out, transform 0.7s ease-out',
         }}
       >
-        <LoginForm onForgotPassword={onForgotPassword} onDashboard={onDashboard} />
+        <LoginForm onDashboard={onDashboard} />
       </div>
 
       {/* Right Panel - Dashboard Info */}

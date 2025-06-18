@@ -18,7 +18,6 @@ import SalesOrdersPage from './pages/SalesOrdersPage.tsx';
 import APIDocumentationPage from './pages/APIDocumentationPage.tsx';
 
 function App() {
-  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
  
   return (
@@ -46,15 +45,11 @@ function App() {
               <Route path="/journeymap" element={<JourneyMap />} />
               <Route path="/billing" element={<BillingPayment />} />
             </>
-          ) : showForgotPassword ? (
-            <Route path="/forgot-password" element={<ForgotPasswordPage onBack={() => setShowForgotPassword(false)} />} />
           ) : (
-            <Route path="/*" element={
-              <LoginPage
-                onForgotPassword={() => setShowForgotPassword(true)}
-                onDashboard={() => setShowDashboard(true)}
-              />
-            } />
+            <>
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+              <Route path="/*" element={<LoginPage onDashboard={() => setShowDashboard(true)} />} />
+            </>
           )}
         </Routes>
       </div>
