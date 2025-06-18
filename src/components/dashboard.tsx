@@ -170,11 +170,11 @@ const Dashboard: React.FC = () => {
               </div>
               <div className="billing-row">
                 Current Balance{' '}
-                <span className="billing-amount">OMR {billingData.balance}</span>
+                <span className="billing-amount" style={{fontWeight: 'bold'}}>OMR {billingData.balance}</span>
               </div>
               <div className="billing-row">
                 Last Payment{' '}
-                <span className="billing-amount">{billingData.lastPayment}</span>
+                <span className="billing-amount" style={{fontWeight: 'bold'}}>{billingData.lastPayment}</span>
               </div>
               <div className="billing-row">Overdue</div>
               <ResponsiveContainer width="100%" height={36}>
@@ -289,7 +289,7 @@ const Dashboard: React.FC = () => {
               }}
               onClick={() => navigate('/product-services')}
             >
-              <div className="product-title-row" style={{ display: 'flex', alignItems: 'baseline', width: '100%', marginTop: 0, marginBottom: 8 }}>
+              <div className="product-title-row" style={{ display: 'flex', alignItems: 'baseline', width: '100%', marginTop: 0 }}>
                 <h3 className="card-title-accent" style={{ margin: 0 }}>
                   <span role="img" aria-label="products" style={{marginRight: 8}}>📦</span>
                   Product &amp; Services
@@ -298,7 +298,7 @@ const Dashboard: React.FC = () => {
                   {productServices.length} items
                 </span>
               </div>
-              <ul className="product-list-grid" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <ul className="product-list-grid" style={{ display: 'flex', flexDirection: 'column' }}>
                 {productServices.map((item, idx) => (
                   <li className="product-item" key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%' }}>
                     <span className="product-badge">P{idx + 1}</span>

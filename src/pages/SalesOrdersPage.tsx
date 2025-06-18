@@ -223,7 +223,13 @@ const SalesOrdersPage = () => {
                     <span>{order.salesperson}</span>
                   </div>
                   <div style={{ flex: 1.5, padding: '0 5px' }}>{order.company}</div>
-                  <div style={{ width: '100px', textAlign: 'right', padding: '0 5px' }}>{order.total}</div>
+                  <div style={{ width: '100px', textAlign: 'right', padding: '0 5px' }}>
+                    {order.total === 'OMR 230.00' ? (
+                      <span style={{fontWeight: 'bold'}}>{order.total}</span>
+                    ) : (
+                      order.total
+                    )}
+                  </div>
                   <div style={{ width: '150px', padding: '0 5px' }}>
                     <span style={{ backgroundColor: order.statusColor, color: 'white', padding: '4px 8px', borderRadius: '15px', fontSize: '0.8rem' }}>{order.invoiceStatus}</span>
                   </div>
