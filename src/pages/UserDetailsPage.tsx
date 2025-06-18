@@ -140,8 +140,14 @@ const UserDetailsPage = () => {
                 background: 'linear-gradient(120deg, #0c8145 0%, #86bc42 100%)',
                 position: 'relative',
                 borderTopLeftRadius: 24,
-                borderTopRightRadius: 24
-              }} />
+                borderTopRightRadius: 24,
+                display: 'flex',
+                alignItems: 'center',
+                paddingLeft: 24,
+                gap: 10
+              }}>
+                {/* No name here, just the banner */}
+              </div>
               {/* Avatar - Overlapping */}
               <div style={{
                 position: 'absolute',
@@ -168,6 +174,41 @@ const UserDetailsPage = () => {
               {/* Card Content */}
               <div style={{ padding: '64px 32px 32px 32px', width: '100%' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8, marginLeft: 72 }}>
+                  <button
+                    onClick={() => navigate(-1)}
+                    title="Back"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '50%',
+                      background: 'rgba(255,255,255,0.13)',
+                      boxShadow: '0 1px 4px rgba(0,0,0,0.10)',
+                      color: '#0c8145',
+                      border: '1.5px solid rgba(12,129,69,0.25)',
+                      transition: 'background 0.2s, box-shadow 0.2s, transform 0.15s',
+                      cursor: 'pointer',
+                      position: 'relative',
+                      marginRight: '2px',
+                    }}
+                    onMouseOver={e => {
+                      e.currentTarget.style.background = 'rgba(12,129,69,0.10)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(12,129,69,0.18)';
+                      e.currentTarget.style.transform = 'translateY(-1px) scale(1.08)';
+                    }}
+                    onMouseOut={e => {
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.13)';
+                      e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.10)';
+                      e.currentTarget.style.transform = 'none';
+                    }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="12" fill="none" />
+                      <path d="M15.5 5L9 12L15.5 19" stroke="#0c8145" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
                   {editMode ? (
                     <input value={editName} onChange={e => setEditName(e.target.value)} style={{ fontWeight: 700, fontSize: 28, color: '#222', border: '1px solid #ccc', borderRadius: 8, padding: '4px 10px', width: 240, marginRight: 12 }} />
                   ) : (

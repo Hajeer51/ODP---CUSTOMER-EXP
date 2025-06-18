@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar.tsx'; // Explicitly use .tsx extensio
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'; // Import Recharts components and XAxis, YAxis, Tooltip
 import AccessSourceChart from '../components/AccessSourceChart.tsx'; // Import the new ECharts component
 import ContactCardList from '../components/ContactCardList.tsx'; // Import the new ContactCardList component
+import { useNavigate } from 'react-router-dom';
 
 // Mock data for customer growth chart
 const customerGrowthData = [
@@ -15,6 +16,7 @@ const customerGrowthData = [
 ];
 
 const AccountDetailsPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="dashboard-container"> {/* Use dashboard container class */}
       <Navbar />
@@ -35,7 +37,6 @@ const AccountDetailsPage = () => {
             justifyContent: 'center',
             alignItems: 'flex-start',
             gap: '10px'
-            
           }}>
             <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff' }}>Account Details</h1>
             <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Oman Broad Band</p>

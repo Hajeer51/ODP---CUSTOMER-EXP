@@ -76,8 +76,10 @@ const Dashboard: React.FC = () => {
                 padding: '24px 32px',
                 borderRadius: '12px',
                 backgroundColor: '#fff',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                cursor: 'pointer',
               }}
+              onClick={() => navigate('/account-details')}
             >
               {/* Header Details (Left) */}
               <div

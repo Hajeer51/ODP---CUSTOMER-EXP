@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 import {  
   MdPerson
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -46,8 +47,38 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li><Link to="/" className="link">Home</Link></li>
-        <li><Link to="/journeymap" className="link" style={{ color: '#222', fontWeight: 500, fontSize: 16, marginRight: 4 }} onClick={handleJourneyMapClick}>Journey Map</Link></li>
+        <li>
+          <Link to="/" className={`link${location.pathname === '/' ? ' active-link' : ''}`} style={{
+            fontFamily: 'Inter, SF Pro Text, Arial, sans-serif',
+            fontWeight: 500,
+            fontSize: '1.22rem',
+            color: location.pathname === '/' ? '#0c8145' : '#000',
+            letterSpacing: '0.01em',
+            background: 'none',
+            border: 'none',
+            boxShadow: 'none',
+            padding: '0.5rem 1.2rem',
+            borderRadius: '8px',
+            transition: 'color 0.2s, background 0.2s',
+            textDecoration: 'none',
+            position: 'relative',
+          }}>Home</Link>
+        </li>
+        <li>
+          <Link to="/journeymap" className={`link${location.pathname.startsWith('/journeymap') ? ' active-link' : ''}`} style={{
+            fontFamily: 'Inter, SF Pro Text, Arial, sans-serif',
+            fontWeight: 500,
+            fontSize: '1.12rem',
+            color: location.pathname.startsWith('/journeymap') ? '#0c8145' : '#000',
+            background: location.pathname.startsWith('/journeymap') ? '#e6f4ea' : 'none',
+            boxShadow: location.pathname.startsWith('/journeymap') ? '0 2px 8px rgba(0,0,0,0.1)' : 'none',
+            borderRadius: '8px',
+            padding: '12px 15px',
+            transition: 'color 0.2s, background 0.2s',
+            textDecoration: 'none',
+            position: 'relative',
+          }}>Journey Map</Link>
+        </li>
         <li className="user-menu" ref={dropdownRef}>
           <button className="user-button" onClick={toggleDropdown} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div style={{
