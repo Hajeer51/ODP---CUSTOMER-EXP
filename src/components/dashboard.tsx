@@ -24,11 +24,11 @@ const usageData = [
 ];
 
 const productServices = [
-  'Cloud Server(public VPS)',
-  'Microsoft 365 / Office 365 tenancy',
-  'Nebula AI (GPU-as-a-Service)',
-  'Acronis Backup Cloud (Backup-as-a-Service)',
-  'Managed Security Services (DDoS, WAF)',
+  { name: 'Cloud Server(public VPS)', status: 'Active' },
+  { name: 'Microsoft 365 / Office 365 tenancy', status: 'Active' },
+  { name: 'Nebula AI (GPU-as-a-Service)', status: 'Expired' },
+  { name: 'Acronis Backup Cloud (Backup-as-a-Service)', status: 'Active' },
+  { name: 'Managed Security Services (DDoS, WAF)', status: 'Expired' },
 ];
 
 export const supportDetails = [
@@ -301,10 +301,39 @@ const Dashboard: React.FC = () => {
                 </span>
               </div>
               <ul className="product-list-grid" style={{ display: 'flex', flexDirection: 'column' }}>
-                {productServices.map((item, idx) => (
-                  <li className="product-item" key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%' }}>
-                    <span className="product-badge">P{idx + 1}</span>
-                    <span className="product-name">{item}</span>
+                {productServices.map((item: { name: string; status: string }, idx: number) => (
+                  <li
+                    className="product-item"
+                    key={idx}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      width: '100%',
+                      gap: 10,
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <span className="product-badge">P{idx + 1}</span>
+                      <span className="product-name">{item.name}</span>
+                    </div>
+                    <span
+                      style={{
+                        marginLeft: 12,
+                        padding: '3px 12px',
+                        borderRadius: 12,
+                        fontWeight: 600,
+                        fontSize: 13,
+                        background: item.status === 'Active' ? '#e6f4ea' : '#fbeaea',
+                        color: item.status === 'Active' ? '#0c8145' : '#e74c3c',
+                        border: `1.5px solid ${item.status === 'Active' ? '#0c8145' : '#e74c3c'}`,
+                        display: 'inline-block',
+                        minWidth: 70,
+                        textAlign: 'center',
+                      }}
+                    >
+                      {item.status}
+                    </span>
                   </li>
                 ))}
               </ul>

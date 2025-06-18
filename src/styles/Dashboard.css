@@ -876,3 +876,29 @@ h3 {
   color: transparent; /* Fallback for non-webkit browsers */
 }
 
+/* Custom Scrollbar Styles for Dashboard */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: #e6f4ea;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #169ba6 0%, #27ae60 100%);
+  border-radius: 8px;
+  min-height: 40px;
+  box-shadow: 0 2px 6px rgba(22, 155, 166, 0.08);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0c8145 0%, #169ba6 100%);
+}
+::-webkit-scrollbar-corner {
+  background: #e6f4ea;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #27ae60 #e6f4ea;
+}
+

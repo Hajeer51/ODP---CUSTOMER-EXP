@@ -15,6 +15,7 @@ import CRMPage from './pages/CRMPage.tsx';
 import CustomerAccountPage from './pages/CustomerAccountPage.tsx';
 import BillingPayment from './pages/BillingPayment.tsx';
 import SalesOrdersPage from './pages/SalesOrdersPage.tsx';
+import APIDocumentationPage from './pages/APIDocumentationPage.tsx';
 
 function App() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -23,33 +24,39 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        {showDashboard ? (
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/infrastructure-details" element={<InfrastructureDetails />} />
-            <Route path="/tickets" element={<Tickets />} />
-            <Route path="/tickets/:reference" element={<TicketDetailsContainer />} />
-            <Route path="/tickets/:reference/edit" element={<TicketDetailsContainer />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/user-management" element={<UserManagementPage />} />
-            <Route path="/user-management/:email" element={<UserDetailsPage />} />
-            <Route path="/account-details" element={<AccountDetailsPage />} />
-            <Route path="/crm" element={<CRMPage />} />
-            <Route path="/product-services" element={<CustomerAccountPage />} />
-            <Route path="/sales-orders" element={<SalesOrdersPage />} />
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
-            <Route path="/journeymap" element={<JourneyMap />} />
-            <Route path="/billing" element={<BillingPayment />} />
-          </Routes>
-        ) : showForgotPassword ? (
-          <ForgotPasswordPage onBack={() => setShowForgotPassword(false)} />
-        ) : (
-          <LoginPage
-            onForgotPassword={() => setShowForgotPassword(true)}
-            onDashboard={() => setShowDashboard(true)}
-          />
-        )}
+        <Routes>
+          {/* API Documentation always accessible */}
+          <Route path="/api" element={<APIDocumentationPage />} />
+          {showDashboard ? (
+            <>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/infrastructure-details" element={<InfrastructureDetails />} />
+              <Route path="/tickets" element={<Tickets />} />
+              <Route path="/tickets/:reference" element={<TicketDetailsContainer />} />
+              <Route path="/tickets/:reference/edit" element={<TicketDetailsContainer />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/user-management" element={<UserManagementPage />} />
+              <Route path="/user-management/:email" element={<UserDetailsPage />} />
+              <Route path="/account-details" element={<AccountDetailsPage />} />
+              <Route path="/crm" element={<CRMPage />} />
+              <Route path="/product-services" element={<CustomerAccountPage />} />
+              <Route path="/sales-orders" element={<SalesOrdersPage />} />
+              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/journeymap" element={<JourneyMap />} />
+              <Route path="/billing" element={<BillingPayment />} />
+            </>
+          ) : showForgotPassword ? (
+            <Route path="/forgot-password" element={<ForgotPasswordPage onBack={() => setShowForgotPassword(false)} />} />
+          ) : (
+            <Route path="/*" element={
+              <LoginPage
+                onForgotPassword={() => setShowForgotPassword(true)}
+                onDashboard={() => setShowDashboard(true)}
+              />
+            } />
+          )}
+        </Routes>
       </div>
     </BrowserRouter>
   );
