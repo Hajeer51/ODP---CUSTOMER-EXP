@@ -94,9 +94,6 @@ const CRMPage = () => {
           {/* CRM Action Buttons and Search Bar */}
           <div style={{ padding: '20px', borderBottom: '1px solid #e0e0e0' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-              <button style={{ backgroundColor: '#00a09d', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>CREATE</button>
-              <button style={{ backgroundColor: '#e0e0e0', color: '#333', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>GENERATE LEADS</button>
-              <button style={{ backgroundColor: '#e0e0e0', color: '#333', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>IMPORT</button>
               <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '10px' }}>
                 {/* Search Bar and Filters */}
                 <div style={{ position: 'relative' }}>

@@ -33,13 +33,25 @@ const usageOverviewData = [
 ];
 
 const productsData = [
-  { productName: 'Cloud Hosting - Standard', status: 'Active', activationDate: '2020-03-10', monthlyFee: 150, renewalDate: '2025-03-10' },
-  { productName: 'Managed Security - Advanced', status: 'Active', activationDate: '2021-07-01', monthlyFee: 250, renewalDate: '2025-07-01' },
-  { productName: 'Colocation Services - Rack 1', status: 'Active', activationDate: '2019-01-15', monthlyFee: 500, renewalDate: '2025-01-15' },
-  { productName: 'Data Backup & Recovery - 1TB', status: 'Active', activationDate: '2022-05-20', monthlyFee: 100, renewalDate: '2025-05-20' },
-  { productName: 'Network Connectivity - 1Gbps', status: 'Active', activationDate: '2020-11-11', monthlyFee: 300, renewalDate: '2025-11-11' },
-  { productName: 'Disaster Recovery as a Service', status: 'Inactive', activationDate: '2023-01-01', monthlyFee: 0, renewalDate: 'N/A' },
-  { productName: 'Hybrid Cloud Solution', status: 'Active', activationDate: '2022-09-10', monthlyFee: 400, renewalDate: '2025-09-10' },
+  { productName: 'Bare Metal Servers', status: 'Active', activationDate: '2022-01-10', monthlyFee: 200, renewalDate: '2025-01-10' },
+  { productName: 'Colocation Services', status: 'Active', activationDate: '2019-01-15', monthlyFee: 500, renewalDate: '2025-01-15' },
+  { productName: 'Managed Network Services', status: 'Active', activationDate: '2020-03-10', monthlyFee: 150, renewalDate: '2025-03-10' },
+  { productName: 'Monitoring Services', status: 'Active', activationDate: '2021-07-01', monthlyFee: 250, renewalDate: '2025-07-01' },
+  { productName: 'Backup as a Service (BaaS)', status: 'Active', activationDate: '2022-05-20', monthlyFee: 100, renewalDate: '2025-05-20' },
+  { productName: 'Disaster Recovery as a Service (DRaaS)', status: 'Active', activationDate: '2020-11-11', monthlyFee: 300, renewalDate: '2025-11-11' },
+  { productName: 'JAGGAER', status: 'Inactive', activationDate: '2023-01-01', monthlyFee: 0, renewalDate: 'N/A' },
+  { productName: 'Hosted Sharepoint', status: 'Active', activationDate: '2022-02-20', monthlyFee: 70, renewalDate: '2026-02-20' },
+  { productName: 'Web Business Builder', status: 'Active', activationDate: '2022-03-25', monthlyFee: 80, renewalDate: '2026-03-25' },
+  { productName: 'Web Hosting', status: 'Active', activationDate: '2022-04-30', monthlyFee: 90, renewalDate: '2026-04-30' },
+  { productName: 'DDOS', status: 'Active', activationDate: '2022-05-05', monthlyFee: 110, renewalDate: '2026-05-05' },
+  { productName: 'Managed DMARC Services', status: 'Active', activationDate: '2022-06-10', monthlyFee: 130, renewalDate: '2026-06-10' },
+  { productName: 'Network Zero Day Attack Prevention', status: 'Active', activationDate: '2022-07-15', monthlyFee: 150, renewalDate: '2026-07-15' },
+  { productName: 'SIEM', status: 'Active', activationDate: '2022-08-20', monthlyFee: 170, renewalDate: '2026-08-20' },
+  { productName: 'Social Media Cyber Security', status: 'Active', activationDate: '2022-09-25', monthlyFee: 190, renewalDate: '2026-09-25' },
+  { productName: 'SSL Certificate', status: 'Active', activationDate: '2022-10-30', monthlyFee: 210, renewalDate: '2026-10-30' },
+  { productName: 'Vulnerability Management', status: 'Active', activationDate: '2022-11-05', monthlyFee: 230, renewalDate: '2026-11-05' },
+  { productName: 'WAF', status: 'Active', activationDate: '2022-12-10', monthlyFee: 250, renewalDate: '2026-12-10' },
+  { productName: 'Web Application Security Assessment', status: 'Active', activationDate: '2023-01-15', monthlyFee: 270, renewalDate: '2027-01-15' },
 ];
 
 const progressColors = ['#00a09d', '#5cb85c', '#f0ad4e', '#d9534f'];
