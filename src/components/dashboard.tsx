@@ -7,12 +7,68 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CustomerContext } from '../context/CustomerContext.tsx';
 
 const customersBySector = {
-  'Government': ['Ministry of Health', 'Royal Oman Police', 'Ministry of Education', 'Ministry of Finance'],
-  'Oil & Gas': ['Petroleum Development Oman (PDO)', 'Oman Oil Company', 'OQ', 'Daleel Petroleum'],
-  'Telecom': ['Omantel', 'Ooredoo Oman', 'Awasr', 'Oman Broadband'],
-  'IT & Data Centers': ['Oman Data Park', 'Gulf Business Machines (GBM)', 'Bahwan CyberTek', 'InfoFort Oman'],
-  'Banking & Finance': ['Bank Muscat', 'Bank Dhofar', 'Oman Arab Bank', 'National Bank of Oman'],
-  'Hospitality & Tourism': ['Oman Tourism Development Company (Omran)', 'Alila Jabal Akhdar', 'Anantara Al Baleed Salalah', 'InterContinental Muscat'],
+  'Government': [
+    'Ministry of Health',
+    'Ministry of Education',
+    'Royal Oman Police',
+    'Ministry of Interior',
+    'Ministry of Transport, Communications & IT'
+  ],
+  'Oil & Gas': [
+    'Petroleum Development Oman (PDO)',
+    'OQ',
+    'Daleel Petroleum',
+    'CCED (Consolidated Contractors Energy Development)',
+    'Oman LNG'
+  ],
+  'Telecom': [
+    'Omantel',
+    'Ooredoo Oman',
+    'Awasr',
+    'Oman Broadband',
+  ],
+  'IT & Data Centers': [
+    'Oman Data Park',
+    'Bahwan CyberTek',
+    'Gulf Business Machines (GBM)',
+    'InfoFort Oman',
+    'eMushrif'
+  ],
+  'Banking & Finance': [
+    'Bank Muscat',
+    'Bank Dhofar',
+    'National Bank of Oman',
+    'Oman Arab Bank',
+    'Alizz Islamic Bank'
+  ],
+  'Hospitality & Tourism': [
+    'Omran Group',
+    'Anantara Al Baleed Salalah',
+    'Kempinski Muscat',
+    'InterContinental Muscat',
+    'Jumeirah Muscat Bay'
+  ],
+  'Logistics & Transport': [
+    'ASYAD Group',
+    'Oman Post',
+    'Salalah Port Services',
+    'Mwasalat',
+    'Sohar Port and Freezone'
+  ],
+  'Education': [
+    'Sultan Qaboos University',
+    'German University of Technology (GUtech)',
+    'Middle East College',
+    'Muscat University',
+    'Higher College of Technology'
+  ],
+  'Healthcare': [
+    'The Royal Hospital',
+    'Muscat Private Hospital',
+    'Badr Al Samaa Group',
+    'Starcare Hospital',
+    'Apollo Hospitals Muscat'
+  ]
 };
 
 const billingData = {

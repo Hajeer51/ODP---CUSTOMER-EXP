@@ -120,47 +120,65 @@ const Home: React.FC = () => {
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                  gap: '32px',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                  gap: '24px',
                   width: '100%',
-                  justifyItems: 'center',
                 }}
               >
-                {sectors.map((sector) => (
-                  <div
-                    key={sector.label}
-                    onClick={() => navigate(`/dashboard?sector=${encodeURIComponent(sector.label)}`)}
-                    style={{
-                      background: 'linear-gradient(135deg, #3aa6a6 0%, #3a8d5c 100%)',
-                      borderRadius: 32,
-                      width: 260,
-                      height: 140,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxShadow: '0 2px 16px rgba(25, 118, 210, 0.10)',
-                      color: '#fff',
-                      fontWeight: 700,
-                      fontSize: '1.2rem',
-                      cursor: 'pointer',
-                      transition: 'transform 0.18s, box-shadow 0.18s',
-                      padding: 0,
-                      margin: 0,
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.05)';
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(25, 118, 210, 0.18)';
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 16px rgba(25, 118, 210, 0.10)';
-                    }}
-                  >
-                    <span style={{ fontSize: 56, marginBottom: 8 }}>{sector.icon}</span>
-                    <span style={{ fontSize: 22, fontWeight: 800 }}>{sector.label}</span>
-                  </div>
-                ))}
+                {sectors.map((sector) => {
+                  const details = sectorDetails[sector.label];
+                  const healthScoreColor = details.healthScore > 90 ? '#4CAF50' : details.healthScore > 70 ? '#ffc107' : '#f44336';
+
+                  return (
+                    <div
+                      key={sector.label}
+                      onClick={() => navigate(`/dashboard?sector=${encodeURIComponent(sector.label)}`)}
+                      style={{
+                        background: '#fff',
+                        borderRadius: '16px',
+                        padding: '24px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                        cursor: 'pointer',
+                        transition: 'transform 0.2s, box-shadow 0.2s',
+                        border: '1px solid #e0e0e0',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        height: '180px'
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-5px)';
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(0,0,0,0.1)';
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+                      }}
+                    >
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                          <div style={{ color: '#0c814a', marginRight: '12px' }}>{React.cloneElement(sector.icon, { style: { fontSize: 36 } })}</div>
+                          <span style={{ fontSize: '1.2rem', fontWeight: 700, color: '#333' }}>{sector.label}</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <div>
+                            <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#169ba6' }}>{details.totalCustomers}</div>
+                            <div style={{ fontSize: '0.9rem', color: '#666' }}>Customers</div>
+                          </div>
+                          <div>
+                            <div style={{ fontSize: '1.8rem', fontWeight: 800, color: healthScoreColor }}>{details.healthScore}</div>
+                            <div style={{ fontSize: '0.9rem', color: '#666' }}>Health Score</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ background: '#e0e0e0', borderRadius: '4px', height: '6px', overflow: 'hidden', marginTop: '20px' }}>
+                          <div style={{ width: `${details.healthScore}%`, background: healthScoreColor, height: '100%', borderRadius: '4px' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
