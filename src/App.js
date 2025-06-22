@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { CustomerProvider } from './context/CustomerContext.tsx';
 import LoginPage from './pages/LoginPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import Dashboard from './components/dashboard.tsx';
@@ -22,40 +23,42 @@ function App() {
   const [showDashboard, setShowDashboard] = useState(false);
  
   return (
-    <BrowserRouter>
-      <div>
-        <Routes>
-          {/* API Documentation always accessible */}
-          <Route path="/api" element={<APIDocumentationPage />} />
-          {showDashboard ? (
-            <>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/infrastructure-details" element={<InfrastructureDetails />} />
-              <Route path="/tickets" element={<Tickets />} />
-              <Route path="/tickets/:reference" element={<TicketDetailsContainer />} />
-              <Route path="/tickets/:reference/edit" element={<TicketDetailsContainer />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/user-management" element={<UserManagementPage />} />
-              <Route path="/user-management/:email" element={<UserDetailsPage />} />
-              <Route path="/account-details" element={<AccountDetailsPage />} />
-              <Route path="/crm" element={<CRMPage />} />
-              <Route path="/product-services" element={<CustomerAccountPage />} />
-              <Route path="/sales-orders" element={<SalesOrdersPage />} />
-              <Route path="*" element={<Navigate to="/dashboard" replace />} />
-              <Route path="/journeymap" element={<JourneyMap />} />
-              <Route path="/billing" element={<BillingPayment />} />
-              <Route path="/home" element={<Home />} />
-            </>
-          ) : (
-            <>
-              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-              <Route path="/*" element={<LoginPage onDashboard={() => setShowDashboard(true)} />} />
-            </>
-          )}
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <CustomerProvider>
+      <BrowserRouter>
+        <div>
+          <Routes>
+            {/* API Documentation always accessible */}
+            <Route path="/api" element={<APIDocumentationPage />} />
+            {showDashboard ? (
+              <>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/infrastructure-details" element={<InfrastructureDetails />} />
+                <Route path="/tickets" element={<Tickets />} />
+                <Route path="/tickets/:reference" element={<TicketDetailsContainer />} />
+                <Route path="/tickets/:reference/edit" element={<TicketDetailsContainer />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/user-management" element={<UserManagementPage />} />
+                <Route path="/user-management/:email" element={<UserDetailsPage />} />
+                <Route path="/account-details" element={<AccountDetailsPage />} />
+                <Route path="/crm" element={<CRMPage />} />
+                <Route path="/product-services" element={<CustomerAccountPage />} />
+                <Route path="/sales-orders" element={<SalesOrdersPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="/journeymap" element={<JourneyMap />} />
+                <Route path="/billing" element={<BillingPayment />} />
+              </>
+            ) : (
+              <>
+                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                <Route path="/*" element={<LoginPage onDashboard={() => setShowDashboard(true)} />} />
+              </>
+            )}
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </CustomerProvider>
   );
 }
  

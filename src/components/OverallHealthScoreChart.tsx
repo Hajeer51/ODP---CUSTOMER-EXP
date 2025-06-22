@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-interface AccessSourceChartProps {
+interface OverallHealthScoreChartProps {
   healthScore?: number;
 }
 
-const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 }) => {
+const OverallHealthScoreChart: React.FC<OverallHealthScoreChartProps> = ({ healthScore = 92 }) => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -13,6 +13,21 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
     if (chartRef.current) {
       chartInstance = echarts.init(chartRef.current);
       const option = {
+        title: {
+          text: `${healthScore.toFixed(0)}`,
+          subtext: 'Health',
+          left: 'center',
+          top: '40%',
+          textStyle: {
+            fontSize: 36,
+            fontWeight: 'bold',
+            color: '#333'
+          },
+          subtextStyle: {
+            fontSize: 14,
+            color: '#666'
+          }
+        },
         tooltip: {
           trigger: 'item'
         },
@@ -30,29 +45,22 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
           {
             name: 'Access From',
             type: 'pie',
-            radius: ['40%', '70%'],
+            radius: ['60%', '80%'],
             center: ['50%', '50%'],
             startAngle: 180,
-            endAngle: 0,
+            endAngle: 360,
             avoidLabelOverlap: false,
             itemStyle: {
               borderWidth: 0
             },
             label: {
-              show: true,
-              position: 'outside',
-              formatter: '{d}%'
+              show: false
             },
             emphasis: {
-              scale: true,
-              label: {
-                show: false,
-                fontSize: 40,
-                fontWeight: 'bold'
-              }
+              scale: false
             },
             labelLine: {
-              show: true
+              show: false
             },
             data: [
               { value: healthScore, name: 'Health', itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#4CAF50' }, { offset: 1, color: '#00796b' }]) } },
@@ -89,4 +97,4 @@ const AccessSourceChart: React.FC<AccessSourceChartProps> = ({ healthScore = 92 
   );
 };
 
-export default AccessSourceChart; 
+export default OverallHealthScoreChart; 

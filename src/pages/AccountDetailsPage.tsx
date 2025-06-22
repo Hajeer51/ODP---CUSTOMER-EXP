@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../components/Navbar.tsx'; // Explicitly use .tsx extension
 import Sidebar from '../components/Sidebar.tsx'; // Explicitly use .tsx extension
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'; // Import Recharts components and XAxis, YAxis, Tooltip
 import AccessSourceChart from '../components/AccessSourceChart.tsx'; // Import the new ECharts component
 import ContactCardList from '../components/ContactCardList.tsx'; // Import the new ContactCardList component
 import { useNavigate } from 'react-router-dom';
+import { CustomerContext } from '../context/CustomerContext.tsx';
 
 // Mock data for customer growth chart
 const customerGrowthData = [
@@ -17,6 +18,14 @@ const customerGrowthData = [
 
 const AccountDetailsPage = () => {
   const navigate = useNavigate();
+  const customerContext = useContext(CustomerContext);
+
+  if (!customerContext) {
+    return <div>Loading...</div>;
+  }
+
+  const { selectedCustomer } = customerContext;
+
   return (
     <div className="dashboard-container"> {/* Use dashboard container class */}
       <Navbar />
@@ -39,8 +48,10 @@ const AccountDetailsPage = () => {
             gap: '10px'
           }}>
             <h1 style={{ fontSize: '2.2rem', fontWeight: 700, margin: 0, color: '#fff' }}>Account Details</h1>
-            <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Oman Broad Band</p>
-            <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Account is: 12345678</p>
+            <p style={{ fontSize: '1rem', margin: 0, color: '#fff', backgroundColor: 'rgba(12, 129, 69, 0.8)', padding: '4px 8px', borderRadius: '4px' }}>
+              {selectedCustomer?.name || 'No Customer Selected'}
+            </p>
+            <p style={{ fontSize: '1rem', margin: 0, color: '#fff' }}>Account is: {selectedCustomer?.id || 'N/A'}</p>
           </div>
 
           {/* Top Section: Stats and Charts */}

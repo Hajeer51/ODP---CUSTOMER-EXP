@@ -65,6 +65,21 @@ const Navbar = () => {
           }}>Home</Link>
         </li>
         <li>
+          <Link to="/account-details" className={`link${location.pathname.startsWith('/account-details') ? ' active-link' : ''}`} style={{
+            fontFamily: 'Inter, SF Pro Text, Arial, sans-serif',
+            fontWeight: 500,
+            fontSize: '1.12rem',
+            color: location.pathname.startsWith('/account-details') ? '#0c8145' : '#000',
+            background: location.pathname.startsWith('/account-details') ? '#e6f4ea' : 'none',
+            boxShadow: location.pathname.startsWith('/account-details') ? '0 2px 8px rgba(0,0,0,0.1)' : 'none',
+            borderRadius: '8px',
+            padding: '12px 15px',
+            transition: 'color 0.2s, background 0.2s',
+            textDecoration: 'none',
+            position: 'relative',
+          }}>Account Details</Link>
+        </li>
+        <li>
           <Link to="/journeymap" className={`link${location.pathname.startsWith('/journeymap') ? ' active-link' : ''}`} style={{
             fontFamily: 'Inter, SF Pro Text, Arial, sans-serif',
             fontWeight: 500,

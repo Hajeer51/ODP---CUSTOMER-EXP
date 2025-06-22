@@ -1,66 +1,117 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Navbar from '../components/Navbar.tsx';
 import Sidebar from '../components/Sidebar.tsx';
-import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
-import AccessSourceChart from '../components/AccessSourceChart.tsx';
+import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
+import OverallHealthScoreChart from '../components/OverallHealthScoreChart.tsx';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import NetworkCheckIcon from '@mui/icons-material/NetworkCheck';
 import ComputerIcon from '@mui/icons-material/Computer';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import HotelIcon from '@mui/icons-material/Hotel';
-
-const customerGrowthData = [
-  { name: 'Jan', customers: 980 },
-  { name: 'Feb', customers: 1420 },
-  { name: 'Mar', customers: 1200 },
-  { name: 'Apr', customers: 1500 },
-  { name: 'May', customers: 1550 },
-];
-
-const sectors = [
-  { icon: <AccountBalanceIcon style={{ fontSize: 56 }} />, label: 'Government' },
-  { icon: <LocalGasStationIcon style={{ fontSize: 56 }} />, label: 'Oil & Gas' },
-  { icon: <NetworkCheckIcon style={{ fontSize: 56 }} />, label: 'Telecom' },
-  { icon: <ComputerIcon style={{ fontSize: 56 }} />, label: 'IT & Data Centers' },
-  { icon: <AccountBalanceWalletIcon style={{ fontSize: 56 }} />, label: 'Banking & Finance' },
-  { icon: <HotelIcon style={{ fontSize: 56 }} />, label: 'Hospitality & Tourism' },
-];
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import { useNavigate } from 'react-router-dom';
+import { sectorDetails, sectors } from '../data/sectorData.tsx';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  const overallMetrics = useMemo(() => {
+    const allSectors = Object.values(sectorDetails);
+    const totalCustomers = allSectors.reduce((sum, sector) => sum + sector.totalCustomers, 0);
+    const totalHealthScore = allSectors.reduce((sum, sector) => sum + sector.healthScore, 0);
+    const totalRevenue = allSectors.reduce((sum, sector) => sum + (sector.revenue || 0), 0);
+    const averageHealthScore = totalHealthScore / allSectors.length;
+
+    const aggregatedGrowth = allSectors[0].growthData.map((monthData, index) => {
+      const totalCustomersForMonth = allSectors.reduce((sum, sector) => {
+        return sum + (sector.growthData[index]?.customers || 0);
+      }, 0);
+      return {
+        name: monthData.name,
+        customers: totalCustomersForMonth,
+      };
+    });
+
+    const newCustomers = aggregatedGrowth.length > 1 
+      ? aggregatedGrowth[aggregatedGrowth.length - 1].customers - aggregatedGrowth[aggregatedGrowth.length - 2].customers 
+      : 0;
+
+    return {
+      totalCustomers,
+      averageHealthScore,
+      totalRevenue,
+      aggregatedGrowth,
+      newCustomers,
+    };
+  }, []);
+
   return (
     <div className="dashboard-container">
       <Navbar />
       <div className="dashboard-content">
         <Sidebar />
         <main className="main-content">
-          <div style={{ padding: '40px 0', minHeight: '100vh', background: '#f8fafc' }}>
-            <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ padding: '24px', minHeight: '100vh', background: '#f8fafc' }}>
+            <div style={{ padding: '0 24px' }}>
               {/* 3 Cards Row */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '25px', marginBottom: '40px' }}>
                 {/* Health Score Card */}
                 <div className="account-details-card hover-effect" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff' }}>
-                  <AccessSourceChart healthScore={92} />
-                  <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#333', marginTop: '10px' }}>Health Score</div>
+                  <OverallHealthScoreChart healthScore={overallMetrics.averageHealthScore} />
+                  <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#333', marginTop: '10px' }}>Overall Health Score</div>
                 </div>
-                {/* Customer Growth Card */}
-                <div className="account-details-card hover-effect" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <ResponsiveContainer width="100%" height={200}>
-                    <LineChart data={customerGrowthData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                      <XAxis dataKey="name" stroke="#00a09d" />
-                      <YAxis stroke="#00a09d" domain={[800, 'auto']} />
-                      <Tooltip />
-                      <Line type="monotone" dataKey="customers" stroke="#4CAF50" strokeWidth={3} dot={{ stroke: '#4CAF50', strokeWidth: 2, r: 5 }} activeDot={{ r: 7, stroke: '#4CAF50', strokeWidth: 2 }} />
-                    </LineChart>
-                  </ResponsiveContainer>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#333' , marginTop: '20px', textAlign: 'center' }}>Customer Growth</h3>
+                {/* Total Revenue Card */}
+                <div className="account-details-card hover-effect" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                  <div className="total-customers-number" style={{ fontSize: '2.5rem', fontWeight: 800, color: '#169ba6' }}>
+                    OMR {(overallMetrics.totalRevenue / 1000).toFixed(0)}K
+                  </div>
+                  <div style={{ fontSize: '1.2rem', color: '#666', marginBottom: '10px' }}>Total Revenue (Monthly)</div>
+                  <div style={{ fontSize: '1.1rem', color: '#00a09d', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <span style={{ fontSize: '1.2rem' }}>▲</span>All Sectors
+                  </div>
                 </div>
                 {/* Total Customers Card */}
-                <div className="account-details-card hover-effect" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div className="total-customers-number" style={{ fontSize: '2.5rem', fontWeight: 800, color: '#169ba6' }}>1,508</div>
-                  <div style={{ fontSize: '1.2rem', color: '#666', marginBottom: '10px' }}>Total Customers</div>
-                  <div style={{ fontSize: '1.1rem', color: '#00a09d', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <span style={{ fontSize: '1.2rem' }}>▲</span>+3.2% vs last month
+                <div className="account-details-card hover-effect" style={{ padding: '30px', borderRadius: '15px', border: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.05)', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ fontSize: '1.2rem', color: '#666', marginBottom: '8px' }}>Total Customers</div>
+                    <div className="total-customers-number" style={{ fontSize: '2.5rem', fontWeight: 800, color: '#169ba6' }}>
+                      {overallMetrics.totalCustomers.toLocaleString()}
+                    </div>
+                    <div style={{ color: '#4CAF50', fontWeight: 'bold', marginTop: '4px' }}>
+                      +{overallMetrics.newCustomers.toLocaleString()} This Month
+                    </div>
+                  </div>
+                  <div style={{width: '100%', height: '60px', marginTop: '10px'}}>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={overallMetrics.aggregatedGrowth} margin={{ top: 5, right: 0, left: 0, bottom: 0 }}>
+                            <defs>
+                                <linearGradient id="customerGrowthGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#00a09d" stopOpacity={0.4}/>
+                                    <stop offset="95%" stopColor="#00a09d" stopOpacity={0}/>
+                                </linearGradient>
+                            </defs>
+                            <Tooltip
+                                cursor={{ stroke: '#00a09d', strokeWidth: 1, strokeDasharray: '3 3' }}
+                                contentStyle={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                                    border: '1px solid #ddd',
+                                    borderRadius: '10px',
+                                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                                }}
+                                labelStyle={{ display: 'none' }}
+                                formatter={(value: number, name: string, props: any) => [`${(value as number).toLocaleString()}`, `Customers in ${props.payload.name}`]}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="customers"
+                                stroke="#00a09d"
+                                strokeWidth={2}
+                                fill="url(#customerGrowthGradient)"
+                                dot={false}
+                                activeDot={{ r: 5, stroke: '#fff', strokeWidth: 2, fill: '#00a09d' }}
+                            />
+                        </AreaChart>
+                    </ResponsiveContainer>
                   </div>
                 </div>
               </div>
@@ -75,11 +126,12 @@ const Home: React.FC = () => {
                   justifyItems: 'center',
                 }}
               >
-                {sectors.map((sector, idx) => (
+                {sectors.map((sector) => (
                   <div
                     key={sector.label}
+                    onClick={() => navigate(`/dashboard?sector=${encodeURIComponent(sector.label)}`)}
                     style={{
-                      background: idx % 2 === 0 ? 'linear-gradient(135deg, #3aa6a6 0%, #3a8d5c 100%)' : 'linear-gradient(135deg, #169ba6 0%, #3aa6a6 100%)',
+                      background: 'linear-gradient(135deg, #3aa6a6 0%, #3a8d5c 100%)',
                       borderRadius: 32,
                       width: 260,
                       height: 140,

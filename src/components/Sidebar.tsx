@@ -29,8 +29,7 @@ const Sidebar = () => {
             />
           </div>
         </li>
-        <li><Link to="/" className={`link ${location.pathname === '/' ? 'active-link' : ''}`}><MdDashboard /> Overview</Link></li>
-        <li><Link to="/account-details" className={`link ${['/account-details', '/crm', '/sales-orders'].some(path => location.pathname.startsWith(path)) ? 'active-link' : ''}`}><MdAccountCircle /> Account Details</Link></li>
+        <li><Link to="/dashboard" className={`link ${location.pathname === '/dashboard' ? 'active-link' : ''}`}><MdDashboard /> Overview</Link></li>
         <div className="sidebar-divider"></div>
         <li><Link to="/api" className={`link ${location.pathname.startsWith('/api') ? 'active-link' : ''}`}><MdSettings /> API Configration</Link></li>
         <li><Link to="/user-management" className={`link ${['/user-management', '/user-details'].some(path => location.pathname.startsWith(path)) ? 'active-link' : ''}`}><MdPeople /> User Management</Link></li>

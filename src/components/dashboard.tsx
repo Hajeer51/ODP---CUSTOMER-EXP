@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Navbar from './Navbar.tsx';
 import Sidebar from './Sidebar.tsx';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import '../styles/Dashboard.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { CustomerContext } from '../context/CustomerContext.tsx';
 
+const customersBySector = {
+  'Government': ['Ministry of Health', 'Royal Oman Police', 'Ministry of Education', 'Ministry of Finance'],
+  'Oil & Gas': ['Petroleum Development Oman (PDO)', 'Oman Oil Company', 'OQ', 'Daleel Petroleum'],
+  'Telecom': ['Omantel', 'Ooredoo Oman', 'Awasr', 'Oman Broadband'],
+  'IT & Data Centers': ['Oman Data Park', 'Gulf Business Machines (GBM)', 'Bahwan CyberTek', 'InfoFort Oman'],
+  'Banking & Finance': ['Bank Muscat', 'Bank Dhofar', 'Oman Arab Bank', 'National Bank of Oman'],
+  'Hospitality & Tourism': ['Oman Tourism Development Company (Omran)', 'Alila Jabal Akhdar', 'Anantara Al Baleed Salalah', 'InterContinental Muscat'],
+};
 
-/* ── mock data ─────────────────────────────────────────── */
 const billingData = {
   balance: 230,
   lastPayment: 8000,
@@ -50,18 +58,78 @@ const ReferenceCell: React.FC<{ reference: string }> = ({ reference }) => {
   );
 };
 
-/* ── component ─────────────────────────────────────────── */
 const Dashboard: React.FC = () => {
-    const navigate = useNavigate();
-    return (
-        <div className="dashboard-container">
-            <Navbar />
-            <div className="dashboard-content">
-                <Sidebar />
-                <main className="main-content">
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [customers, setCustomers] = useState<string[]>([]);
+  const customerContext = useContext(CustomerContext);
+
+  useEffect(() => {
+    if (!customerContext) return;
+
+    const { selectedCustomer, setSelectedCustomer } = customerContext;
+
+    const sector = searchParams.get('sector');
+    let initialCustomers: string[] = [];
+    if (sector && customersBySector[sector]) {
+      initialCustomers = customersBySector[sector];
+    } else {
+      // Default to the first sector if no sector is specified
+      const firstSector = Object.keys(customersBySector)[0];
+      initialCustomers = customersBySector[firstSector];
+    }
+    setCustomers(initialCustomers);
+    // Set the first customer as selected in the context if none is selected yet
+    // Or if the selected one is not in the new list of customers
+    if (!selectedCustomer || !initialCustomers.includes(selectedCustomer.name)) {
+      setSelectedCustomer({ name: initialCustomers[0], id: '12345678' });
+    }
+  }, [searchParams, customerContext]);
+
+  if (!customerContext) {
+    // This can happen if the component is not wrapped in CustomerProvider
+    return <div>Loading...</div>;
+  }
+  
+  const { selectedCustomer, setSelectedCustomer } = customerContext;
+
+  const handleCustomerClick = (customerName: string) => {
+    setSelectedCustomer({ name: customerName, id: '12345678' }); // Assuming a static ID for now
+  };
+
+  return (
+    <div className="dashboard-container">
+      <Navbar />
+      <div className="dashboard-content">
+        <Sidebar />
+        <main className="main-content">
+          {/* Customer Filter Buttons */}
+          <div className="customer-filter-bar" style={{ display: 'flex', gap: '15px', padding: '10px 0', marginBottom: '20px', overflowX: 'auto' }}>
+            {customers.map(customer => (
+              <button
+                key={customer}
+                onClick={() => handleCustomerClick(customer)}
+                style={{
+                  padding: '10px 20px',
+                  borderRadius: '20px',
+                  border: '1.5px solid',
+                  borderColor: selectedCustomer?.name === customer ? '#0c814a' : '#cce7e7',
+                  background: selectedCustomer?.name === customer ? '#e6f4ea' : '#fff',
+                  color: selectedCustomer?.name === customer ? '#0c814a' : '#333',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {customer}
+              </button>
+            ))}
+          </div>
+
           <div className="dashboard-grid">
-            {/* ─────────── Row 1 ─────────── */}
-            {/* Customer header with responsive flex layout */}
+            {/* 360 View Dashboard Card with Health Score */}
             <div
               className="customer-header card"
               style={{
@@ -69,90 +137,37 @@ const Dashboard: React.FC = () => {
                 gridRow: '1',
                 display: 'flex',
                 flexDirection: 'row',
-                flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                gap: '24px',
+                gap: '20px',
                 padding: '24px 32px',
                 borderRadius: '12px',
                 backgroundColor: '#fff',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                cursor: 'pointer',
               }}
-              onClick={() => navigate('/account-details')}
             >
-              {/* Header Details (Left) */}
-              <div
-                className="header-details"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '6px',
-                  minWidth: '200px',
-                  flex: '1 1 60%'
-                }}
-              >
-                <div style={{ fontSize: '1.3rem', fontWeight: 600, color: '#111' }}>
+              {/* Customer Details (Left) */}
+              <div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 600, color: '#111', margin: '0 0 10px 0' }}>
                   360 View Dashboard
-                </div>
+                </h3>
                 <div style={{ fontSize: '1rem', color: '#0077b6', fontWeight: 500 }}>
-                  Oman Broad Band
+                  {selectedCustomer?.name || 'Select a customer'}
                 </div>
-                <div style={{ fontSize: '0.9rem', color: '#666' }}>
-                  Account is : 12345678
-                </div>
-                <div style={{ fontSize: '0.9rem', color: '#666' }}>
-                  Last Billing Date: 2023-11-20
-                </div>
-                <div style={{ fontSize: '0.9rem', color: '#666' }}>
-                  Ali Alhabsi
-                </div>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>Account is: {selectedCustomer?.id || 'N/A'}</div>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>Last Billing Date: 2023-11-20</div>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>Ali Alhabsi</div>
               </div>
-
               {/* Health Score (Right) */}
-              <div
-                className="health-score"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flex: '0 0 auto',
-                  minWidth: '100px'
-                }}
-              >
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                 <div className="health-score-gauge" style={{ width: '80px', height: '50px' }}>
                   <svg width="80" height="50" viewBox="0 0 100 60">
-                    <path
-                      d="M 10 50 A 40 40 0 0 1 90 50"
-                      fill="none"
-                      stroke="#eee"
-                      strokeWidth="10"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M 10 50 A 40 40 0 0 1 90 50"
-                      fill="none"
-                      stroke="#27ae60"
-                      strokeWidth="10"
-                      strokeLinecap="round"
-                      strokeDasharray="125.66"
-                      strokeDashoffset="25.13"
-                    />
-                    <text
-                      x="50"
-                      y="50"
-                      textAnchor="middle"
-                      fontSize="18"
-                      fontWeight="bold"
-                      fill="#000"
-                      dominantBaseline="middle"
-                    >80</text>
+                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#eee" strokeWidth="10" strokeLinecap="round" />
+                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#27ae60" strokeWidth="10" strokeLinecap="round" strokeDasharray="125.66" strokeDashoffset="25.13" />
+                    <text x="50" y="50" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#000" dominantBaseline="middle">80</text>
                   </svg>
                 </div>
-                <div style={{ marginTop: '6px', fontSize: '0.9rem', color: '#333' }}>
-                  Health Score
-                </div>
+                <div style={{ marginTop: '6px', fontSize: '0.9rem', color: '#333' }}>Health Score</div>
               </div>
             </div>
 
@@ -170,36 +185,16 @@ const Dashboard: React.FC = () => {
                   </span>
                 </h3>
               </div>
-              <div className="billing-row">
-                Current Balance{' '}
-                <span className="billing-amount" style={{fontWeight: 'bold'}}>OMR {billingData.balance}</span>
-              </div>
-              <div className="billing-row">
-                Last Payment{' '}
-                <span className="billing-amount" style={{fontWeight: 'bold'}}>{billingData.lastPayment}</span>
-              </div>
+              <div className="billing-row">Current Balance <span className="billing-amount" style={{fontWeight: 'bold'}}>OMR {billingData.balance}</span></div>
+              <div className="billing-row">Last Payment <span className="billing-amount" style={{fontWeight: 'bold'}}>{billingData.lastPayment}</span></div>
               <div className="billing-row">Overdue</div>
               <ResponsiveContainer width="100%" height={36}>
-                <LineChart
-                  data={billingData.overdue.map((v, i) => ({
-                    name: i,
-                    value: v,
-                  }))}
-                >
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#169ba6"
-                    strokeWidth={2}
-                    dot={false}
-                  />
+                <LineChart data={billingData.overdue.map((v, i) => ({ name: i, value: v }))}>
+                  <Line type="monotone" dataKey="value" stroke="#169ba6" strokeWidth={2} dot={false} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
 
-            
-
-            {/* ─────────── Row 2 ─────────── */}
             {/* Infrastructure overview */}
             <div
               className="products-section card infrastructure-card"
@@ -474,63 +469,10 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
           </div>
-          <div style={{ marginTop: 40, width: '100%' }}>
-            <h2 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: 24 }}>Sectors</h2>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                gap: '28px',
-                width: '100%',
-                justifyItems: 'center',
-              }}
-            >
-              {[ 
-                { icon: '🏢', label: 'Government' },
-                { icon: '🏭', label: 'Oil & Gas' },
-                { icon: '📡', label: 'Telecom' },
-                { icon: '💻', label: 'IT & Data Centers' },
-                { icon: '💳', label: 'Banking & Finance' },
-                { icon: '🏨', label: 'Hospitality & Tourism' },
-              ].map((sector, idx) => (
-                <div
-                  key={sector.label}
-                  style={{
-                    background: idx % 2 === 0 ? 'linear-gradient(135deg, #3aa6a6 0%, #3a8d5c 100%)' : 'linear-gradient(135deg, #169ba6 0%, #3aa6a6 100%)',
-                    borderRadius: 28,
-                    padding: '32px 24px',
-                    minWidth: 200,
-                    minHeight: 120,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 2px 12px rgba(25, 118, 210, 0.08)',
-                    color: '#fff',
-                    fontWeight: 700,
-                    fontSize: '1.2rem',
-                    cursor: 'pointer',
-                    transition: 'transform 0.18s, box-shadow 0.18s',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.04)';
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 6px 24px rgba(25, 118, 210, 0.13)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 12px rgba(25, 118, 210, 0.08)';
-                  }}
-                >
-                  <span style={{ fontSize: 48, marginBottom: 16 }}>{sector.icon}</span>
-                  <span style={{ fontSize: 20, fontWeight: 700 }}>{sector.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-                </main>
-            </div>
-        </div>
-    );
+        </main>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;
