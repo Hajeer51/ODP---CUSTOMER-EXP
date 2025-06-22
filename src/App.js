@@ -16,6 +16,7 @@ import CustomerAccountPage from './pages/CustomerAccountPage.tsx';
 import BillingPayment from './pages/BillingPayment.tsx';
 import SalesOrdersPage from './pages/SalesOrdersPage.tsx';
 import APIDocumentationPage from './pages/APIDocumentationPage.tsx';
+import Home from './pages/Home.tsx';
 
 function App() {
   const [showDashboard, setShowDashboard] = useState(false);
@@ -44,6 +45,7 @@ function App() {
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
               <Route path="/journeymap" element={<JourneyMap />} />
               <Route path="/billing" element={<BillingPayment />} />
+              <Route path="/home" element={<Home />} />
             </>
           ) : (
             <>

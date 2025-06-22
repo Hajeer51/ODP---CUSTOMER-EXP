@@ -48,11 +48,11 @@ const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/" className={`link${location.pathname === '/' ? ' active-link' : ''}`} style={{
+          <Link to="/home" className={`link${location.pathname === '/home' ? ' active-link' : ''}`} style={{
             fontFamily: 'Inter, SF Pro Text, Arial, sans-serif',
             fontWeight: 500,
             fontSize: '1.22rem',
-            color: location.pathname === '/' ? '#0c8145' : '#000',
+            color: location.pathname === '/home' ? '#0c8145' : '#000',
             letterSpacing: '0.01em',
             background: 'none',
             border: 'none',

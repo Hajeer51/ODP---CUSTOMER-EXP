@@ -474,6 +474,59 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
           </div>
+          <div style={{ marginTop: 40, width: '100%' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: 24 }}>Sectors</h2>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: '28px',
+                width: '100%',
+                justifyItems: 'center',
+              }}
+            >
+              {[ 
+                { icon: '🏢', label: 'Government' },
+                { icon: '🏭', label: 'Oil & Gas' },
+                { icon: '📡', label: 'Telecom' },
+                { icon: '💻', label: 'IT & Data Centers' },
+                { icon: '💳', label: 'Banking & Finance' },
+                { icon: '🏨', label: 'Hospitality & Tourism' },
+              ].map((sector, idx) => (
+                <div
+                  key={sector.label}
+                  style={{
+                    background: idx % 2 === 0 ? 'linear-gradient(135deg, #3aa6a6 0%, #3a8d5c 100%)' : 'linear-gradient(135deg, #169ba6 0%, #3aa6a6 100%)',
+                    borderRadius: 28,
+                    padding: '32px 24px',
+                    minWidth: 200,
+                    minHeight: 120,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 2px 12px rgba(25, 118, 210, 0.08)',
+                    color: '#fff',
+                    fontWeight: 700,
+                    fontSize: '1.2rem',
+                    cursor: 'pointer',
+                    transition: 'transform 0.18s, box-shadow 0.18s',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.04)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 6px 24px rgba(25, 118, 210, 0.13)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 12px rgba(25, 118, 210, 0.08)';
+                  }}
+                >
+                  <span style={{ fontSize: 48, marginBottom: 16 }}>{sector.icon}</span>
+                  <span style={{ fontSize: 20, fontWeight: 700 }}>{sector.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
                 </main>
             </div>
         </div>

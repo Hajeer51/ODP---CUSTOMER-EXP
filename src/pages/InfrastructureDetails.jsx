@@ -99,6 +99,18 @@ const chartTitleStyle = {
   letterSpacing: '-0.5px',
 };
 
+const CustomPieTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    const entry = payload[0];
+    return (
+      <div style={{ background: '#fff', border: '1px solid #ccc', padding: 10, borderRadius: 6, fontSize: 13 }}>
+        <div><strong>{entry.name}:</strong> {entry.value}</div>
+      </div>
+    );
+  }
+  return null;
+};
+
 const InfrastructureDetails = () => {
   // Memoize the data to prevent unnecessary recalculations
   const tableData = useMemo(() => [
@@ -231,13 +243,14 @@ const InfrastructureDetails = () => {
                           fill="#8884d8"
                           paddingAngle={2}
                           dataKey="value"
-                          label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                          label={({ value }) => value}
                           isAnimationActive={false}
                         >
                           {chartData.totalServersDoughnutData.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={SERVER_COLORS[index % SERVER_COLORS.length]} />
                           ))}
                         </Pie>
+                        <Tooltip content={CustomPieTooltip} />
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
@@ -268,13 +281,14 @@ const InfrastructureDetails = () => {
                           fill="#8884d8"
                           paddingAngle={2}
                           dataKey="value"
-                          label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                          label={({ value }) => value}
                           isAnimationActive={false}
                         >
                           {chartData.memoryPieData.map((entry, index) => (
                             <Cell key={`cell-mem-${index}`} fill={MEMORY_COLORS[index % MEMORY_COLORS.length]} />
                           ))}
                         </Pie>
+                        <Tooltip content={CustomPieTooltip} />
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
@@ -305,13 +319,14 @@ const InfrastructureDetails = () => {
                           fill="#8884d8"
                           paddingAngle={2}
                           dataKey="value"
-                          label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                          label={({ value }) => value}
                           isAnimationActive={false}
                         >
                           {chartData.storagePieData.map((entry, index) => (
                             <Cell key={`cell-storage-${index}`} fill={STORAGE_COLORS[index % STORAGE_COLORS.length]} />
                           ))}
                         </Pie>
+                        <Tooltip content={CustomPieTooltip} />
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
@@ -389,13 +404,14 @@ const InfrastructureDetails = () => {
                           fill="#8884d8"
                           paddingAngle={2}
                           dataKey="value"
-                          label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                          label={({ value }) => value}
                           isAnimationActive={false}
                         >
                           {chartData.vmPieData.map((entry, index) => (
                             <Cell key={`cell-vm-${index}`} fill={VM_COLORS[index % VM_COLORS.length]} />
                           ))}
                         </Pie>
+                        <Tooltip content={CustomPieTooltip} />
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
@@ -473,13 +489,14 @@ const InfrastructureDetails = () => {
                           fill="#8884d8"
                           paddingAngle={2}
                           dataKey="value"
-                          label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                          label={({ value }) => value}
                           isAnimationActive={false}
                         >
                           {chartData.serverPieData.map((entry, index) => (
                             <Cell key={`cell-server-${index}`} fill={SERVER_COLORS2[index % SERVER_COLORS2.length]} />
                           ))}
                         </Pie>
+                        <Tooltip content={CustomPieTooltip} />
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
